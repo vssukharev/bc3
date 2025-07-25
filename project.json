@@ -6,10 +6,6 @@
   "sources" : [ "generators/general.c3" ],
 
   "targets" : {
-    "python" : {
-      "sources" : [ "generators/python.c3" ],
-      "type" : "executable",
-    },
     "vulkan" : {
       "sources" : [ "generators/vulkan.c3" ],
       "type" : "executable",
@@ -20,6 +16,10 @@
     },
     "llvm" : {
       "sources" : [ "generators/llvm.c3" ],
+      "type" : "executable",
+    },
+    "python" : {
+      "sources" : [ "generators/python.c3" ],
       "type" : "executable",
     },
   },

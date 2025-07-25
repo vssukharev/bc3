@@ -1401,65 +1401,53 @@ alias Py_uhash_t = usz;
 alias Py_ssize_clean_t = Py_ssize_t;
 
 fn void* PyMem_Malloc(
-   default, 
   usz size)
 @extern("PyMem_Malloc");
 
 fn void* PyMem_Calloc(
-   default, 
   usz nelem, 
   usz elsize)
 @extern("PyMem_Calloc");
 
 fn void* PyMem_Realloc(
-   default, 
   void* ptr, 
   usz new_size)
 @extern("PyMem_Realloc");
 
 fn void PyMem_Free(
-   default, 
   void* ptr)
 @extern("PyMem_Free");
 
 fn void* PyMem_RawMalloc(
-   default, 
   usz size)
 @extern("PyMem_RawMalloc");
 
 fn void* PyMem_RawCalloc(
-   default, 
   usz nelem, 
   usz elsize)
 @extern("PyMem_RawCalloc");
 
 fn void* PyMem_RawRealloc(
-   default, 
   void* ptr, 
   usz new_size)
 @extern("PyMem_RawRealloc");
 
 fn void PyMem_RawFree(
-   default, 
   void* ptr)
 @extern("PyMem_RawFree");
 
-fn CChar* _PyMem_GetCurrentAllocatorName(
-   default)
+fn CChar* _PyMem_GetCurrentAllocatorName()
 @extern("_PyMem_GetCurrentAllocatorName");
 
 fn CChar* _PyMem_RawStrdup(
-   default, 
   CChar* str)
 @extern("_PyMem_RawStrdup");
 
 fn CChar* _PyMem_Strdup(
-   default, 
   CChar* str)
 @extern("_PyMem_Strdup");
 
 fn wchar_t* _PyMem_RawWcsdup(
-   default, 
   wchar_t* str)
 @extern("_PyMem_RawWcsdup");
 
@@ -1504,19 +1492,16 @@ struct PyMemAllocatorEx {
 }
 
 fn void PyMem_GetAllocator(
-   default, 
   PyMemAllocatorDomain domain, 
   PyMemAllocatorEx* allocator)
 @extern("PyMem_GetAllocator");
 
 fn void PyMem_SetAllocator(
-   default, 
   PyMemAllocatorDomain domain, 
   PyMemAllocatorEx* allocator)
 @extern("PyMem_SetAllocator");
 
-fn void PyMem_SetupDebugHooks(
-   default)
+fn void PyMem_SetupDebugHooks()
 @extern("PyMem_SetupDebugHooks");
 
 typedef PyModuleDef = void;
@@ -1543,17 +1528,13 @@ alias PyTypeObject = _typeobject;
 
 typedef PyCodeObject = void;
 
-typedef _frame = void;
-
-alias PyFrameObject = _frame;
+alias PyFrameObject = void;
 
 typedef _ts = void;
 
 alias PyThreadState = _ts;
 
-typedef _is = void;
-
-alias PyInterpreterState = _is;
+alias PyInterpreterState = void;
 
 struct Py_buffer {
   void* buf;
@@ -1579,30 +1560,25 @@ alias releasebufferproc = fn void(
   Py_buffer*);
 
 fn CInt PyObject_CheckBuffer(
-   default, 
   PyObject* obj)
 @extern("PyObject_CheckBuffer");
 
 fn CInt PyObject_GetBuffer(
-   default, 
   PyObject* obj, 
   Py_buffer* view, 
   CInt flags)
 @extern("PyObject_GetBuffer");
 
 fn void* PyBuffer_GetPointer(
-   default, 
   Py_buffer* view, 
   Py_ssize_t* indices)
 @extern("PyBuffer_GetPointer");
 
 fn Py_ssize_t PyBuffer_SizeFromFormat(
-   default, 
   CChar* format)
 @extern("PyBuffer_SizeFromFormat");
 
 fn CInt PyBuffer_ToContiguous(
-   default, 
   void* buf, 
   Py_buffer* view, 
   Py_ssize_t len, 
@@ -1610,7 +1586,6 @@ fn CInt PyBuffer_ToContiguous(
 @extern("PyBuffer_ToContiguous");
 
 fn CInt PyBuffer_FromContiguous(
-   default, 
   Py_buffer* view, 
   void* buf, 
   Py_ssize_t len, 
@@ -1618,19 +1593,16 @@ fn CInt PyBuffer_FromContiguous(
 @extern("PyBuffer_FromContiguous");
 
 fn CInt PyObject_CopyData(
-   default, 
   PyObject* dest, 
   PyObject* src)
 @extern("PyObject_CopyData");
 
 fn CInt PyBuffer_IsContiguous(
-   default, 
   Py_buffer* view, 
   CChar fort)
 @extern("PyBuffer_IsContiguous");
 
 fn void PyBuffer_FillContiguousStrides(
-   default, 
   CInt ndims, 
   Py_ssize_t* shape, 
   Py_ssize_t* strides, 
@@ -1639,7 +1611,6 @@ fn void PyBuffer_FillContiguousStrides(
 @extern("PyBuffer_FillContiguousStrides");
 
 fn CInt PyBuffer_FillInfo(
-   default, 
   Py_buffer* view, 
   PyObject* o, 
   void* buf, 
@@ -1649,7 +1620,6 @@ fn CInt PyBuffer_FillInfo(
 @extern("PyBuffer_FillInfo");
 
 fn void PyBuffer_Release(
-   default, 
   Py_buffer* view)
 @extern("PyBuffer_Release");
 
@@ -1667,7 +1637,6 @@ struct PyVarObject {
 }
 
 fn CInt Py_Is(
-   default, 
   PyObject* x, 
   PyObject* y)
 @extern("Py_Is");
@@ -1689,7 +1658,6 @@ fn Py_ssize_t Py_SIZE(
 @extern("Py_SIZE");
 
 fn CInt _Py_IsImmortal(
-   , 
   PyObject* op)
 @extern("_Py_IsImmortal");
 
@@ -1854,72 +1822,60 @@ struct PyType_Spec {
 }
 
 fn PyObject* PyType_FromSpec(
-   default, 
-  PyType_Spec* )
+  PyType_Spec*)
 @extern("PyType_FromSpec");
 
 fn PyObject* PyType_FromSpecWithBases(
-   default, 
-  PyType_Spec* , 
-  PyObject* )
+  PyType_Spec*, 
+  PyObject*)
 @extern("PyType_FromSpecWithBases");
 
 fn void* PyType_GetSlot(
-   default, 
-  PyTypeObject* , 
-  CInt )
+  PyTypeObject*, 
+  CInt)
 @extern("PyType_GetSlot");
 
 fn PyObject* PyType_FromModuleAndSpec(
-   default, 
-  PyObject* , 
-  PyType_Spec* , 
-  PyObject* )
+  PyObject*, 
+  PyType_Spec*, 
+  PyObject*)
 @extern("PyType_FromModuleAndSpec");
 
 fn PyObject* PyType_GetModule(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_GetModule");
 
 fn void* PyType_GetModuleState(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_GetModuleState");
 
 fn PyObject* PyType_GetName(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_GetName");
 
 fn PyObject* PyType_GetQualName(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_GetQualName");
 
 fn PyObject* PyType_FromMetaclass(
-   default, 
-  PyTypeObject* , 
-  PyObject* , 
-  PyType_Spec* , 
-  PyObject* )
+  PyTypeObject*, 
+  PyObject*, 
+  PyType_Spec*, 
+  PyObject*)
 @extern("PyType_FromMetaclass");
 
 fn void* PyObject_GetTypeData(
-   default, 
   PyObject* obj, 
   PyTypeObject* cls)
 @extern("PyObject_GetTypeData");
 
 fn Py_ssize_t PyType_GetTypeDataSize(
-   default, 
   PyTypeObject* cls)
 @extern("PyType_GetTypeDataSize");
 
 fn CInt PyType_IsSubtype(
-   default, 
-  PyTypeObject* , 
-  PyTypeObject* )
+  PyTypeObject*, 
+  PyTypeObject*)
 @extern("PyType_IsSubtype");
 
 fn CInt PyObject_TypeCheck(
@@ -1934,216 +1890,177 @@ PyTypeObject pybaseobject_type;
 PyTypeObject pysuper_type;
 
 fn CULong PyType_GetFlags(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_GetFlags");
 
 fn CInt PyType_Ready(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_Ready");
 
 fn PyObject* PyType_GenericAlloc(
-   default, 
-  PyTypeObject* , 
-  Py_ssize_t )
+  PyTypeObject*, 
+  Py_ssize_t)
 @extern("PyType_GenericAlloc");
 
 fn PyObject* PyType_GenericNew(
-   default, 
-  PyTypeObject* , 
-  PyObject* , 
-  PyObject* )
+  PyTypeObject*, 
+  PyObject*, 
+  PyObject*)
 @extern("PyType_GenericNew");
 
-fn CUInt PyType_ClearCache(
-   default)
+fn CUInt PyType_ClearCache()
 @extern("PyType_ClearCache");
 
 fn void PyType_Modified(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_Modified");
 
 fn PyObject* PyObject_Repr(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_Repr");
 
 fn PyObject* PyObject_Str(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_Str");
 
 fn PyObject* PyObject_ASCII(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_ASCII");
 
 fn PyObject* PyObject_Bytes(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_Bytes");
 
 fn PyObject* PyObject_RichCompare(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  CInt )
+  PyObject*, 
+  PyObject*, 
+  CInt)
 @extern("PyObject_RichCompare");
 
 fn CInt PyObject_RichCompareBool(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  CInt )
+  PyObject*, 
+  PyObject*, 
+  CInt)
 @extern("PyObject_RichCompareBool");
 
 fn PyObject* PyObject_GetAttrString(
-   default, 
-  PyObject* , 
-  CChar* )
+  PyObject*, 
+  CChar*)
 @extern("PyObject_GetAttrString");
 
 fn CInt PyObject_SetAttrString(
-   default, 
-  PyObject* , 
-  CChar* , 
-  PyObject* )
+  PyObject*, 
+  CChar*, 
+  PyObject*)
 @extern("PyObject_SetAttrString");
 
 fn CInt PyObject_HasAttrString(
-   default, 
-  PyObject* , 
-  CChar* )
+  PyObject*, 
+  CChar*)
 @extern("PyObject_HasAttrString");
 
 fn PyObject* PyObject_GetAttr(
-   default, 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*)
 @extern("PyObject_GetAttr");
 
 fn CInt PyObject_SetAttr(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
 @extern("PyObject_SetAttr");
 
 fn CInt PyObject_HasAttr(
-   default, 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*)
 @extern("PyObject_HasAttr");
 
 fn PyObject* PyObject_SelfIter(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_SelfIter");
 
 fn PyObject* PyObject_GenericGetAttr(
-   default, 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*)
 @extern("PyObject_GenericGetAttr");
 
 fn CInt PyObject_GenericSetAttr(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
 @extern("PyObject_GenericSetAttr");
 
 fn CInt PyObject_GenericSetDict(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  void* )
+  PyObject*, 
+  PyObject*, 
+  void*)
 @extern("PyObject_GenericSetDict");
 
 fn Py_hash_t PyObject_Hash(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_Hash");
 
 fn Py_hash_t PyObject_HashNotImplemented(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_HashNotImplemented");
 
 fn CInt PyObject_IsTrue(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_IsTrue");
 
 fn CInt PyObject_Not(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_Not");
 
 fn CInt PyCallable_Check(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyCallable_Check");
 
 fn void PyObject_ClearWeakRefs(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_ClearWeakRefs");
 
 fn PyObject* PyObject_Dir(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_Dir");
 
 fn PyObject* _PyObject_GetState(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_GetState");
 
 fn CInt Py_ReprEnter(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("Py_ReprEnter");
 
 fn void Py_ReprLeave(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("Py_ReprLeave");
 
 fn void _Py_Dealloc(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_Py_Dealloc");
 
 fn void Py_IncRef(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("Py_IncRef");
 
 fn void Py_DecRef(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("Py_DecRef");
 
 fn void _Py_IncRef(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_Py_IncRef");
 
 fn void _Py_DecRef(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_Py_DecRef");
 
 fn void Py_INCREF(
-   , 
   PyObject* op)
 @extern("Py_INCREF");
 
 fn void Py_DECREF(
-   , 
   PyObject* op)
 @extern("Py_DECREF");
 
@@ -2156,12 +2073,10 @@ fn void Py_XDECREF(
 @extern("Py_XDECREF");
 
 fn PyObject* Py_NewRef(
-   default, 
   PyObject* obj)
 @extern("Py_NewRef");
 
 fn PyObject* Py_XNewRef(
-   default, 
   PyObject* obj)
 @extern("Py_XNewRef");
 
@@ -2176,7 +2091,6 @@ fn PyObject* _Py_XNewRef(
 PyObject _py_nonestruct;
 
 fn CInt Py_IsNone(
-   default, 
   PyObject* x)
 @extern("Py_IsNone");
 
@@ -2188,12 +2102,10 @@ const PySendResult PYGEN_ERROR = -1;
 const PySendResult PYGEN_NEXT = 1;
 
 fn void _Py_NewReference(
-   default, 
   PyObject* op)
 @extern("_Py_NewReference");
 
 fn void _Py_NewReferenceNoTotal(
-   default, 
   PyObject* op)
 @extern("_Py_NewReferenceNoTotal");
 
@@ -2337,8 +2249,6 @@ struct _specialization_cache {
   uint getitem_version;
 }
 
-typedef _dictkeysobject @private = void;
-
 struct _heaptypeobject {
   PyTypeObject ht_type;
   PyAsyncMethods as_async;
@@ -2358,156 +2268,130 @@ struct _heaptypeobject {
 alias PyHeapTypeObject = _heaptypeobject;
 
 fn CChar* _PyType_Name(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("_PyType_Name");
 
 fn PyObject* _PyType_Lookup(
-   default, 
-  PyTypeObject* , 
-  PyObject* )
+  PyTypeObject*, 
+  PyObject*)
 @extern("_PyType_Lookup");
 
 fn PyObject* _PyType_LookupId(
-   default, 
-  PyTypeObject* , 
-  _Py_Identifier* )
+  PyTypeObject*, 
+  _Py_Identifier*)
 @extern("_PyType_LookupId");
 
 fn PyObject* _PyObject_LookupSpecialId(
-   default, 
-  PyObject* , 
-  _Py_Identifier* )
+  PyObject*, 
+  _Py_Identifier*)
 @extern("_PyObject_LookupSpecialId");
 
 fn PyTypeObject* _PyType_CalculateMetaclass(
-   default, 
-  PyTypeObject* , 
-  PyObject* )
+  PyTypeObject*, 
+  PyObject*)
 @extern("_PyType_CalculateMetaclass");
 
 fn PyObject* _PyType_GetDocFromInternalDoc(
-   default, 
-  CChar* , 
-  CChar* )
+  CChar*, 
+  CChar*)
 @extern("_PyType_GetDocFromInternalDoc");
 
 fn PyObject* _PyType_GetTextSignatureFromInternalDoc(
-   default, 
-  CChar* , 
-  CChar* )
+  CChar*, 
+  CChar*)
 @extern("_PyType_GetTextSignatureFromInternalDoc");
 
 fn PyObject* PyType_GetModuleByDef(
-   default, 
-  PyTypeObject* , 
-  PyModuleDef* )
+  PyTypeObject*, 
+  PyModuleDef*)
 @extern("PyType_GetModuleByDef");
 
 fn PyObject* PyType_GetDict(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("PyType_GetDict");
 
 fn CInt PyObject_Print(
-   default, 
-  PyObject* , 
-  FILE* , 
-  CInt )
+  PyObject*, 
+  FILE*, 
+  CInt)
 @extern("PyObject_Print");
 
-fn void _Py_BreakPoint(
-   default)
+fn void _Py_BreakPoint()
 @extern("_Py_BreakPoint");
 
 fn void _PyObject_Dump(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_Dump");
 
 fn CInt _PyObject_IsFreed(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_IsFreed");
 
 fn CInt _PyObject_IsAbstract(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_IsAbstract");
 
 fn PyObject* _PyObject_GetAttrId(
-   default, 
-  PyObject* , 
-  _Py_Identifier* )
+  PyObject*, 
+  _Py_Identifier*)
 @extern("_PyObject_GetAttrId");
 
 fn CInt _PyObject_SetAttrId(
-   default, 
-  PyObject* , 
-  _Py_Identifier* , 
-  PyObject* )
+  PyObject*, 
+  _Py_Identifier*, 
+  PyObject*)
 @extern("_PyObject_SetAttrId");
 
 fn CInt _PyObject_LookupAttr(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  PyObject** )
+  PyObject*, 
+  PyObject*, 
+  PyObject**)
 @extern("_PyObject_LookupAttr");
 
 fn CInt _PyObject_LookupAttrId(
-   default, 
-  PyObject* , 
-  _Py_Identifier* , 
-  PyObject** )
+  PyObject*, 
+  _Py_Identifier*, 
+  PyObject**)
 @extern("_PyObject_LookupAttrId");
 
 fn CInt _PyObject_GetMethod(
-   default, 
   PyObject* obj, 
   PyObject* name, 
   PyObject** method)
 @extern("_PyObject_GetMethod");
 
 fn PyObject** _PyObject_GetDictPtr(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_GetDictPtr");
 
 fn PyObject* _PyObject_NextNotImplemented(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_NextNotImplemented");
 
 fn void PyObject_CallFinalizer(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_CallFinalizer");
 
 fn CInt PyObject_CallFinalizerFromDealloc(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_CallFinalizerFromDealloc");
 
 fn PyObject* _PyObject_GenericGetAttrWithDict(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  PyObject* , 
-  CInt )
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  CInt)
 @extern("_PyObject_GenericGetAttrWithDict");
 
 fn CInt _PyObject_GenericSetAttrWithDict(
-   default, 
-  PyObject* , 
-  PyObject* , 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
 @extern("_PyObject_GenericSetAttrWithDict");
 
 fn PyObject* _PyObject_FunctionStr(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyObject_FunctionStr");
 
 PyTypeObject _pynone_type;
@@ -2517,7 +2401,6 @@ PyTypeObject _pynotimplemented_type;
 CInt* _py_swappedop;
 
 fn void _PyDebugAllocatorStats(
-   default, 
   FILE* out, 
   CChar* block_name, 
   CInt num_blocks, 
@@ -2525,12 +2408,10 @@ fn void _PyDebugAllocatorStats(
 @extern("_PyDebugAllocatorStats");
 
 fn void _PyObject_DebugTypeStats(
-   default, 
   FILE* out)
 @extern("_PyObject_DebugTypeStats");
 
 fn void _PyObject_AssertFailed(
-   default, 
   PyObject* obj, 
   CChar* expr, 
   CChar* msg, 
@@ -2540,24 +2421,20 @@ fn void _PyObject_AssertFailed(
 @extern("_PyObject_AssertFailed");
 
 fn CInt _PyObject_CheckConsistency(
-   default, 
   PyObject* op, 
   CInt check_content)
 @extern("_PyObject_CheckConsistency");
 
 fn CInt _PyTrash_begin(
-   default, 
   PyThreadState* tstate, 
   PyObject* op)
 @extern("_PyTrash_begin");
 
 fn void _PyTrash_end(
-   default, 
   PyThreadState* tstate)
 @extern("_PyTrash_end");
 
 fn CInt _PyTrash_cond(
-   default, 
   PyObject* op, 
   destructor dealloc)
 @extern("_PyTrash_cond");
@@ -2565,19 +2442,16 @@ fn CInt _PyTrash_cond(
 alias UsingDeprecatedTrashcanMacro = CInt;
 
 fn void* PyObject_GetItemData(
-   default, 
   PyObject* obj)
 @extern("PyObject_GetItemData");
 
 fn CInt _PyObject_VisitManagedDict(
-   default, 
   PyObject* obj, 
   visitproc visit, 
   void* arg)
 @extern("_PyObject_VisitManagedDict");
 
 fn void _PyObject_ClearManagedDict(
-   default, 
   PyObject* obj)
 @extern("_PyObject_ClearManagedDict");
 
@@ -2585,29 +2459,24 @@ alias PyType_WatchCallback = fn CInt(
   PyTypeObject*);
 
 fn CInt PyType_AddWatcher(
-   default, 
   PyType_WatchCallback callback)
 @extern("PyType_AddWatcher");
 
 fn CInt PyType_ClearWatcher(
-   default, 
   CInt watcher_id)
 @extern("PyType_ClearWatcher");
 
 fn CInt PyType_Watch(
-   default, 
   CInt watcher_id, 
   PyObject* type)
 @extern("PyType_Watch");
 
 fn CInt PyType_Unwatch(
-   default, 
   CInt watcher_id, 
   PyObject* type)
 @extern("PyType_Unwatch");
 
 fn CInt PyUnstable_Type_AssignVersionTag(
-   default, 
   PyTypeObject* type)
 @extern("PyUnstable_Type_AssignVersionTag");
 
@@ -2625,65 +2494,53 @@ fn CInt PyType_CheckExact(
 @extern("PyType_CheckExact");
 
 fn void* PyObject_Malloc(
-   default, 
   usz size)
 @extern("PyObject_Malloc");
 
 fn void* PyObject_Calloc(
-   default, 
   usz nelem, 
   usz elsize)
 @extern("PyObject_Calloc");
 
 fn void* PyObject_Realloc(
-   default, 
   void* ptr, 
   usz new_size)
 @extern("PyObject_Realloc");
 
 fn void PyObject_Free(
-   default, 
   void* ptr)
 @extern("PyObject_Free");
 
 fn PyObject* PyObject_Init(
-   default, 
-  PyObject* , 
-  PyTypeObject* )
+  PyObject*, 
+  PyTypeObject*)
 @extern("PyObject_Init");
 
 fn PyVarObject* PyObject_InitVar(
-   default, 
-  PyVarObject* , 
-  PyTypeObject* , 
-  Py_ssize_t )
+  PyVarObject*, 
+  PyTypeObject*, 
+  Py_ssize_t)
 @extern("PyObject_InitVar");
 
 fn PyObject* _PyObject_New(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("_PyObject_New");
 
 fn PyVarObject* _PyObject_NewVar(
-   default, 
-  PyTypeObject* , 
-  Py_ssize_t )
+  PyTypeObject*, 
+  Py_ssize_t)
 @extern("_PyObject_NewVar");
 
-fn Py_ssize_t PyGC_Collect(
-   default)
+fn Py_ssize_t PyGC_Collect()
 @extern("PyGC_Collect");
 
-fn CInt PyGC_Enable(
-   default)
+fn CInt PyGC_Enable()
 @extern("PyGC_Enable");
 
-fn CInt PyGC_Disable(
-   default)
+fn CInt PyGC_Disable()
 @extern("PyGC_Disable");
 
-fn CInt PyGC_IsEnabled(
-   default)
+fn CInt PyGC_IsEnabled()
 @extern("PyGC_IsEnabled");
 
 alias gcvisitobjects_t = fn CInt(
@@ -2691,51 +2548,42 @@ alias gcvisitobjects_t = fn CInt(
   void*);
 
 fn void PyUnstable_GC_VisitObjects(
-   default, 
   gcvisitobjects_t callback, 
   void* arg)
 @extern("PyUnstable_GC_VisitObjects");
 
 fn PyVarObject* _PyObject_GC_Resize(
-   default, 
-  PyVarObject* , 
-  Py_ssize_t )
+  PyVarObject*, 
+  Py_ssize_t)
 @extern("_PyObject_GC_Resize");
 
 fn PyObject* _PyObject_GC_New(
-   default, 
-  PyTypeObject* )
+  PyTypeObject*)
 @extern("_PyObject_GC_New");
 
 fn PyVarObject* _PyObject_GC_NewVar(
-   default, 
-  PyTypeObject* , 
-  Py_ssize_t )
+  PyTypeObject*, 
+  Py_ssize_t)
 @extern("_PyObject_GC_NewVar");
 
 fn void PyObject_GC_Track(
-   default, 
-  void* )
+  void*)
 @extern("PyObject_GC_Track");
 
 fn void PyObject_GC_UnTrack(
-   default, 
-  void* )
+  void*)
 @extern("PyObject_GC_UnTrack");
 
 fn void PyObject_GC_Del(
-   default, 
-  void* )
+  void*)
 @extern("PyObject_GC_Del");
 
 fn CInt PyObject_GC_IsTracked(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_GC_IsTracked");
 
 fn CInt PyObject_GC_IsFinalized(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyObject_GC_IsFinalized");
 
 fn usz _PyObject_SIZE(
@@ -2759,56 +2607,46 @@ struct PyObjectArenaAllocator {
 }
 
 fn void PyObject_GetArenaAllocator(
-   default, 
   PyObjectArenaAllocator* allocator)
 @extern("PyObject_GetArenaAllocator");
 
 fn void PyObject_SetArenaAllocator(
-   default, 
   PyObjectArenaAllocator* allocator)
 @extern("PyObject_SetArenaAllocator");
 
 fn CInt PyObject_IS_GC(
-   default, 
   PyObject* obj)
 @extern("PyObject_IS_GC");
 
 fn CInt PyType_SUPPORTS_WEAKREFS(
-   default, 
   PyTypeObject* type)
 @extern("PyType_SUPPORTS_WEAKREFS");
 
 fn PyObject** PyObject_GET_WEAKREFS_LISTPTR(
-   default, 
   PyObject* op)
 @extern("PyObject_GET_WEAKREFS_LISTPTR");
 
 fn PyObject* PyUnstable_Object_GC_NewWithExtraData(
-   default, 
-  PyTypeObject* , 
-  usz )
+  PyTypeObject*, 
+  usz)
 @extern("PyUnstable_Object_GC_NewWithExtraData");
 
 fn Py_hash_t _Py_HashDouble(
-   default, 
-  PyObject* , 
-  double )
+  PyObject*, 
+  double)
 @extern("_Py_HashDouble");
 
 fn Py_hash_t _Py_HashPointer(
-   default, 
-  void* )
+  void*)
 @extern("_Py_HashPointer");
 
 fn Py_hash_t _Py_HashPointerRaw(
-   default, 
-  void* )
+  void*)
 @extern("_Py_HashPointerRaw");
 
 fn Py_hash_t _Py_HashBytes(
-   default, 
-  void* , 
-  Py_ssize_t )
+  void*, 
+  Py_ssize_t)
 @extern("_Py_HashBytes");
 
 union _Py_HashSecret_t {
@@ -2844,8 +2682,7 @@ struct PyHash_FuncDef {
   CInt seed_bits;
 }
 
-fn PyHash_FuncDef* PyHash_GetFuncDef(
-   default)
+fn PyHash_FuncDef* PyHash_GetFuncDef()
 @extern("PyHash_GetFuncDef");
 
 CInt py_debugflag;
@@ -2879,7 +2716,6 @@ CInt py_hashrandomizationflag;
 CInt py_isolatedflag;
 
 fn CChar* Py_GETENV(
-   default, 
   CChar* name)
 @extern("Py_GETENV");
 
@@ -2888,36 +2724,30 @@ PyTypeObject pybytearray_type;
 PyTypeObject pybytearrayiter_type;
 
 fn PyObject* PyByteArray_FromObject(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyByteArray_FromObject");
 
 fn PyObject* PyByteArray_Concat(
-   default, 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*)
 @extern("PyByteArray_Concat");
 
 fn PyObject* PyByteArray_FromStringAndSize(
-   default, 
-  CChar* , 
-  Py_ssize_t )
+  CChar*, 
+  Py_ssize_t)
 @extern("PyByteArray_FromStringAndSize");
 
 fn Py_ssize_t PyByteArray_Size(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyByteArray_Size");
 
 fn CChar* PyByteArray_AsString(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyByteArray_AsString");
 
 fn CInt PyByteArray_Resize(
-   default, 
-  PyObject* , 
-  Py_ssize_t )
+  PyObject*, 
+  Py_ssize_t)
 @extern("PyByteArray_Resize");
 
 struct PyByteArrayObject {
@@ -2943,73 +2773,59 @@ PyTypeObject pybytes_type;
 PyTypeObject pybytesiter_type;
 
 fn PyObject* PyBytes_FromStringAndSize(
-   default, 
-  CChar* , 
-  Py_ssize_t )
+  CChar*, 
+  Py_ssize_t)
 @extern("PyBytes_FromStringAndSize");
 
 fn PyObject* PyBytes_FromString(
-   default, 
-  CChar* )
+  CChar*)
 @extern("PyBytes_FromString");
 
 fn PyObject* PyBytes_FromObject(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyBytes_FromObject");
 
 fn PyObject* PyBytes_FromFormatV(
-   default, 
-   , 
-  CChar* , 
-  void* )
+  CChar*, 
+  void*)
 @extern("PyBytes_FromFormatV");
 
 fn PyObject* PyBytes_FromFormat(
-   default, 
-   , 
-  CChar* )
+  CChar*)
 @extern("PyBytes_FromFormat");
 
 fn Py_ssize_t PyBytes_Size(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyBytes_Size");
 
 fn CChar* PyBytes_AsString(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("PyBytes_AsString");
 
 fn PyObject* PyBytes_Repr(
-   default, 
-  PyObject* , 
-  CInt )
+  PyObject*, 
+  CInt)
 @extern("PyBytes_Repr");
 
 fn void PyBytes_Concat(
-   default, 
-  PyObject** , 
-  PyObject* )
+  PyObject**, 
+  PyObject*)
 @extern("PyBytes_Concat");
 
 fn void PyBytes_ConcatAndDel(
-   default, 
-  PyObject** , 
-  PyObject* )
+  PyObject**, 
+  PyObject*)
 @extern("PyBytes_ConcatAndDel");
 
 fn PyObject* PyBytes_DecodeEscape(
-   default, 
-  CChar* , 
-  Py_ssize_t , 
-  CChar* , 
-  Py_ssize_t , 
-  CChar* )
+  CChar*, 
+  Py_ssize_t, 
+  CChar*, 
+  Py_ssize_t, 
+  CChar*)
 @extern("PyBytes_DecodeEscape");
 
 fn CInt PyBytes_AsStringAndSize(
-   default, 
   PyObject* obj, 
   CChar** s, 
   Py_ssize_t* len)
@@ -3022,13 +2838,11 @@ struct PyBytesObject {
 }
 
 fn CInt _PyBytes_Resize(
-   default, 
-  PyObject** , 
-  Py_ssize_t )
+  PyObject**, 
+  Py_ssize_t)
 @extern("_PyBytes_Resize");
 
 fn PyObject* _PyBytes_FormatEx(
-   default, 
   CChar* format, 
   Py_ssize_t format_len, 
   PyObject* args, 
@@ -3036,17 +2850,15 @@ fn PyObject* _PyBytes_FormatEx(
 @extern("_PyBytes_FormatEx");
 
 fn PyObject* _PyBytes_FromHex(
-   default, 
   PyObject* string, 
   CInt use_bytearray)
 @extern("_PyBytes_FromHex");
 
 fn PyObject* _PyBytes_DecodeEscape(
-   default, 
-  CChar* , 
-  Py_ssize_t , 
-  CChar* , 
-  CChar** )
+  CChar*, 
+  Py_ssize_t, 
+  CChar*, 
+  CChar**)
 @extern("_PyBytes_DecodeEscape");
 
 fn CChar* PyBytes_AS_STRING(
@@ -3058,7 +2870,6 @@ fn Py_ssize_t PyBytes_GET_SIZE(
 @extern("PyBytes_GET_SIZE");
 
 fn PyObject* _PyBytes_Join(
-   default, 
   PyObject* sep, 
   PyObject* x)
 @extern("_PyBytes_Join");
@@ -3074,43 +2885,36 @@ struct _PyBytesWriter {
 }
 
 fn void _PyBytesWriter_Init(
-   default, 
   _PyBytesWriter* writer)
 @extern("_PyBytesWriter_Init");
 
 fn PyObject* _PyBytesWriter_Finish(
-   default, 
   _PyBytesWriter* writer, 
   void* str)
 @extern("_PyBytesWriter_Finish");
 
 fn void _PyBytesWriter_Dealloc(
-   default, 
   _PyBytesWriter* writer)
 @extern("_PyBytesWriter_Dealloc");
 
 fn void* _PyBytesWriter_Alloc(
-   default, 
   _PyBytesWriter* writer, 
   Py_ssize_t size)
 @extern("_PyBytesWriter_Alloc");
 
 fn void* _PyBytesWriter_Prepare(
-   default, 
   _PyBytesWriter* writer, 
   void* str, 
   Py_ssize_t size)
 @extern("_PyBytesWriter_Prepare");
 
 fn void* _PyBytesWriter_Resize(
-   default, 
   _PyBytesWriter* writer, 
   void* str, 
   Py_ssize_t size)
 @extern("_PyBytesWriter_Resize");
 
 fn void* _PyBytesWriter_WriteBytes(
-   default, 
   _PyBytesWriter* writer, 
   void* str, 
   void* bytes, 
@@ -3128,25 +2932,21 @@ PyTypeObject pyunicode_type;
 PyTypeObject pyunicodeiter_type;
 
 fn PyObject* PyUnicode_FromStringAndSize(
-   default, 
   CChar* u, 
   Py_ssize_t size)
 @extern("PyUnicode_FromStringAndSize");
 
 fn PyObject* PyUnicode_FromString(
-   default, 
   CChar* u)
 @extern("PyUnicode_FromString");
 
 fn PyObject* PyUnicode_Substring(
-   default, 
   PyObject* str, 
   Py_ssize_t start, 
   Py_ssize_t end)
 @extern("PyUnicode_Substring");
 
 fn Py_UCS4* PyUnicode_AsUCS4(
-   default, 
   PyObject* unicode, 
   Py_UCS4* buffer, 
   Py_ssize_t buflen, 
@@ -3154,97 +2954,80 @@ fn Py_UCS4* PyUnicode_AsUCS4(
 @extern("PyUnicode_AsUCS4");
 
 fn Py_UCS4* PyUnicode_AsUCS4Copy(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsUCS4Copy");
 
 fn Py_ssize_t PyUnicode_GetLength(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_GetLength");
 
 fn Py_UCS4 PyUnicode_ReadChar(
-   default, 
   PyObject* unicode, 
   Py_ssize_t index)
 @extern("PyUnicode_ReadChar");
 
 fn CInt PyUnicode_WriteChar(
-   default, 
   PyObject* unicode, 
   Py_ssize_t index, 
   Py_UCS4 character)
 @extern("PyUnicode_WriteChar");
 
 fn CInt PyUnicode_Resize(
-   default, 
   PyObject** unicode, 
   Py_ssize_t length)
 @extern("PyUnicode_Resize");
 
 fn PyObject* PyUnicode_FromEncodedObject(
-   default, 
   PyObject* obj, 
   CChar* encoding, 
   CChar* errors)
 @extern("PyUnicode_FromEncodedObject");
 
 fn PyObject* PyUnicode_FromObject(
-   default, 
   PyObject* obj)
 @extern("PyUnicode_FromObject");
 
 fn PyObject* PyUnicode_FromFormatV(
-   default, 
   CChar* format, 
   void* vargs)
 @extern("PyUnicode_FromFormatV");
 
 fn PyObject* PyUnicode_FromFormat(
-   default, 
   CChar* format)
 @extern("PyUnicode_FromFormat");
 
 fn void PyUnicode_InternInPlace(
-   default, 
-  PyObject** )
+  PyObject**)
 @extern("PyUnicode_InternInPlace");
 
 fn PyObject* PyUnicode_InternFromString(
-   default, 
   CChar* u)
 @extern("PyUnicode_InternFromString");
 
 fn PyObject* PyUnicode_FromWideChar(
-   default, 
   wchar_t* w, 
   Py_ssize_t size)
 @extern("PyUnicode_FromWideChar");
 
 fn Py_ssize_t PyUnicode_AsWideChar(
-   default, 
   PyObject* unicode, 
   wchar_t* w, 
   Py_ssize_t size)
 @extern("PyUnicode_AsWideChar");
 
 fn wchar_t* PyUnicode_AsWideCharString(
-   default, 
   PyObject* unicode, 
   Py_ssize_t* size)
 @extern("PyUnicode_AsWideCharString");
 
 fn PyObject* PyUnicode_FromOrdinal(
-   default, 
   CInt ordinal)
 @extern("PyUnicode_FromOrdinal");
 
-fn CChar* PyUnicode_GetDefaultEncoding(
-   default)
+fn CChar* PyUnicode_GetDefaultEncoding()
 @extern("PyUnicode_GetDefaultEncoding");
 
 fn PyObject* PyUnicode_Decode(
-   default, 
   CChar* s, 
   Py_ssize_t size, 
   CChar* encoding, 
@@ -3252,58 +3035,46 @@ fn PyObject* PyUnicode_Decode(
 @extern("PyUnicode_Decode");
 
 fn PyObject* PyUnicode_AsDecodedObject(
-   , 
-   default, 
   PyObject* unicode, 
   CChar* encoding, 
   CChar* errors)
 @extern("PyUnicode_AsDecodedObject");
 
 fn PyObject* PyUnicode_AsDecodedUnicode(
-   , 
-   default, 
   PyObject* unicode, 
   CChar* encoding, 
   CChar* errors)
 @extern("PyUnicode_AsDecodedUnicode");
 
 fn PyObject* PyUnicode_AsEncodedObject(
-   , 
-   default, 
   PyObject* unicode, 
   CChar* encoding, 
   CChar* errors)
 @extern("PyUnicode_AsEncodedObject");
 
 fn PyObject* PyUnicode_AsEncodedString(
-   default, 
   PyObject* unicode, 
   CChar* encoding, 
   CChar* errors)
 @extern("PyUnicode_AsEncodedString");
 
 fn PyObject* PyUnicode_AsEncodedUnicode(
-   , 
-   default, 
   PyObject* unicode, 
   CChar* encoding, 
   CChar* errors)
 @extern("PyUnicode_AsEncodedUnicode");
 
 fn PyObject* PyUnicode_BuildEncodingMap(
-   default, 
   PyObject* string)
 @extern("PyUnicode_BuildEncodingMap");
 
 fn PyObject* PyUnicode_DecodeUTF7(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors)
 @extern("PyUnicode_DecodeUTF7");
 
 fn PyObject* PyUnicode_DecodeUTF7Stateful(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3311,14 +3082,12 @@ fn PyObject* PyUnicode_DecodeUTF7Stateful(
 @extern("PyUnicode_DecodeUTF7Stateful");
 
 fn PyObject* PyUnicode_DecodeUTF8(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors)
 @extern("PyUnicode_DecodeUTF8");
 
 fn PyObject* PyUnicode_DecodeUTF8Stateful(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3326,18 +3095,15 @@ fn PyObject* PyUnicode_DecodeUTF8Stateful(
 @extern("PyUnicode_DecodeUTF8Stateful");
 
 fn PyObject* PyUnicode_AsUTF8String(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsUTF8String");
 
 fn CChar* PyUnicode_AsUTF8AndSize(
-   default, 
   PyObject* unicode, 
   Py_ssize_t* size)
 @extern("PyUnicode_AsUTF8AndSize");
 
 fn PyObject* PyUnicode_DecodeUTF32(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3345,7 +3111,6 @@ fn PyObject* PyUnicode_DecodeUTF32(
 @extern("PyUnicode_DecodeUTF32");
 
 fn PyObject* PyUnicode_DecodeUTF32Stateful(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3354,12 +3119,10 @@ fn PyObject* PyUnicode_DecodeUTF32Stateful(
 @extern("PyUnicode_DecodeUTF32Stateful");
 
 fn PyObject* PyUnicode_AsUTF32String(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsUTF32String");
 
 fn PyObject* PyUnicode_DecodeUTF16(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3367,7 +3130,6 @@ fn PyObject* PyUnicode_DecodeUTF16(
 @extern("PyUnicode_DecodeUTF16");
 
 fn PyObject* PyUnicode_DecodeUTF16Stateful(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3376,60 +3138,50 @@ fn PyObject* PyUnicode_DecodeUTF16Stateful(
 @extern("PyUnicode_DecodeUTF16Stateful");
 
 fn PyObject* PyUnicode_AsUTF16String(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsUTF16String");
 
 fn PyObject* PyUnicode_DecodeUnicodeEscape(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors)
 @extern("PyUnicode_DecodeUnicodeEscape");
 
 fn PyObject* PyUnicode_AsUnicodeEscapeString(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsUnicodeEscapeString");
 
 fn PyObject* PyUnicode_DecodeRawUnicodeEscape(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors)
 @extern("PyUnicode_DecodeRawUnicodeEscape");
 
 fn PyObject* PyUnicode_AsRawUnicodeEscapeString(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsRawUnicodeEscapeString");
 
 fn PyObject* PyUnicode_DecodeLatin1(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors)
 @extern("PyUnicode_DecodeLatin1");
 
 fn PyObject* PyUnicode_AsLatin1String(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsLatin1String");
 
 fn PyObject* PyUnicode_DecodeASCII(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors)
 @extern("PyUnicode_DecodeASCII");
 
 fn PyObject* PyUnicode_AsASCIIString(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsASCIIString");
 
 fn PyObject* PyUnicode_DecodeCharmap(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   PyObject* mapping, 
@@ -3437,123 +3189,103 @@ fn PyObject* PyUnicode_DecodeCharmap(
 @extern("PyUnicode_DecodeCharmap");
 
 fn PyObject* PyUnicode_AsCharmapString(
-   default, 
   PyObject* unicode, 
   PyObject* mapping)
 @extern("PyUnicode_AsCharmapString");
 
 fn PyObject* PyUnicode_DecodeLocaleAndSize(
-   default, 
   CChar* str, 
   Py_ssize_t len, 
   CChar* errors)
 @extern("PyUnicode_DecodeLocaleAndSize");
 
 fn PyObject* PyUnicode_DecodeLocale(
-   default, 
   CChar* str, 
   CChar* errors)
 @extern("PyUnicode_DecodeLocale");
 
 fn PyObject* PyUnicode_EncodeLocale(
-   default, 
   PyObject* unicode, 
   CChar* errors)
 @extern("PyUnicode_EncodeLocale");
 
 fn CInt PyUnicode_FSConverter(
-   default, 
-  PyObject* , 
-  void* )
+  PyObject*, 
+  void*)
 @extern("PyUnicode_FSConverter");
 
 fn CInt PyUnicode_FSDecoder(
-   default, 
-  PyObject* , 
-  void* )
+  PyObject*, 
+  void*)
 @extern("PyUnicode_FSDecoder");
 
 fn PyObject* PyUnicode_DecodeFSDefault(
-   default, 
   CChar* s)
 @extern("PyUnicode_DecodeFSDefault");
 
 fn PyObject* PyUnicode_DecodeFSDefaultAndSize(
-   default, 
   CChar* s, 
   Py_ssize_t size)
 @extern("PyUnicode_DecodeFSDefaultAndSize");
 
 fn PyObject* PyUnicode_EncodeFSDefault(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_EncodeFSDefault");
 
 fn PyObject* PyUnicode_Concat(
-   default, 
   PyObject* left, 
   PyObject* right)
 @extern("PyUnicode_Concat");
 
 fn void PyUnicode_Append(
-   default, 
   PyObject** pleft, 
   PyObject* right)
 @extern("PyUnicode_Append");
 
 fn void PyUnicode_AppendAndDel(
-   default, 
   PyObject** pleft, 
   PyObject* right)
 @extern("PyUnicode_AppendAndDel");
 
 fn PyObject* PyUnicode_Split(
-   default, 
   PyObject* s, 
   PyObject* sep, 
   Py_ssize_t maxsplit)
 @extern("PyUnicode_Split");
 
 fn PyObject* PyUnicode_Splitlines(
-   default, 
   PyObject* s, 
   CInt keepends)
 @extern("PyUnicode_Splitlines");
 
 fn PyObject* PyUnicode_Partition(
-   default, 
   PyObject* s, 
   PyObject* sep)
 @extern("PyUnicode_Partition");
 
 fn PyObject* PyUnicode_RPartition(
-   default, 
   PyObject* s, 
   PyObject* sep)
 @extern("PyUnicode_RPartition");
 
 fn PyObject* PyUnicode_RSplit(
-   default, 
   PyObject* s, 
   PyObject* sep, 
   Py_ssize_t maxsplit)
 @extern("PyUnicode_RSplit");
 
 fn PyObject* PyUnicode_Translate(
-   default, 
   PyObject* str, 
   PyObject* table, 
   CChar* errors)
 @extern("PyUnicode_Translate");
 
 fn PyObject* PyUnicode_Join(
-   default, 
   PyObject* separator, 
   PyObject* seq)
 @extern("PyUnicode_Join");
 
 fn Py_ssize_t PyUnicode_Tailmatch(
-   default, 
   PyObject* str, 
   PyObject* substr, 
   Py_ssize_t start, 
@@ -3562,7 +3294,6 @@ fn Py_ssize_t PyUnicode_Tailmatch(
 @extern("PyUnicode_Tailmatch");
 
 fn Py_ssize_t PyUnicode_Find(
-   default, 
   PyObject* str, 
   PyObject* substr, 
   Py_ssize_t start, 
@@ -3571,7 +3302,6 @@ fn Py_ssize_t PyUnicode_Find(
 @extern("PyUnicode_Find");
 
 fn Py_ssize_t PyUnicode_FindChar(
-   default, 
   PyObject* str, 
   Py_UCS4 ch, 
   Py_ssize_t start, 
@@ -3580,7 +3310,6 @@ fn Py_ssize_t PyUnicode_FindChar(
 @extern("PyUnicode_FindChar");
 
 fn Py_ssize_t PyUnicode_Count(
-   default, 
   PyObject* str, 
   PyObject* substr, 
   Py_ssize_t start, 
@@ -3588,7 +3317,6 @@ fn Py_ssize_t PyUnicode_Count(
 @extern("PyUnicode_Count");
 
 fn PyObject* PyUnicode_Replace(
-   default, 
   PyObject* str, 
   PyObject* substr, 
   PyObject* replstr, 
@@ -3596,38 +3324,32 @@ fn PyObject* PyUnicode_Replace(
 @extern("PyUnicode_Replace");
 
 fn CInt PyUnicode_Compare(
-   default, 
   PyObject* left, 
   PyObject* right)
 @extern("PyUnicode_Compare");
 
 fn CInt PyUnicode_CompareWithASCIIString(
-   default, 
   PyObject* left, 
   CChar* right)
 @extern("PyUnicode_CompareWithASCIIString");
 
 fn PyObject* PyUnicode_RichCompare(
-   default, 
   PyObject* left, 
   PyObject* right, 
   CInt op)
 @extern("PyUnicode_RichCompare");
 
 fn PyObject* PyUnicode_Format(
-   default, 
   PyObject* format, 
   PyObject* args)
 @extern("PyUnicode_Format");
 
 fn CInt PyUnicode_Contains(
-   default, 
   PyObject* container, 
   PyObject* element)
 @extern("PyUnicode_Contains");
 
 fn CInt PyUnicode_IsIdentifier(
-   default, 
   PyObject* s)
 @extern("PyUnicode_IsIdentifier");
 
@@ -3691,7 +3413,6 @@ struct PyUnicodeObject {
 }
 
 fn CInt _PyUnicode_CheckConsistency(
-   default, 
   PyObject* op, 
   CInt check_content)
 @extern("_PyUnicode_CheckConsistency");
@@ -3760,7 +3481,6 @@ fn Py_UCS4 PyUnicode_MAX_CHAR_VALUE(
 @extern("PyUnicode_MAX_CHAR_VALUE");
 
 fn PyObject* PyUnicode_New(
-   default, 
   Py_ssize_t size, 
   Py_UCS4 maxchar)
 @extern("PyUnicode_New");
@@ -3770,12 +3490,10 @@ fn CInt PyUnicode_READY(
 @extern("PyUnicode_READY");
 
 fn PyObject* _PyUnicode_Copy(
-   default, 
   PyObject* unicode)
 @extern("_PyUnicode_Copy");
 
 fn Py_ssize_t PyUnicode_CopyCharacters(
-   default, 
   PyObject* to, 
   Py_ssize_t to_start, 
   PyObject* from, 
@@ -3784,7 +3502,6 @@ fn Py_ssize_t PyUnicode_CopyCharacters(
 @extern("PyUnicode_CopyCharacters");
 
 fn void _PyUnicode_FastCopyCharacters(
-   default, 
   PyObject* to, 
   Py_ssize_t to_start, 
   PyObject* from, 
@@ -3793,7 +3510,6 @@ fn void _PyUnicode_FastCopyCharacters(
 @extern("_PyUnicode_FastCopyCharacters");
 
 fn Py_ssize_t PyUnicode_Fill(
-   default, 
   PyObject* unicode, 
   Py_ssize_t start, 
   Py_ssize_t length, 
@@ -3801,7 +3517,6 @@ fn Py_ssize_t PyUnicode_Fill(
 @extern("PyUnicode_Fill");
 
 fn void _PyUnicode_FastFill(
-   default, 
   PyObject* unicode, 
   Py_ssize_t start, 
   Py_ssize_t length, 
@@ -3809,20 +3524,17 @@ fn void _PyUnicode_FastFill(
 @extern("_PyUnicode_FastFill");
 
 fn PyObject* PyUnicode_FromKindAndData(
-   default, 
   CInt kind, 
   void* buffer, 
   Py_ssize_t size)
 @extern("PyUnicode_FromKindAndData");
 
 fn PyObject* _PyUnicode_FromASCII(
-   default, 
   CChar* buffer, 
   Py_ssize_t size)
 @extern("_PyUnicode_FromASCII");
 
 fn Py_UCS4 _PyUnicode_FindMaxChar(
-   default, 
   PyObject* unicode, 
   Py_ssize_t start, 
   Py_ssize_t end)
@@ -3842,37 +3554,31 @@ struct _PyUnicodeWriter {
 }
 
 fn void _PyUnicodeWriter_Init(
-   default, 
   _PyUnicodeWriter* writer)
 @extern("_PyUnicodeWriter_Init");
 
 fn CInt _PyUnicodeWriter_PrepareInternal(
-   default, 
   _PyUnicodeWriter* writer, 
   Py_ssize_t length, 
   Py_UCS4 maxchar)
 @extern("_PyUnicodeWriter_PrepareInternal");
 
 fn CInt _PyUnicodeWriter_PrepareKindInternal(
-   default, 
   _PyUnicodeWriter* writer, 
   CInt kind)
 @extern("_PyUnicodeWriter_PrepareKindInternal");
 
 fn CInt _PyUnicodeWriter_WriteChar(
-   default, 
   _PyUnicodeWriter* writer, 
   Py_UCS4 ch)
 @extern("_PyUnicodeWriter_WriteChar");
 
 fn CInt _PyUnicodeWriter_WriteStr(
-   default, 
   _PyUnicodeWriter* writer, 
   PyObject* str)
 @extern("_PyUnicodeWriter_WriteStr");
 
 fn CInt _PyUnicodeWriter_WriteSubstring(
-   default, 
   _PyUnicodeWriter* writer, 
   PyObject* str, 
   Py_ssize_t start, 
@@ -3880,31 +3586,26 @@ fn CInt _PyUnicodeWriter_WriteSubstring(
 @extern("_PyUnicodeWriter_WriteSubstring");
 
 fn CInt _PyUnicodeWriter_WriteASCIIString(
-   default, 
   _PyUnicodeWriter* writer, 
   CChar* str, 
   Py_ssize_t len)
 @extern("_PyUnicodeWriter_WriteASCIIString");
 
 fn CInt _PyUnicodeWriter_WriteLatin1String(
-   default, 
   _PyUnicodeWriter* writer, 
   CChar* str, 
   Py_ssize_t len)
 @extern("_PyUnicodeWriter_WriteLatin1String");
 
 fn PyObject* _PyUnicodeWriter_Finish(
-   default, 
   _PyUnicodeWriter* writer)
 @extern("_PyUnicodeWriter_Finish");
 
 fn void _PyUnicodeWriter_Dealloc(
-   default, 
   _PyUnicodeWriter* writer)
 @extern("_PyUnicodeWriter_Dealloc");
 
 fn CInt _PyUnicode_FormatAdvancedWriter(
-   default, 
   _PyUnicodeWriter* writer, 
   PyObject* obj, 
   PyObject* format_spec, 
@@ -3913,12 +3614,10 @@ fn CInt _PyUnicode_FormatAdvancedWriter(
 @extern("_PyUnicode_FormatAdvancedWriter");
 
 fn CChar* PyUnicode_AsUTF8(
-   default, 
   PyObject* unicode)
 @extern("PyUnicode_AsUTF8");
 
 fn PyObject* _PyUnicode_EncodeUTF7(
-   default, 
   PyObject* unicode, 
   CInt base64seto, 
   CInt base64whitespace, 
@@ -3926,27 +3625,23 @@ fn PyObject* _PyUnicode_EncodeUTF7(
 @extern("_PyUnicode_EncodeUTF7");
 
 fn PyObject* _PyUnicode_AsUTF8String(
-   default, 
   PyObject* unicode, 
   CChar* errors)
 @extern("_PyUnicode_AsUTF8String");
 
 fn PyObject* _PyUnicode_EncodeUTF32(
-   default, 
   PyObject* object, 
   CChar* errors, 
   CInt byteorder)
 @extern("_PyUnicode_EncodeUTF32");
 
 fn PyObject* _PyUnicode_EncodeUTF16(
-   default, 
   PyObject* unicode, 
   CChar* errors, 
   CInt byteorder)
 @extern("_PyUnicode_EncodeUTF16");
 
 fn PyObject* _PyUnicode_DecodeUnicodeEscapeStateful(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3954,7 +3649,6 @@ fn PyObject* _PyUnicode_DecodeUnicodeEscapeStateful(
 @extern("_PyUnicode_DecodeUnicodeEscapeStateful");
 
 fn PyObject* _PyUnicode_DecodeUnicodeEscapeInternal(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3963,7 +3657,6 @@ fn PyObject* _PyUnicode_DecodeUnicodeEscapeInternal(
 @extern("_PyUnicode_DecodeUnicodeEscapeInternal");
 
 fn PyObject* _PyUnicode_DecodeRawUnicodeEscapeStateful(
-   default, 
   CChar* string, 
   Py_ssize_t length, 
   CChar* errors, 
@@ -3971,57 +3664,48 @@ fn PyObject* _PyUnicode_DecodeRawUnicodeEscapeStateful(
 @extern("_PyUnicode_DecodeRawUnicodeEscapeStateful");
 
 fn PyObject* _PyUnicode_AsLatin1String(
-   default, 
   PyObject* unicode, 
   CChar* errors)
 @extern("_PyUnicode_AsLatin1String");
 
 fn PyObject* _PyUnicode_AsASCIIString(
-   default, 
   PyObject* unicode, 
   CChar* errors)
 @extern("_PyUnicode_AsASCIIString");
 
 fn PyObject* _PyUnicode_EncodeCharmap(
-   default, 
   PyObject* unicode, 
   PyObject* mapping, 
   CChar* errors)
 @extern("_PyUnicode_EncodeCharmap");
 
 fn PyObject* _PyUnicode_TransformDecimalAndSpaceToASCII(
-   default, 
   PyObject* unicode)
 @extern("_PyUnicode_TransformDecimalAndSpaceToASCII");
 
 fn PyObject* _PyUnicode_JoinArray(
-   default, 
   PyObject* separator, 
   PyObject** items, 
   Py_ssize_t seqlen)
 @extern("_PyUnicode_JoinArray");
 
 fn CInt _PyUnicode_EqualToASCIIId(
-   default, 
   PyObject* left, 
   _Py_Identifier* right)
 @extern("_PyUnicode_EqualToASCIIId");
 
 fn CInt _PyUnicode_EqualToASCIIString(
-   default, 
   PyObject* left, 
   CChar* right)
 @extern("_PyUnicode_EqualToASCIIString");
 
 fn PyObject* _PyUnicode_XStrip(
-   default, 
   PyObject* self, 
   CInt striptype, 
   PyObject* sepobj)
 @extern("_PyUnicode_XStrip");
 
 fn Py_ssize_t _PyUnicode_InsertThousandsGrouping(
-   default, 
   _PyUnicodeWriter* writer, 
   Py_ssize_t n_buffer, 
   PyObject* digits, 
@@ -4034,127 +3718,102 @@ fn Py_ssize_t _PyUnicode_InsertThousandsGrouping(
 @extern("_PyUnicode_InsertThousandsGrouping");
 
 fn CInt _PyUnicode_IsLowercase(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsLowercase");
 
 fn CInt _PyUnicode_IsUppercase(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsUppercase");
 
 fn CInt _PyUnicode_IsTitlecase(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsTitlecase");
 
 fn CInt _PyUnicode_IsXidStart(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsXidStart");
 
 fn CInt _PyUnicode_IsXidContinue(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsXidContinue");
 
 fn CInt _PyUnicode_IsWhitespace(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsWhitespace");
 
 fn CInt _PyUnicode_IsLinebreak(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsLinebreak");
 
 fn Py_UCS4 _PyUnicode_ToLowercase(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_ToLowercase");
 
 fn Py_UCS4 _PyUnicode_ToUppercase(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_ToUppercase");
 
 fn Py_UCS4 _PyUnicode_ToTitlecase(
-   , 
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_ToTitlecase");
 
 fn CInt _PyUnicode_ToLowerFull(
-   default, 
   Py_UCS4 ch, 
   Py_UCS4* res)
 @extern("_PyUnicode_ToLowerFull");
 
 fn CInt _PyUnicode_ToTitleFull(
-   default, 
   Py_UCS4 ch, 
   Py_UCS4* res)
 @extern("_PyUnicode_ToTitleFull");
 
 fn CInt _PyUnicode_ToUpperFull(
-   default, 
   Py_UCS4 ch, 
   Py_UCS4* res)
 @extern("_PyUnicode_ToUpperFull");
 
 fn CInt _PyUnicode_ToFoldedFull(
-   default, 
   Py_UCS4 ch, 
   Py_UCS4* res)
 @extern("_PyUnicode_ToFoldedFull");
 
 fn CInt _PyUnicode_IsCaseIgnorable(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsCaseIgnorable");
 
 fn CInt _PyUnicode_IsCased(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsCased");
 
 fn CInt _PyUnicode_ToDecimalDigit(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_ToDecimalDigit");
 
 fn CInt _PyUnicode_ToDigit(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_ToDigit");
 
 fn double _PyUnicode_ToNumeric(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_ToNumeric");
 
 fn CInt _PyUnicode_IsDecimalDigit(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsDecimalDigit");
 
 fn CInt _PyUnicode_IsDigit(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsDigit");
 
 fn CInt _PyUnicode_IsNumeric(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsNumeric");
 
 fn CInt _PyUnicode_IsPrintable(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsPrintable");
 
 fn CInt _PyUnicode_IsAlpha(
-   default, 
   Py_UCS4 ch)
 @extern("_PyUnicode_IsAlpha");
 
@@ -4169,43 +3828,6168 @@ fn CInt Py_UNICODE_ISALNUM(
 @extern("Py_UNICODE_ISALNUM");
 
 fn PyObject* _PyUnicode_FormatLong(
-   default, 
-  PyObject* , 
-  CInt , 
-  CInt , 
-  CInt )
+  PyObject*, 
+  CInt, 
+  CInt, 
+  CInt)
 @extern("_PyUnicode_FormatLong");
 
 fn PyObject* _PyUnicode_FromId(
-   default, 
-  _Py_Identifier* )
+  _Py_Identifier*)
 @extern("_PyUnicode_FromId");
 
 fn CInt _PyUnicode_EQ(
-   default, 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*)
 @extern("_PyUnicode_EQ");
 
 fn CInt _PyUnicode_Equal(
-   default, 
-  PyObject* , 
-  PyObject* )
+  PyObject*, 
+  PyObject*)
 @extern("_PyUnicode_Equal");
 
 fn CInt _PyUnicode_WideCharString_Converter(
-   default, 
-  PyObject* , 
-  void* )
+  PyObject*, 
+  void*)
 @extern("_PyUnicode_WideCharString_Converter");
 
 fn CInt _PyUnicode_WideCharString_Opt_Converter(
-   default, 
-  PyObject* , 
-  void* )
+  PyObject*, 
+  void*)
 @extern("_PyUnicode_WideCharString_Opt_Converter");
 
 fn Py_ssize_t _PyUnicode_ScanIdentifier(
-   default, 
-  PyObject* )
+  PyObject*)
 @extern("_PyUnicode_ScanIdentifier");
+
+struct PyStatus {
+  CUInt _type;
+  CChar* func;
+  CChar* err_msg;
+  CInt exitcode;
+}
+
+fn PyStatus PyStatus_Ok()
+@extern("PyStatus_Ok");
+
+fn PyStatus PyStatus_Error(
+  CChar* err_msg)
+@extern("PyStatus_Error");
+
+fn PyStatus PyStatus_NoMemory()
+@extern("PyStatus_NoMemory");
+
+fn PyStatus PyStatus_Exit(
+  CInt exitcode)
+@extern("PyStatus_Exit");
+
+fn CInt PyStatus_IsError(
+  PyStatus err)
+@extern("PyStatus_IsError");
+
+fn CInt PyStatus_IsExit(
+  PyStatus err)
+@extern("PyStatus_IsExit");
+
+fn CInt PyStatus_Exception(
+  PyStatus err)
+@extern("PyStatus_Exception");
+
+fn PyObject* _PyErr_SetFromPyStatus(
+  PyStatus status)
+@extern("_PyErr_SetFromPyStatus");
+
+struct PyWideStringList {
+  Py_ssize_t length;
+  wchar_t** items;
+}
+
+fn PyStatus PyWideStringList_Append(
+  PyWideStringList* list, 
+  wchar_t* item)
+@extern("PyWideStringList_Append");
+
+fn PyStatus PyWideStringList_Insert(
+  PyWideStringList* list, 
+  Py_ssize_t index, 
+  wchar_t* item)
+@extern("PyWideStringList_Insert");
+
+struct PyPreConfig {
+  CInt _config_init;
+  CInt parse_argv;
+  CInt isolated;
+  CInt use_environment;
+  CInt configure_locale;
+  CInt coerce_c_locale;
+  CInt coerce_c_locale_warn;
+  CInt utf8_mode;
+  CInt dev_mode;
+  CInt allocator;
+}
+
+fn void PyPreConfig_InitPythonConfig(
+  PyPreConfig* config)
+@extern("PyPreConfig_InitPythonConfig");
+
+fn void PyPreConfig_InitIsolatedConfig(
+  PyPreConfig* config)
+@extern("PyPreConfig_InitIsolatedConfig");
+
+struct PyConfig {
+  CInt _config_init;
+  CInt isolated;
+  CInt use_environment;
+  CInt dev_mode;
+  CInt install_signal_handlers;
+  CInt use_hash_seed;
+  CULong hash_seed;
+  CInt faulthandler;
+  CInt tracemalloc;
+  CInt perf_profiling;
+  CInt import_time;
+  CInt code_debug_ranges;
+  CInt show_ref_count;
+  CInt dump_refs;
+  wchar_t* dump_refs_file;
+  CInt malloc_stats;
+  wchar_t* filesystem_encoding;
+  wchar_t* filesystem_errors;
+  wchar_t* pycache_prefix;
+  CInt parse_argv;
+  PyWideStringList orig_argv;
+  PyWideStringList argv;
+  PyWideStringList xoptions;
+  PyWideStringList warnoptions;
+  CInt site_import;
+  CInt bytes_warning;
+  CInt warn_default_encoding;
+  CInt inspect;
+  CInt interactive;
+  CInt optimization_level;
+  CInt parser_debug;
+  CInt write_bytecode;
+  CInt verbose;
+  CInt quiet;
+  CInt user_site_directory;
+  CInt configure_c_stdio;
+  CInt buffered_stdio;
+  wchar_t* stdio_encoding;
+  wchar_t* stdio_errors;
+  wchar_t* check_hash_pycs_mode;
+  CInt use_frozen_modules;
+  CInt safe_path;
+  CInt int_max_str_digits;
+  CInt pathconfig_warnings;
+  wchar_t* program_name;
+  wchar_t* pythonpath_env;
+  wchar_t* home;
+  wchar_t* platlibdir;
+  CInt module_search_paths_set;
+  PyWideStringList module_search_paths;
+  wchar_t* stdlib_dir;
+  wchar_t* executable;
+  wchar_t* base_executable;
+  wchar_t* prefix;
+  wchar_t* base_prefix;
+  wchar_t* exec_prefix;
+  wchar_t* base_exec_prefix;
+  CInt skip_source_first_line;
+  wchar_t* run_command;
+  wchar_t* run_module;
+  wchar_t* run_filename;
+  CInt _install_importlib;
+  CInt _init_main;
+  CInt _is_python_build;
+}
+
+fn void PyConfig_InitPythonConfig(
+  PyConfig* config)
+@extern("PyConfig_InitPythonConfig");
+
+fn void PyConfig_InitIsolatedConfig(
+  PyConfig* config)
+@extern("PyConfig_InitIsolatedConfig");
+
+fn void PyConfig_Clear(
+  PyConfig*)
+@extern("PyConfig_Clear");
+
+fn PyStatus PyConfig_SetString(
+  PyConfig* config, 
+  wchar_t** config_str, 
+  wchar_t* str)
+@extern("PyConfig_SetString");
+
+fn PyStatus PyConfig_SetBytesString(
+  PyConfig* config, 
+  wchar_t** config_str, 
+  CChar* str)
+@extern("PyConfig_SetBytesString");
+
+fn PyStatus PyConfig_Read(
+  PyConfig* config)
+@extern("PyConfig_Read");
+
+fn PyStatus PyConfig_SetBytesArgv(
+  PyConfig* config, 
+  Py_ssize_t argc, 
+  CChar** argv)
+@extern("PyConfig_SetBytesArgv");
+
+fn PyStatus PyConfig_SetArgv(
+  PyConfig* config, 
+  Py_ssize_t argc, 
+  wchar_t** argv)
+@extern("PyConfig_SetArgv");
+
+fn PyStatus PyConfig_SetWideStringList(
+  PyConfig* config, 
+  PyWideStringList* list, 
+  Py_ssize_t length, 
+  wchar_t** items)
+@extern("PyConfig_SetWideStringList");
+
+fn void Py_GetArgcArgv(
+  CInt* argc, 
+  wchar_t*** argv)
+@extern("Py_GetArgcArgv");
+
+fn PyInterpreterState* PyInterpreterState_New()
+@extern("PyInterpreterState_New");
+
+fn void PyInterpreterState_Clear(
+  PyInterpreterState*)
+@extern("PyInterpreterState_Clear");
+
+fn void PyInterpreterState_Delete(
+  PyInterpreterState*)
+@extern("PyInterpreterState_Delete");
+
+fn PyInterpreterState* PyInterpreterState_Get()
+@extern("PyInterpreterState_Get");
+
+fn PyObject* PyInterpreterState_GetDict(
+  PyInterpreterState*)
+@extern("PyInterpreterState_GetDict");
+
+fn long PyInterpreterState_GetID(
+  PyInterpreterState*)
+@extern("PyInterpreterState_GetID");
+
+fn CInt PyState_AddModule(
+  PyObject*, 
+  PyModuleDef*)
+@extern("PyState_AddModule");
+
+fn CInt PyState_RemoveModule(
+  PyModuleDef*)
+@extern("PyState_RemoveModule");
+
+fn PyObject* PyState_FindModule(
+  PyModuleDef*)
+@extern("PyState_FindModule");
+
+fn PyThreadState* PyThreadState_New(
+  PyInterpreterState*)
+@extern("PyThreadState_New");
+
+fn void PyThreadState_Clear(
+  PyThreadState*)
+@extern("PyThreadState_Clear");
+
+fn void PyThreadState_Delete(
+  PyThreadState*)
+@extern("PyThreadState_Delete");
+
+fn PyThreadState* PyThreadState_Get()
+@extern("PyThreadState_Get");
+
+fn PyThreadState* PyThreadState_Swap(
+  PyThreadState*)
+@extern("PyThreadState_Swap");
+
+fn PyObject* PyThreadState_GetDict()
+@extern("PyThreadState_GetDict");
+
+fn CInt PyThreadState_SetAsyncExc(
+  CULong, 
+  PyObject*)
+@extern("PyThreadState_SetAsyncExc");
+
+fn PyInterpreterState* PyThreadState_GetInterpreter(
+  PyThreadState* tstate)
+@extern("PyThreadState_GetInterpreter");
+
+fn PyFrameObject* PyThreadState_GetFrame(
+  PyThreadState* tstate)
+@extern("PyThreadState_GetFrame");
+
+fn ulong PyThreadState_GetID(
+  PyThreadState* tstate)
+@extern("PyThreadState_GetID");
+
+typedef PyGILState_STATE = inline CUInt;
+const PyGILState_STATE PYGILSTATE_LOCKED = 0;
+const PyGILState_STATE PYGILSTATE_UNLOCKED = 1;
+
+fn PyGILState_STATE PyGILState_Ensure()
+@extern("PyGILState_Ensure");
+
+fn void PyGILState_Release(
+  PyGILState_STATE)
+@extern("PyGILState_Release");
+
+fn PyThreadState* PyGILState_GetThisThreadState()
+@extern("PyGILState_GetThisThreadState");
+
+fn CInt _PyInterpreterState_HasFeature(
+  PyInterpreterState* interp, 
+  CULong feature)
+@extern("_PyInterpreterState_HasFeature");
+
+fn CInt _PyInterpreterState_RequiresIDRef(
+  PyInterpreterState*)
+@extern("_PyInterpreterState_RequiresIDRef");
+
+fn void _PyInterpreterState_RequireIDRef(
+  PyInterpreterState*, 
+  CInt)
+@extern("_PyInterpreterState_RequireIDRef");
+
+fn PyObject* _PyInterpreterState_GetMainModule(
+  PyInterpreterState*)
+@extern("_PyInterpreterState_GetMainModule");
+
+alias Py_tracefunc = fn CInt(
+  PyObject*, 
+  PyFrameObject*, 
+  CInt, 
+  PyObject*);
+
+struct _PyCFrame {
+  _PyInterpreterFrame* current_frame;
+  _PyCFrame* previous;
+}
+
+struct _err_stackitem {
+  PyObject* exc_value;
+  _err_stackitem* previous_item;
+}
+
+alias _PyErr_StackItem = _err_stackitem;
+
+struct _stack_chunk {
+  _stack_chunk* previous;
+  usz size;
+  usz top;
+  PyObject*[1] data;
+}
+
+alias _PyStackChunk = _stack_chunk;
+
+struct _py_trashcan {
+  CInt delete_nesting;
+  PyObject* delete_later;
+}
+
+alias UnnamedPFN7 @private = fn void(
+  void*);
+
+struct _ts {
+  PyThreadState* prev;
+  PyThreadState* next;
+  PyInterpreterState* interp;
+  struct _status {
+    bitstruct : uint {
+      CUInt initialized : 0..0;
+      CUInt bound : 1..1;
+      CUInt unbound : 2..2;
+      CUInt bound_gilstate : 3..3;
+      CUInt active : 4..4;
+      CUInt finalizing : 5..5;
+      CUInt cleared : 6..6;
+      CUInt finalized : 7..7;
+      CUInt  : 8..31;
+    }
+  }
+  CInt py_recursion_remaining;
+  CInt py_recursion_limit;
+  CInt c_recursion_remaining;
+  CInt recursion_headroom;
+  CInt tracing;
+  CInt what_event;
+  _PyCFrame* cframe;
+  Py_tracefunc c_profilefunc;
+  Py_tracefunc c_tracefunc;
+  PyObject* c_profileobj;
+  PyObject* c_traceobj;
+  PyObject* current_exception;
+  _PyErr_StackItem* exc_info;
+  PyObject* dict;
+  CInt gilstate_counter;
+  PyObject* async_exc;
+  CULong thread_id;
+  CULong native_thread_id;
+  _py_trashcan trash;
+  UnnamedPFN7 on_delete;
+  void* on_delete_data;
+  CInt coroutine_origin_tracking_depth;
+  PyObject* async_gen_firstiter;
+  PyObject* async_gen_finalizer;
+  PyObject* context;
+  ulong context_ver;
+  ulong id;
+  _PyStackChunk* datastack_chunk;
+  PyObject** datastack_top;
+  PyObject** datastack_limit;
+  _PyErr_StackItem exc_state;
+  _PyCFrame root_cframe;
+}
+
+fn PyThreadState* _PyThreadState_Prealloc(
+  PyInterpreterState*)
+@extern("_PyThreadState_Prealloc");
+
+fn PyThreadState* _PyThreadState_UncheckedGet()
+@extern("_PyThreadState_UncheckedGet");
+
+fn PyObject* _PyThreadState_GetDict(
+  PyThreadState* tstate)
+@extern("_PyThreadState_GetDict");
+
+fn void PyThreadState_EnterTracing(
+  PyThreadState* tstate)
+@extern("PyThreadState_EnterTracing");
+
+fn void PyThreadState_LeaveTracing(
+  PyThreadState* tstate)
+@extern("PyThreadState_LeaveTracing");
+
+fn CInt PyGILState_Check()
+@extern("PyGILState_Check");
+
+fn PyInterpreterState* _PyGILState_GetInterpreterStateUnsafe()
+@extern("_PyGILState_GetInterpreterStateUnsafe");
+
+fn PyObject* _PyThread_CurrentFrames()
+@extern("_PyThread_CurrentFrames");
+
+fn PyObject* _PyThread_CurrentExceptions()
+@extern("_PyThread_CurrentExceptions");
+
+fn PyInterpreterState* PyInterpreterState_Main()
+@extern("PyInterpreterState_Main");
+
+fn PyInterpreterState* PyInterpreterState_Head()
+@extern("PyInterpreterState_Head");
+
+fn PyInterpreterState* PyInterpreterState_Next(
+  PyInterpreterState*)
+@extern("PyInterpreterState_Next");
+
+fn PyThreadState* PyInterpreterState_ThreadHead(
+  PyInterpreterState*)
+@extern("PyInterpreterState_ThreadHead");
+
+fn PyThreadState* PyThreadState_Next(
+  PyThreadState*)
+@extern("PyThreadState_Next");
+
+fn void PyThreadState_DeleteCurrent()
+@extern("PyThreadState_DeleteCurrent");
+
+alias _PyFrameEvalFunction = fn PyObject*(
+  PyThreadState* tstate, 
+  _PyInterpreterFrame*, 
+  CInt);
+
+fn _PyFrameEvalFunction _PyInterpreterState_GetEvalFrameFunc(
+  PyInterpreterState* interp)
+@extern("_PyInterpreterState_GetEvalFrameFunc");
+
+fn void _PyInterpreterState_SetEvalFrameFunc(
+  PyInterpreterState* interp, 
+  _PyFrameEvalFunction eval_frame)
+@extern("_PyInterpreterState_SetEvalFrameFunc");
+
+fn PyConfig* _PyInterpreterState_GetConfig(
+  PyInterpreterState* interp)
+@extern("_PyInterpreterState_GetConfig");
+
+fn CInt _PyInterpreterState_GetConfigCopy(
+  PyConfig* config)
+@extern("_PyInterpreterState_GetConfigCopy");
+
+fn CInt _PyInterpreterState_SetConfig(
+  PyConfig* config)
+@extern("_PyInterpreterState_SetConfig");
+
+fn PyConfig* _Py_GetConfig()
+@extern("_Py_GetConfig");
+
+typedef _xid = void;
+
+alias _PyCrossInterpreterData = _xid;
+
+alias xid_newobjectfunc = fn PyObject*(
+  _PyCrossInterpreterData*);
+
+alias xid_freefunc = fn void(
+  void*);
+
+struct _xid {
+  void* data;
+  PyObject* obj;
+  long interp;
+  xid_newobjectfunc new_object;
+  xid_freefunc free;
+}
+
+fn void _PyCrossInterpreterData_Init(
+  _PyCrossInterpreterData* data, 
+  PyInterpreterState* interp, 
+  void* shared, 
+  PyObject* obj, 
+  xid_newobjectfunc new_object)
+@extern("_PyCrossInterpreterData_Init");
+
+fn CInt _PyCrossInterpreterData_InitWithSize(
+  _PyCrossInterpreterData*, 
+  PyInterpreterState* interp, 
+  usz, 
+  PyObject*, 
+  xid_newobjectfunc)
+@extern("_PyCrossInterpreterData_InitWithSize");
+
+fn void _PyCrossInterpreterData_Clear(
+  PyInterpreterState*, 
+  _PyCrossInterpreterData*)
+@extern("_PyCrossInterpreterData_Clear");
+
+fn CInt _PyObject_GetCrossInterpreterData(
+  PyObject*, 
+  _PyCrossInterpreterData*)
+@extern("_PyObject_GetCrossInterpreterData");
+
+fn PyObject* _PyCrossInterpreterData_NewObject(
+  _PyCrossInterpreterData*)
+@extern("_PyCrossInterpreterData_NewObject");
+
+fn CInt _PyCrossInterpreterData_Release(
+  _PyCrossInterpreterData*)
+@extern("_PyCrossInterpreterData_Release");
+
+fn CInt _PyObject_CheckCrossInterpreterData(
+  PyObject*)
+@extern("_PyObject_CheckCrossInterpreterData");
+
+alias crossinterpdatafunc = fn CInt(
+  PyThreadState* tstate, 
+  PyObject*, 
+  _PyCrossInterpreterData*);
+
+fn CInt _PyCrossInterpreterData_RegisterClass(
+  PyTypeObject*, 
+  crossinterpdatafunc)
+@extern("_PyCrossInterpreterData_RegisterClass");
+
+fn CInt _PyCrossInterpreterData_UnregisterClass(
+  PyTypeObject*)
+@extern("_PyCrossInterpreterData_UnregisterClass");
+
+fn crossinterpdatafunc _PyCrossInterpreterData_Lookup(
+  PyObject*)
+@extern("_PyCrossInterpreterData_Lookup");
+
+fn void PyErr_SetNone(
+  PyObject*)
+@extern("PyErr_SetNone");
+
+fn void PyErr_SetObject(
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_SetObject");
+
+fn void PyErr_SetString(
+  PyObject* exception, 
+  CChar* string)
+@extern("PyErr_SetString");
+
+fn PyObject* PyErr_Occurred()
+@extern("PyErr_Occurred");
+
+fn void PyErr_Clear()
+@extern("PyErr_Clear");
+
+fn void PyErr_Fetch(
+  PyObject**, 
+  PyObject**, 
+  PyObject**)
+@extern("PyErr_Fetch");
+
+fn void PyErr_Restore(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_Restore");
+
+fn PyObject* PyErr_GetRaisedException()
+@extern("PyErr_GetRaisedException");
+
+fn void PyErr_SetRaisedException(
+  PyObject*)
+@extern("PyErr_SetRaisedException");
+
+fn PyObject* PyErr_GetHandledException()
+@extern("PyErr_GetHandledException");
+
+fn void PyErr_SetHandledException(
+  PyObject*)
+@extern("PyErr_SetHandledException");
+
+fn void PyErr_GetExcInfo(
+  PyObject**, 
+  PyObject**, 
+  PyObject**)
+@extern("PyErr_GetExcInfo");
+
+fn void PyErr_SetExcInfo(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_SetExcInfo");
+
+fn void Py_FatalError(
+  CChar* message)
+@extern("Py_FatalError");
+
+fn CInt PyErr_GivenExceptionMatches(
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_GivenExceptionMatches");
+
+fn CInt PyErr_ExceptionMatches(
+  PyObject*)
+@extern("PyErr_ExceptionMatches");
+
+fn void PyErr_NormalizeException(
+  PyObject**, 
+  PyObject**, 
+  PyObject**)
+@extern("PyErr_NormalizeException");
+
+fn CInt PyException_SetTraceback(
+  PyObject*, 
+  PyObject*)
+@extern("PyException_SetTraceback");
+
+fn PyObject* PyException_GetTraceback(
+  PyObject*)
+@extern("PyException_GetTraceback");
+
+fn PyObject* PyException_GetCause(
+  PyObject*)
+@extern("PyException_GetCause");
+
+fn void PyException_SetCause(
+  PyObject*, 
+  PyObject*)
+@extern("PyException_SetCause");
+
+fn PyObject* PyException_GetContext(
+  PyObject*)
+@extern("PyException_GetContext");
+
+fn void PyException_SetContext(
+  PyObject*, 
+  PyObject*)
+@extern("PyException_SetContext");
+
+fn PyObject* PyException_GetArgs(
+  PyObject*)
+@extern("PyException_GetArgs");
+
+fn void PyException_SetArgs(
+  PyObject*, 
+  PyObject*)
+@extern("PyException_SetArgs");
+
+fn CChar* PyExceptionClass_Name(
+  PyObject*)
+@extern("PyExceptionClass_Name");
+
+PyObject* pyexc_baseexception;
+
+PyObject* pyexc_exception;
+
+PyObject* pyexc_baseexceptiongroup;
+
+PyObject* pyexc_stopasynciteration;
+
+PyObject* pyexc_stopiteration;
+
+PyObject* pyexc_generatorexit;
+
+PyObject* pyexc_arithmeticerror;
+
+PyObject* pyexc_lookuperror;
+
+PyObject* pyexc_assertionerror;
+
+PyObject* pyexc_attributeerror;
+
+PyObject* pyexc_buffererror;
+
+PyObject* pyexc_eoferror;
+
+PyObject* pyexc_floatingpointerror;
+
+PyObject* pyexc_oserror;
+
+PyObject* pyexc_importerror;
+
+PyObject* pyexc_modulenotfounderror;
+
+PyObject* pyexc_indexerror;
+
+PyObject* pyexc_keyerror;
+
+PyObject* pyexc_keyboardinterrupt;
+
+PyObject* pyexc_memoryerror;
+
+PyObject* pyexc_nameerror;
+
+PyObject* pyexc_overflowerror;
+
+PyObject* pyexc_runtimeerror;
+
+PyObject* pyexc_recursionerror;
+
+PyObject* pyexc_notimplementederror;
+
+PyObject* pyexc_syntaxerror;
+
+PyObject* pyexc_indentationerror;
+
+PyObject* pyexc_taberror;
+
+PyObject* pyexc_referenceerror;
+
+PyObject* pyexc_systemerror;
+
+PyObject* pyexc_systemexit;
+
+PyObject* pyexc_typeerror;
+
+PyObject* pyexc_unboundlocalerror;
+
+PyObject* pyexc_unicodeerror;
+
+PyObject* pyexc_unicodeencodeerror;
+
+PyObject* pyexc_unicodedecodeerror;
+
+PyObject* pyexc_unicodetranslateerror;
+
+PyObject* pyexc_valueerror;
+
+PyObject* pyexc_zerodivisionerror;
+
+PyObject* pyexc_blockingioerror;
+
+PyObject* pyexc_brokenpipeerror;
+
+PyObject* pyexc_childprocesserror;
+
+PyObject* pyexc_connectionerror;
+
+PyObject* pyexc_connectionabortederror;
+
+PyObject* pyexc_connectionrefusederror;
+
+PyObject* pyexc_connectionreseterror;
+
+PyObject* pyexc_fileexistserror;
+
+PyObject* pyexc_filenotfounderror;
+
+PyObject* pyexc_interruptederror;
+
+PyObject* pyexc_isadirectoryerror;
+
+PyObject* pyexc_notadirectoryerror;
+
+PyObject* pyexc_permissionerror;
+
+PyObject* pyexc_processlookuperror;
+
+PyObject* pyexc_timeouterror;
+
+PyObject* pyexc_environmenterror;
+
+PyObject* pyexc_ioerror;
+
+PyObject* pyexc_warning;
+
+PyObject* pyexc_userwarning;
+
+PyObject* pyexc_deprecationwarning;
+
+PyObject* pyexc_pendingdeprecationwarning;
+
+PyObject* pyexc_syntaxwarning;
+
+PyObject* pyexc_runtimewarning;
+
+PyObject* pyexc_futurewarning;
+
+PyObject* pyexc_importwarning;
+
+PyObject* pyexc_unicodewarning;
+
+PyObject* pyexc_byteswarning;
+
+PyObject* pyexc_encodingwarning;
+
+PyObject* pyexc_resourcewarning;
+
+fn CInt PyErr_BadArgument()
+@extern("PyErr_BadArgument");
+
+fn PyObject* PyErr_NoMemory()
+@extern("PyErr_NoMemory");
+
+fn PyObject* PyErr_SetFromErrno(
+  PyObject*)
+@extern("PyErr_SetFromErrno");
+
+fn PyObject* PyErr_SetFromErrnoWithFilenameObject(
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_SetFromErrnoWithFilenameObject");
+
+fn PyObject* PyErr_SetFromErrnoWithFilenameObjects(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_SetFromErrnoWithFilenameObjects");
+
+fn PyObject* PyErr_SetFromErrnoWithFilename(
+  PyObject* exc, 
+  CChar* filename)
+@extern("PyErr_SetFromErrnoWithFilename");
+
+fn PyObject* PyErr_Format(
+  PyObject* exception, 
+  CChar* format)
+@extern("PyErr_Format");
+
+fn PyObject* PyErr_FormatV(
+  PyObject* exception, 
+  CChar* format, 
+  void* vargs)
+@extern("PyErr_FormatV");
+
+fn PyObject* PyErr_SetImportErrorSubclass(
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_SetImportErrorSubclass");
+
+fn PyObject* PyErr_SetImportError(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_SetImportError");
+
+fn void PyErr_BadInternalCall()
+@extern("PyErr_BadInternalCall");
+
+fn void _PyErr_BadInternalCall(
+  CChar* filename, 
+  CInt lineno)
+@extern("_PyErr_BadInternalCall");
+
+fn PyObject* PyErr_NewException(
+  CChar* name, 
+  PyObject* base, 
+  PyObject* dict)
+@extern("PyErr_NewException");
+
+fn PyObject* PyErr_NewExceptionWithDoc(
+  CChar* name, 
+  CChar* doc, 
+  PyObject* base, 
+  PyObject* dict)
+@extern("PyErr_NewExceptionWithDoc");
+
+fn void PyErr_WriteUnraisable(
+  PyObject*)
+@extern("PyErr_WriteUnraisable");
+
+fn CInt PyErr_CheckSignals()
+@extern("PyErr_CheckSignals");
+
+fn void PyErr_SetInterrupt()
+@extern("PyErr_SetInterrupt");
+
+fn CInt PyErr_SetInterruptEx(
+  CInt signum)
+@extern("PyErr_SetInterruptEx");
+
+fn void PyErr_SyntaxLocation(
+  CChar* filename, 
+  CInt lineno)
+@extern("PyErr_SyntaxLocation");
+
+fn void PyErr_SyntaxLocationEx(
+  CChar* filename, 
+  CInt lineno, 
+  CInt col_offset)
+@extern("PyErr_SyntaxLocationEx");
+
+fn PyObject* PyErr_ProgramText(
+  CChar* filename, 
+  CInt lineno)
+@extern("PyErr_ProgramText");
+
+fn PyObject* PyUnicodeDecodeError_Create(
+  CChar* encoding, 
+  CChar* object, 
+  Py_ssize_t length, 
+  Py_ssize_t start, 
+  Py_ssize_t end, 
+  CChar* reason)
+@extern("PyUnicodeDecodeError_Create");
+
+fn PyObject* PyUnicodeEncodeError_GetEncoding(
+  PyObject*)
+@extern("PyUnicodeEncodeError_GetEncoding");
+
+fn PyObject* PyUnicodeDecodeError_GetEncoding(
+  PyObject*)
+@extern("PyUnicodeDecodeError_GetEncoding");
+
+fn PyObject* PyUnicodeEncodeError_GetObject(
+  PyObject*)
+@extern("PyUnicodeEncodeError_GetObject");
+
+fn PyObject* PyUnicodeDecodeError_GetObject(
+  PyObject*)
+@extern("PyUnicodeDecodeError_GetObject");
+
+fn PyObject* PyUnicodeTranslateError_GetObject(
+  PyObject*)
+@extern("PyUnicodeTranslateError_GetObject");
+
+fn CInt PyUnicodeEncodeError_GetStart(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("PyUnicodeEncodeError_GetStart");
+
+fn CInt PyUnicodeDecodeError_GetStart(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("PyUnicodeDecodeError_GetStart");
+
+fn CInt PyUnicodeTranslateError_GetStart(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("PyUnicodeTranslateError_GetStart");
+
+fn CInt PyUnicodeEncodeError_SetStart(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyUnicodeEncodeError_SetStart");
+
+fn CInt PyUnicodeDecodeError_SetStart(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyUnicodeDecodeError_SetStart");
+
+fn CInt PyUnicodeTranslateError_SetStart(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyUnicodeTranslateError_SetStart");
+
+fn CInt PyUnicodeEncodeError_GetEnd(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("PyUnicodeEncodeError_GetEnd");
+
+fn CInt PyUnicodeDecodeError_GetEnd(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("PyUnicodeDecodeError_GetEnd");
+
+fn CInt PyUnicodeTranslateError_GetEnd(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("PyUnicodeTranslateError_GetEnd");
+
+fn CInt PyUnicodeEncodeError_SetEnd(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyUnicodeEncodeError_SetEnd");
+
+fn CInt PyUnicodeDecodeError_SetEnd(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyUnicodeDecodeError_SetEnd");
+
+fn CInt PyUnicodeTranslateError_SetEnd(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyUnicodeTranslateError_SetEnd");
+
+fn PyObject* PyUnicodeEncodeError_GetReason(
+  PyObject*)
+@extern("PyUnicodeEncodeError_GetReason");
+
+fn PyObject* PyUnicodeDecodeError_GetReason(
+  PyObject*)
+@extern("PyUnicodeDecodeError_GetReason");
+
+fn PyObject* PyUnicodeTranslateError_GetReason(
+  PyObject*)
+@extern("PyUnicodeTranslateError_GetReason");
+
+fn CInt PyUnicodeEncodeError_SetReason(
+  PyObject* exc, 
+  CChar* reason)
+@extern("PyUnicodeEncodeError_SetReason");
+
+fn CInt PyUnicodeDecodeError_SetReason(
+  PyObject* exc, 
+  CChar* reason)
+@extern("PyUnicodeDecodeError_SetReason");
+
+fn CInt PyUnicodeTranslateError_SetReason(
+  PyObject* exc, 
+  CChar* reason)
+@extern("PyUnicodeTranslateError_SetReason");
+
+fn CInt PyOS_snprintf(
+  CChar* str, 
+  usz size, 
+  CChar* format)
+@extern("PyOS_snprintf");
+
+fn CInt PyOS_vsnprintf(
+  CChar* str, 
+  usz size, 
+  CChar* format, 
+  void* va)
+@extern("PyOS_vsnprintf");
+
+struct PyBaseExceptionObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+}
+
+struct PyBaseExceptionGroupObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* msg;
+  PyObject* excs;
+}
+
+struct PySyntaxErrorObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* msg;
+  PyObject* filename;
+  PyObject* lineno;
+  PyObject* offset;
+  PyObject* end_lineno;
+  PyObject* end_offset;
+  PyObject* text;
+  PyObject* print_file_and_line;
+}
+
+struct PyImportErrorObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* msg;
+  PyObject* name;
+  PyObject* path;
+  PyObject* name_from;
+}
+
+struct PyUnicodeErrorObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* encoding;
+  PyObject* object;
+  Py_ssize_t start;
+  Py_ssize_t end;
+  PyObject* reason;
+}
+
+struct PySystemExitObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* code;
+}
+
+struct PyOSErrorObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* myerrno;
+  PyObject* strerror;
+  PyObject* filename;
+  PyObject* filename2;
+  Py_ssize_t written;
+}
+
+struct PyStopIterationObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* value;
+}
+
+struct PyNameErrorObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* name;
+}
+
+struct PyAttributeErrorObject {
+  PyObject ob_base;
+  PyObject* dict;
+  PyObject* args;
+  PyObject* notes;
+  PyObject* traceback;
+  PyObject* context;
+  PyObject* cause;
+  CChar suppress_context;
+  PyObject* obj;
+  PyObject* name;
+}
+
+alias PyEnvironmentErrorObject = PyOSErrorObject;
+
+fn void _PyErr_SetKeyError(
+  PyObject*)
+@extern("_PyErr_SetKeyError");
+
+fn _PyErr_StackItem* _PyErr_GetTopmostException(
+  PyThreadState* tstate)
+@extern("_PyErr_GetTopmostException");
+
+fn PyObject* _PyErr_GetHandledException(
+  PyThreadState*)
+@extern("_PyErr_GetHandledException");
+
+fn void _PyErr_SetHandledException(
+  PyThreadState*, 
+  PyObject*)
+@extern("_PyErr_SetHandledException");
+
+fn void _PyErr_GetExcInfo(
+  PyThreadState*, 
+  PyObject**, 
+  PyObject**, 
+  PyObject**)
+@extern("_PyErr_GetExcInfo");
+
+fn void _PyErr_ChainExceptions(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("_PyErr_ChainExceptions");
+
+fn void _PyErr_ChainExceptions1(
+  PyObject*)
+@extern("_PyErr_ChainExceptions1");
+
+fn PyObject* _PyErr_FormatFromCause(
+  PyObject* exception, 
+  CChar* format)
+@extern("_PyErr_FormatFromCause");
+
+fn CInt _PyException_AddNote(
+  PyObject* exc, 
+  PyObject* note)
+@extern("_PyException_AddNote");
+
+fn PyObject* PyUnstable_Exc_PrepReraiseStar(
+  PyObject* orig, 
+  PyObject* excs)
+@extern("PyUnstable_Exc_PrepReraiseStar");
+
+fn CInt PySignal_SetWakeupFd(
+  CInt fd)
+@extern("PySignal_SetWakeupFd");
+
+fn CInt _PyErr_CheckSignals()
+@extern("_PyErr_CheckSignals");
+
+fn void PyErr_SyntaxLocationObject(
+  PyObject* filename, 
+  CInt lineno, 
+  CInt col_offset)
+@extern("PyErr_SyntaxLocationObject");
+
+fn void PyErr_RangedSyntaxLocationObject(
+  PyObject* filename, 
+  CInt lineno, 
+  CInt col_offset, 
+  CInt end_lineno, 
+  CInt end_col_offset)
+@extern("PyErr_RangedSyntaxLocationObject");
+
+fn PyObject* PyErr_ProgramTextObject(
+  PyObject* filename, 
+  CInt lineno)
+@extern("PyErr_ProgramTextObject");
+
+fn PyObject* _PyErr_ProgramDecodedTextObject(
+  PyObject* filename, 
+  CInt lineno, 
+  CChar* encoding)
+@extern("_PyErr_ProgramDecodedTextObject");
+
+fn PyObject* _PyUnicodeTranslateError_Create(
+  PyObject* object, 
+  Py_ssize_t start, 
+  Py_ssize_t end, 
+  CChar* reason)
+@extern("_PyUnicodeTranslateError_Create");
+
+fn void _PyErr_WriteUnraisableMsg(
+  CChar* err_msg, 
+  PyObject* obj)
+@extern("_PyErr_WriteUnraisableMsg");
+
+fn void _Py_FatalErrorFunc(
+  CChar* func, 
+  CChar* message)
+@extern("_Py_FatalErrorFunc");
+
+fn void _Py_FatalErrorFormat(
+  CChar* func, 
+  CChar* format)
+@extern("_Py_FatalErrorFormat");
+
+fn PyObject* _PyErr_SetImportErrorWithNameFrom(
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("_PyErr_SetImportErrorWithNameFrom");
+
+fn PyObject* PyLong_FromLong(
+  CLong)
+@extern("PyLong_FromLong");
+
+fn PyObject* PyLong_FromUnsignedLong(
+  CULong)
+@extern("PyLong_FromUnsignedLong");
+
+fn PyObject* PyLong_FromSize_t(
+  usz)
+@extern("PyLong_FromSize_t");
+
+fn PyObject* PyLong_FromSsize_t(
+  Py_ssize_t)
+@extern("PyLong_FromSsize_t");
+
+fn PyObject* PyLong_FromDouble(
+  double)
+@extern("PyLong_FromDouble");
+
+fn CLong PyLong_AsLong(
+  PyObject*)
+@extern("PyLong_AsLong");
+
+fn CLong PyLong_AsLongAndOverflow(
+  PyObject*, 
+  CInt*)
+@extern("PyLong_AsLongAndOverflow");
+
+fn Py_ssize_t PyLong_AsSsize_t(
+  PyObject*)
+@extern("PyLong_AsSsize_t");
+
+fn usz PyLong_AsSize_t(
+  PyObject*)
+@extern("PyLong_AsSize_t");
+
+fn CULong PyLong_AsUnsignedLong(
+  PyObject*)
+@extern("PyLong_AsUnsignedLong");
+
+fn CULong PyLong_AsUnsignedLongMask(
+  PyObject*)
+@extern("PyLong_AsUnsignedLongMask");
+
+fn PyObject* PyLong_GetInfo()
+@extern("PyLong_GetInfo");
+
+fn double PyLong_AsDouble(
+  PyObject*)
+@extern("PyLong_AsDouble");
+
+fn PyObject* PyLong_FromVoidPtr(
+  void*)
+@extern("PyLong_FromVoidPtr");
+
+fn void* PyLong_AsVoidPtr(
+  PyObject*)
+@extern("PyLong_AsVoidPtr");
+
+fn PyObject* PyLong_FromLongLong(
+  CLongLong)
+@extern("PyLong_FromLongLong");
+
+fn PyObject* PyLong_FromUnsignedLongLong(
+  CULongLong)
+@extern("PyLong_FromUnsignedLongLong");
+
+fn CLongLong PyLong_AsLongLong(
+  PyObject*)
+@extern("PyLong_AsLongLong");
+
+fn CULongLong PyLong_AsUnsignedLongLong(
+  PyObject*)
+@extern("PyLong_AsUnsignedLongLong");
+
+fn CULongLong PyLong_AsUnsignedLongLongMask(
+  PyObject*)
+@extern("PyLong_AsUnsignedLongLongMask");
+
+fn CLongLong PyLong_AsLongLongAndOverflow(
+  PyObject*, 
+  CInt*)
+@extern("PyLong_AsLongLongAndOverflow");
+
+fn PyObject* PyLong_FromString(
+  CChar*, 
+  CChar**, 
+  CInt)
+@extern("PyLong_FromString");
+
+fn CULong PyOS_strtoul(
+  CChar*, 
+  CChar**, 
+  CInt)
+@extern("PyOS_strtoul");
+
+fn CLong PyOS_strtol(
+  CChar*, 
+  CChar**, 
+  CInt)
+@extern("PyOS_strtol");
+
+fn CInt _PyLong_AsInt(
+  PyObject*)
+@extern("_PyLong_AsInt");
+
+fn CInt _PyLong_UnsignedShort_Converter(
+  PyObject*, 
+  void*)
+@extern("_PyLong_UnsignedShort_Converter");
+
+fn CInt _PyLong_UnsignedInt_Converter(
+  PyObject*, 
+  void*)
+@extern("_PyLong_UnsignedInt_Converter");
+
+fn CInt _PyLong_UnsignedLong_Converter(
+  PyObject*, 
+  void*)
+@extern("_PyLong_UnsignedLong_Converter");
+
+fn CInt _PyLong_UnsignedLongLong_Converter(
+  PyObject*, 
+  void*)
+@extern("_PyLong_UnsignedLongLong_Converter");
+
+fn CInt _PyLong_Size_t_Converter(
+  PyObject*, 
+  void*)
+@extern("_PyLong_Size_t_Converter");
+
+fn double _PyLong_Frexp(
+  PyLongObject* a, 
+  Py_ssize_t* e)
+@extern("_PyLong_Frexp");
+
+fn PyObject* PyLong_FromUnicodeObject(
+  PyObject* u, 
+  CInt base)
+@extern("PyLong_FromUnicodeObject");
+
+fn PyObject* _PyLong_FromBytes(
+  CChar*, 
+  Py_ssize_t, 
+  CInt)
+@extern("_PyLong_FromBytes");
+
+fn CInt _PyLong_Sign(
+  PyObject* v)
+@extern("_PyLong_Sign");
+
+fn usz _PyLong_NumBits(
+  PyObject* v)
+@extern("_PyLong_NumBits");
+
+fn PyObject* _PyLong_DivmodNear(
+  PyObject*, 
+  PyObject*)
+@extern("_PyLong_DivmodNear");
+
+fn PyObject* _PyLong_FromByteArray(
+  char* bytes, 
+  usz n, 
+  CInt little_endian, 
+  CInt is_signed)
+@extern("_PyLong_FromByteArray");
+
+fn CInt _PyLong_AsByteArray(
+  PyLongObject* v, 
+  char* bytes, 
+  usz n, 
+  CInt little_endian, 
+  CInt is_signed)
+@extern("_PyLong_AsByteArray");
+
+fn PyObject* _PyLong_Format(
+  PyObject* obj, 
+  CInt base)
+@extern("_PyLong_Format");
+
+fn PyObject* _PyLong_GCD(
+  PyObject*, 
+  PyObject*)
+@extern("_PyLong_GCD");
+
+fn PyObject* _PyLong_Rshift(
+  PyObject*, 
+  usz)
+@extern("_PyLong_Rshift");
+
+fn PyObject* _PyLong_Lshift(
+  PyObject*, 
+  usz)
+@extern("_PyLong_Lshift");
+
+fn CInt PyUnstable_Long_IsCompact(
+  PyLongObject* op)
+@extern("PyUnstable_Long_IsCompact");
+
+fn Py_ssize_t PyUnstable_Long_CompactValue(
+  PyLongObject* op)
+@extern("PyUnstable_Long_CompactValue");
+
+alias digit = uint;
+
+alias sdigit = int;
+
+alias twodigits = ulong;
+
+alias stwodigits = long;
+
+struct _PyLongValue {
+  uptr lv_tag;
+  digit[1] ob_digit;
+}
+
+struct _longobject {
+  PyObject ob_base;
+  _PyLongValue long_value;
+}
+
+fn PyLongObject* _PyLong_New(
+  Py_ssize_t)
+@extern("_PyLong_New");
+
+fn PyObject* _PyLong_Copy(
+  PyLongObject* src)
+@extern("_PyLong_Copy");
+
+fn PyLongObject* _PyLong_FromDigits(
+  CInt negative, 
+  Py_ssize_t digit_count, 
+  digit* digits)
+@extern("_PyLong_FromDigits");
+
+fn CInt _PyLong_IsCompact(
+  PyLongObject* op)
+@extern("_PyLong_IsCompact");
+
+fn Py_ssize_t _PyLong_CompactValue(
+  PyLongObject* op)
+@extern("_PyLong_CompactValue");
+
+PyLongObject _py_falsestruct;
+
+PyLongObject _py_truestruct;
+
+fn CInt Py_IsTrue(
+  PyObject* x)
+@extern("Py_IsTrue");
+
+fn CInt Py_IsFalse(
+  PyObject* x)
+@extern("Py_IsFalse");
+
+fn PyObject* PyBool_FromLong(
+  CLong)
+@extern("PyBool_FromLong");
+
+PyTypeObject pyfloat_type;
+
+fn double PyFloat_GetMax()
+@extern("PyFloat_GetMax");
+
+fn double PyFloat_GetMin()
+@extern("PyFloat_GetMin");
+
+fn PyObject* PyFloat_GetInfo()
+@extern("PyFloat_GetInfo");
+
+fn PyObject* PyFloat_FromString(
+  PyObject*)
+@extern("PyFloat_FromString");
+
+fn PyObject* PyFloat_FromDouble(
+  double)
+@extern("PyFloat_FromDouble");
+
+fn double PyFloat_AsDouble(
+  PyObject*)
+@extern("PyFloat_AsDouble");
+
+struct PyFloatObject {
+  PyObject ob_base;
+  double ob_fval;
+}
+
+fn double PyFloat_AS_DOUBLE(
+  PyObject* op)
+@extern("PyFloat_AS_DOUBLE");
+
+fn CInt PyFloat_Pack2(
+  double x, 
+  CChar* p, 
+  CInt le)
+@extern("PyFloat_Pack2");
+
+fn CInt PyFloat_Pack4(
+  double x, 
+  CChar* p, 
+  CInt le)
+@extern("PyFloat_Pack4");
+
+fn CInt PyFloat_Pack8(
+  double x, 
+  CChar* p, 
+  CInt le)
+@extern("PyFloat_Pack8");
+
+fn double PyFloat_Unpack2(
+  CChar* p, 
+  CInt le)
+@extern("PyFloat_Unpack2");
+
+fn double PyFloat_Unpack4(
+  CChar* p, 
+  CInt le)
+@extern("PyFloat_Unpack4");
+
+fn double PyFloat_Unpack8(
+  CChar* p, 
+  CInt le)
+@extern("PyFloat_Unpack8");
+
+PyTypeObject pycomplex_type;
+
+fn PyObject* PyComplex_FromDoubles(
+  double real, 
+  double imag)
+@extern("PyComplex_FromDoubles");
+
+fn double PyComplex_RealAsDouble(
+  PyObject* op)
+@extern("PyComplex_RealAsDouble");
+
+fn double PyComplex_ImagAsDouble(
+  PyObject* op)
+@extern("PyComplex_ImagAsDouble");
+
+struct Py_complex {
+  double real;
+  double imag;
+}
+
+fn Py_complex _Py_c_sum(
+  Py_complex, 
+  Py_complex)
+@extern("_Py_c_sum");
+
+fn Py_complex _Py_c_diff(
+  Py_complex, 
+  Py_complex)
+@extern("_Py_c_diff");
+
+fn Py_complex _Py_c_neg(
+  Py_complex)
+@extern("_Py_c_neg");
+
+fn Py_complex _Py_c_prod(
+  Py_complex, 
+  Py_complex)
+@extern("_Py_c_prod");
+
+fn Py_complex _Py_c_quot(
+  Py_complex, 
+  Py_complex)
+@extern("_Py_c_quot");
+
+fn Py_complex _Py_c_pow(
+  Py_complex, 
+  Py_complex)
+@extern("_Py_c_pow");
+
+fn double _Py_c_abs(
+  Py_complex)
+@extern("_Py_c_abs");
+
+struct PyComplexObject {
+  PyObject ob_base;
+  Py_complex cval;
+}
+
+fn PyObject* PyComplex_FromCComplex(
+  Py_complex)
+@extern("PyComplex_FromCComplex");
+
+fn Py_complex PyComplex_AsCComplex(
+  PyObject* op)
+@extern("PyComplex_AsCComplex");
+
+PyTypeObject pyrange_type;
+
+PyTypeObject pyrangeiter_type;
+
+PyTypeObject pylongrangeiter_type;
+
+PyTypeObject pymemoryview_type;
+
+fn PyObject* PyMemoryView_FromObject(
+  PyObject* base)
+@extern("PyMemoryView_FromObject");
+
+fn PyObject* PyMemoryView_FromMemory(
+  CChar* mem, 
+  Py_ssize_t size, 
+  CInt flags)
+@extern("PyMemoryView_FromMemory");
+
+fn PyObject* PyMemoryView_FromBuffer(
+  Py_buffer* info)
+@extern("PyMemoryView_FromBuffer");
+
+fn PyObject* PyMemoryView_GetContiguous(
+  PyObject* base, 
+  CInt buffertype, 
+  CChar order)
+@extern("PyMemoryView_GetContiguous");
+
+PyTypeObject _pymanagedbuffer_type;
+
+struct _PyManagedBufferObject {
+  PyObject ob_base;
+  CInt flags;
+  Py_ssize_t exports;
+  Py_buffer master;
+}
+
+struct PyMemoryViewObject {
+  PyVarObject ob_base;
+  _PyManagedBufferObject* mbuf;
+  Py_hash_t hash;
+  CInt flags;
+  Py_ssize_t exports;
+  Py_buffer view;
+  PyObject* weakreflist;
+  Py_ssize_t[1] ob_array;
+}
+
+fn Py_buffer* PyMemoryView_GET_BUFFER(
+  PyObject* op)
+@extern("PyMemoryView_GET_BUFFER");
+
+fn PyObject* PyMemoryView_GET_BASE(
+  PyObject* op)
+@extern("PyMemoryView_GET_BASE");
+
+PyTypeObject pytuple_type;
+
+PyTypeObject pytupleiter_type;
+
+fn PyObject* PyTuple_New(
+  Py_ssize_t size)
+@extern("PyTuple_New");
+
+fn Py_ssize_t PyTuple_Size(
+  PyObject*)
+@extern("PyTuple_Size");
+
+fn PyObject* PyTuple_GetItem(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyTuple_GetItem");
+
+fn CInt PyTuple_SetItem(
+  PyObject*, 
+  Py_ssize_t, 
+  PyObject*)
+@extern("PyTuple_SetItem");
+
+fn PyObject* PyTuple_GetSlice(
+  PyObject*, 
+  Py_ssize_t, 
+  Py_ssize_t)
+@extern("PyTuple_GetSlice");
+
+fn PyObject* PyTuple_Pack(
+  Py_ssize_t)
+@extern("PyTuple_Pack");
+
+struct PyTupleObject {
+  PyVarObject ob_base;
+  PyObject*[1] ob_item;
+}
+
+fn CInt _PyTuple_Resize(
+  PyObject**, 
+  Py_ssize_t)
+@extern("_PyTuple_Resize");
+
+fn void _PyTuple_MaybeUntrack(
+  PyObject*)
+@extern("_PyTuple_MaybeUntrack");
+
+fn Py_ssize_t PyTuple_GET_SIZE(
+  PyObject* op)
+@extern("PyTuple_GET_SIZE");
+
+fn void PyTuple_SET_ITEM(
+  PyObject* op, 
+  Py_ssize_t index, 
+  PyObject* value)
+@extern("PyTuple_SET_ITEM");
+
+fn void _PyTuple_DebugMallocStats(
+  FILE* out)
+@extern("_PyTuple_DebugMallocStats");
+
+PyTypeObject pylist_type;
+
+PyTypeObject pylistiter_type;
+
+PyTypeObject pylistreviter_type;
+
+fn PyObject* PyList_New(
+  Py_ssize_t size)
+@extern("PyList_New");
+
+fn Py_ssize_t PyList_Size(
+  PyObject*)
+@extern("PyList_Size");
+
+fn PyObject* PyList_GetItem(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyList_GetItem");
+
+fn CInt PyList_SetItem(
+  PyObject*, 
+  Py_ssize_t, 
+  PyObject*)
+@extern("PyList_SetItem");
+
+fn CInt PyList_Insert(
+  PyObject*, 
+  Py_ssize_t, 
+  PyObject*)
+@extern("PyList_Insert");
+
+fn CInt PyList_Append(
+  PyObject*, 
+  PyObject*)
+@extern("PyList_Append");
+
+fn PyObject* PyList_GetSlice(
+  PyObject*, 
+  Py_ssize_t, 
+  Py_ssize_t)
+@extern("PyList_GetSlice");
+
+fn CInt PyList_SetSlice(
+  PyObject*, 
+  Py_ssize_t, 
+  Py_ssize_t, 
+  PyObject*)
+@extern("PyList_SetSlice");
+
+fn CInt PyList_Sort(
+  PyObject*)
+@extern("PyList_Sort");
+
+fn CInt PyList_Reverse(
+  PyObject*)
+@extern("PyList_Reverse");
+
+fn PyObject* PyList_AsTuple(
+  PyObject*)
+@extern("PyList_AsTuple");
+
+struct PyListObject {
+  PyVarObject ob_base;
+  PyObject** ob_item;
+  Py_ssize_t allocated;
+}
+
+fn PyObject* _PyList_Extend(
+  PyListObject*, 
+  PyObject*)
+@extern("_PyList_Extend");
+
+fn void _PyList_DebugMallocStats(
+  FILE* out)
+@extern("_PyList_DebugMallocStats");
+
+fn Py_ssize_t PyList_GET_SIZE(
+  PyObject* op)
+@extern("PyList_GET_SIZE");
+
+fn void PyList_SET_ITEM(
+  PyObject* op, 
+  Py_ssize_t index, 
+  PyObject* value)
+@extern("PyList_SET_ITEM");
+
+PyTypeObject pydict_type;
+
+fn PyObject* PyDict_New()
+@extern("PyDict_New");
+
+fn PyObject* PyDict_GetItem(
+  PyObject* mp, 
+  PyObject* key)
+@extern("PyDict_GetItem");
+
+fn PyObject* PyDict_GetItemWithError(
+  PyObject* mp, 
+  PyObject* key)
+@extern("PyDict_GetItemWithError");
+
+fn CInt PyDict_SetItem(
+  PyObject* mp, 
+  PyObject* key, 
+  PyObject* item)
+@extern("PyDict_SetItem");
+
+fn CInt PyDict_DelItem(
+  PyObject* mp, 
+  PyObject* key)
+@extern("PyDict_DelItem");
+
+fn void PyDict_Clear(
+  PyObject* mp)
+@extern("PyDict_Clear");
+
+fn CInt PyDict_Next(
+  PyObject* mp, 
+  Py_ssize_t* pos, 
+  PyObject** key, 
+  PyObject** value)
+@extern("PyDict_Next");
+
+fn PyObject* PyDict_Keys(
+  PyObject* mp)
+@extern("PyDict_Keys");
+
+fn PyObject* PyDict_Values(
+  PyObject* mp)
+@extern("PyDict_Values");
+
+fn PyObject* PyDict_Items(
+  PyObject* mp)
+@extern("PyDict_Items");
+
+fn Py_ssize_t PyDict_Size(
+  PyObject* mp)
+@extern("PyDict_Size");
+
+fn PyObject* PyDict_Copy(
+  PyObject* mp)
+@extern("PyDict_Copy");
+
+fn CInt PyDict_Contains(
+  PyObject* mp, 
+  PyObject* key)
+@extern("PyDict_Contains");
+
+fn CInt PyDict_Update(
+  PyObject* mp, 
+  PyObject* other)
+@extern("PyDict_Update");
+
+fn CInt PyDict_Merge(
+  PyObject* mp, 
+  PyObject* other, 
+  CInt override)
+@extern("PyDict_Merge");
+
+fn CInt PyDict_MergeFromSeq2(
+  PyObject* d, 
+  PyObject* seq2, 
+  CInt override)
+@extern("PyDict_MergeFromSeq2");
+
+fn PyObject* PyDict_GetItemString(
+  PyObject* dp, 
+  CChar* key)
+@extern("PyDict_GetItemString");
+
+fn CInt PyDict_SetItemString(
+  PyObject* dp, 
+  CChar* key, 
+  PyObject* item)
+@extern("PyDict_SetItemString");
+
+fn CInt PyDict_DelItemString(
+  PyObject* dp, 
+  CChar* key)
+@extern("PyDict_DelItemString");
+
+fn PyObject* PyObject_GenericGetDict(
+  PyObject*, 
+  void*)
+@extern("PyObject_GenericGetDict");
+
+PyTypeObject pydictkeys_type;
+
+PyTypeObject pydictvalues_type;
+
+PyTypeObject pydictitems_type;
+
+PyTypeObject pydictiterkey_type;
+
+PyTypeObject pydictitervalue_type;
+
+PyTypeObject pydictiteritem_type;
+
+PyTypeObject pydictreviterkey_type;
+
+PyTypeObject pydictreviteritem_type;
+
+PyTypeObject pydictrevitervalue_type;
+
+alias PyDictKeysObject = void;
+
+alias PyDictValues = void;
+
+struct PyDictObject {
+  PyObject ob_base;
+  Py_ssize_t ma_used;
+  ulong ma_version_tag;
+  PyDictKeysObject* ma_keys;
+  PyDictValues* ma_values;
+}
+
+fn PyObject* _PyDict_GetItem_KnownHash(
+  PyObject* mp, 
+  PyObject* key, 
+  Py_hash_t hash)
+@extern("_PyDict_GetItem_KnownHash");
+
+fn PyObject* _PyDict_GetItemWithError(
+  PyObject* dp, 
+  PyObject* key)
+@extern("_PyDict_GetItemWithError");
+
+fn PyObject* _PyDict_GetItemIdWithError(
+  PyObject* dp, 
+  _Py_Identifier* key)
+@extern("_PyDict_GetItemIdWithError");
+
+fn PyObject* _PyDict_GetItemStringWithError(
+  PyObject*, 
+  CChar*)
+@extern("_PyDict_GetItemStringWithError");
+
+fn PyObject* PyDict_SetDefault(
+  PyObject* mp, 
+  PyObject* key, 
+  PyObject* defaultobj)
+@extern("PyDict_SetDefault");
+
+fn CInt _PyDict_SetItem_KnownHash(
+  PyObject* mp, 
+  PyObject* key, 
+  PyObject* item, 
+  Py_hash_t hash)
+@extern("_PyDict_SetItem_KnownHash");
+
+fn CInt _PyDict_DelItem_KnownHash(
+  PyObject* mp, 
+  PyObject* key, 
+  Py_hash_t hash)
+@extern("_PyDict_DelItem_KnownHash");
+
+alias UnnamedPFN8 @private = fn CInt(
+  PyObject* value);
+
+fn CInt _PyDict_DelItemIf(
+  PyObject* mp, 
+  PyObject* key, 
+  UnnamedPFN8 predicate)
+@extern("_PyDict_DelItemIf");
+
+fn CInt _PyDict_Next(
+  PyObject* mp, 
+  Py_ssize_t* pos, 
+  PyObject** key, 
+  PyObject** value, 
+  Py_hash_t* hash)
+@extern("_PyDict_Next");
+
+fn Py_ssize_t PyDict_GET_SIZE(
+  PyObject* op)
+@extern("PyDict_GET_SIZE");
+
+fn CInt _PyDict_Contains_KnownHash(
+  PyObject*, 
+  PyObject*, 
+  Py_hash_t)
+@extern("_PyDict_Contains_KnownHash");
+
+fn CInt _PyDict_ContainsId(
+  PyObject*, 
+  _Py_Identifier*)
+@extern("_PyDict_ContainsId");
+
+fn PyObject* _PyDict_NewPresized(
+  Py_ssize_t minused)
+@extern("_PyDict_NewPresized");
+
+fn void _PyDict_MaybeUntrack(
+  PyObject* mp)
+@extern("_PyDict_MaybeUntrack");
+
+fn CInt _PyDict_HasOnlyStringKeys(
+  PyObject* mp)
+@extern("_PyDict_HasOnlyStringKeys");
+
+fn Py_ssize_t _PyDict_SizeOf(
+  PyDictObject*)
+@extern("_PyDict_SizeOf");
+
+fn PyObject* _PyDict_Pop(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("_PyDict_Pop");
+
+fn CInt _PyDict_MergeEx(
+  PyObject* mp, 
+  PyObject* other, 
+  CInt override)
+@extern("_PyDict_MergeEx");
+
+fn CInt _PyDict_SetItemId(
+  PyObject* dp, 
+  _Py_Identifier* key, 
+  PyObject* item)
+@extern("_PyDict_SetItemId");
+
+fn CInt _PyDict_DelItemId(
+  PyObject* mp, 
+  _Py_Identifier* key)
+@extern("_PyDict_DelItemId");
+
+fn void _PyDict_DebugMallocStats(
+  FILE* out)
+@extern("_PyDict_DebugMallocStats");
+
+struct _PyDictViewObject {
+  PyObject ob_base;
+  PyDictObject* dv_dict;
+}
+
+fn PyObject* _PyDictView_New(
+  PyObject*, 
+  PyTypeObject*)
+@extern("_PyDictView_New");
+
+fn PyObject* _PyDictView_Intersect(
+  PyObject* self, 
+  PyObject* other)
+@extern("_PyDictView_Intersect");
+
+typedef PyDict_WatchEvent = inline CUInt;
+const PyDict_WatchEvent PYDICT_EVENT_ADDED = 0;
+const PyDict_WatchEvent PYDICT_EVENT_MODIFIED = 1;
+const PyDict_WatchEvent PYDICT_EVENT_DELETED = 2;
+const PyDict_WatchEvent PYDICT_EVENT_CLONED = 3;
+const PyDict_WatchEvent PYDICT_EVENT_CLEARED = 4;
+const PyDict_WatchEvent PYDICT_EVENT_DEALLOCATED = 5;
+
+alias PyDict_WatchCallback = fn CInt(
+  PyDict_WatchEvent event, 
+  PyObject* dict, 
+  PyObject* key, 
+  PyObject* new_value);
+
+fn CInt PyDict_AddWatcher(
+  PyDict_WatchCallback callback)
+@extern("PyDict_AddWatcher");
+
+fn CInt PyDict_ClearWatcher(
+  CInt watcher_id)
+@extern("PyDict_ClearWatcher");
+
+fn CInt PyDict_Watch(
+  CInt watcher_id, 
+  PyObject* dict)
+@extern("PyDict_Watch");
+
+fn CInt PyDict_Unwatch(
+  CInt watcher_id, 
+  PyObject* dict)
+@extern("PyDict_Unwatch");
+
+alias PyODictObject = void;
+
+PyTypeObject pyodict_type;
+
+PyTypeObject pyodictiter_type;
+
+PyTypeObject pyodictkeys_type;
+
+PyTypeObject pyodictitems_type;
+
+PyTypeObject pyodictvalues_type;
+
+fn PyObject* PyODict_New()
+@extern("PyODict_New");
+
+fn CInt PyODict_SetItem(
+  PyObject* od, 
+  PyObject* key, 
+  PyObject* item)
+@extern("PyODict_SetItem");
+
+fn CInt PyODict_DelItem(
+  PyObject* od, 
+  PyObject* key)
+@extern("PyODict_DelItem");
+
+PyTypeObject pyenum_type;
+
+PyTypeObject pyreversed_type;
+
+PyTypeObject pyset_type;
+
+PyTypeObject pyfrozenset_type;
+
+PyTypeObject pysetiter_type;
+
+fn PyObject* PySet_New(
+  PyObject*)
+@extern("PySet_New");
+
+fn PyObject* PyFrozenSet_New(
+  PyObject*)
+@extern("PyFrozenSet_New");
+
+fn CInt PySet_Add(
+  PyObject* set, 
+  PyObject* key)
+@extern("PySet_Add");
+
+fn CInt PySet_Clear(
+  PyObject* set)
+@extern("PySet_Clear");
+
+fn CInt PySet_Contains(
+  PyObject* anyset, 
+  PyObject* key)
+@extern("PySet_Contains");
+
+fn CInt PySet_Discard(
+  PyObject* set, 
+  PyObject* key)
+@extern("PySet_Discard");
+
+fn PyObject* PySet_Pop(
+  PyObject* set)
+@extern("PySet_Pop");
+
+fn Py_ssize_t PySet_Size(
+  PyObject* anyset)
+@extern("PySet_Size");
+
+struct setentry {
+  PyObject* key;
+  Py_hash_t hash;
+}
+
+struct PySetObject {
+  PyObject ob_base;
+  Py_ssize_t fill;
+  Py_ssize_t used;
+  Py_ssize_t mask;
+  setentry* table;
+  Py_hash_t hash;
+  Py_ssize_t finger;
+  setentry[8] smalltable;
+  PyObject* weakreflist;
+}
+
+fn Py_ssize_t PySet_GET_SIZE(
+  PyObject* so)
+@extern("PySet_GET_SIZE");
+
+PyObject* _pyset_dummy;
+
+fn CInt _PySet_NextEntry(
+  PyObject* set, 
+  Py_ssize_t* pos, 
+  PyObject** key, 
+  Py_hash_t* hash)
+@extern("_PySet_NextEntry");
+
+fn CInt _PySet_Update(
+  PyObject* set, 
+  PyObject* iterable)
+@extern("_PySet_Update");
+
+PyTypeObject pycfunction_type;
+
+alias PyCFunction = fn PyObject*(
+  PyObject*, 
+  PyObject*);
+
+alias _PyCFunctionFast = fn PyObject*(
+  PyObject*, 
+  PyObject**, 
+  Py_ssize_t);
+
+alias PyCFunctionWithKeywords = fn PyObject*(
+  PyObject*, 
+  PyObject*, 
+  PyObject*);
+
+alias _PyCFunctionFastWithKeywords = fn PyObject*(
+  PyObject*, 
+  PyObject**, 
+  Py_ssize_t, 
+  PyObject*);
+
+alias PyCMethod = fn PyObject*(
+  PyObject*, 
+  PyTypeObject*, 
+  PyObject**, 
+  usz, 
+  PyObject*);
+
+fn PyCFunction PyCFunction_GetFunction(
+  PyObject*)
+@extern("PyCFunction_GetFunction");
+
+fn PyObject* PyCFunction_GetSelf(
+  PyObject*)
+@extern("PyCFunction_GetSelf");
+
+fn CInt PyCFunction_GetFlags(
+  PyObject*)
+@extern("PyCFunction_GetFlags");
+
+fn PyObject* PyCFunction_Call(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyCFunction_Call");
+
+struct PyMethodDef {
+  CChar* ml_name;
+  PyCFunction ml_meth;
+  CInt ml_flags;
+  CChar* ml_doc;
+}
+
+fn PyObject* PyCFunction_New(
+  PyMethodDef*, 
+  PyObject*)
+@extern("PyCFunction_New");
+
+fn PyObject* PyCFunction_NewEx(
+  PyMethodDef*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyCFunction_NewEx");
+
+fn PyObject* PyCMethod_New(
+  PyMethodDef*, 
+  PyObject*, 
+  PyObject*, 
+  PyTypeObject*)
+@extern("PyCMethod_New");
+
+struct PyCFunctionObject {
+  PyObject ob_base;
+  PyMethodDef* m_ml;
+  PyObject* m_self;
+  PyObject* m_module;
+  PyObject* m_weakreflist;
+  vectorcallfunc vectorcall;
+}
+
+struct PyCMethodObject {
+  PyCFunctionObject func;
+  PyTypeObject* mm_class;
+}
+
+PyTypeObject pycmethod_type;
+
+fn PyCFunction PyCFunction_GET_FUNCTION(
+  PyObject* func)
+@extern("PyCFunction_GET_FUNCTION");
+
+fn PyObject* PyCFunction_GET_SELF(
+  PyObject* func_obj)
+@extern("PyCFunction_GET_SELF");
+
+fn CInt PyCFunction_GET_FLAGS(
+  PyObject* func)
+@extern("PyCFunction_GET_FLAGS");
+
+fn PyTypeObject* PyCFunction_GET_CLASS(
+  PyObject* func_obj)
+@extern("PyCFunction_GET_CLASS");
+
+PyTypeObject pymodule_type;
+
+fn PyObject* PyModule_NewObject(
+  PyObject* name)
+@extern("PyModule_NewObject");
+
+fn PyObject* PyModule_New(
+  CChar* name)
+@extern("PyModule_New");
+
+fn PyObject* PyModule_GetDict(
+  PyObject*)
+@extern("PyModule_GetDict");
+
+fn PyObject* PyModule_GetNameObject(
+  PyObject*)
+@extern("PyModule_GetNameObject");
+
+fn CChar* PyModule_GetName(
+  PyObject*)
+@extern("PyModule_GetName");
+
+fn CChar* PyModule_GetFilename(
+  PyObject*)
+@extern("PyModule_GetFilename");
+
+fn PyObject* PyModule_GetFilenameObject(
+  PyObject*)
+@extern("PyModule_GetFilenameObject");
+
+fn void _PyModule_Clear(
+  PyObject*)
+@extern("_PyModule_Clear");
+
+fn void _PyModule_ClearDict(
+  PyObject*)
+@extern("_PyModule_ClearDict");
+
+fn CInt _PyModuleSpec_IsInitializing(
+  PyObject*)
+@extern("_PyModuleSpec_IsInitializing");
+
+fn PyModuleDef* PyModule_GetDef(
+  PyObject*)
+@extern("PyModule_GetDef");
+
+fn void* PyModule_GetState(
+  PyObject*)
+@extern("PyModule_GetState");
+
+fn PyObject* PyModuleDef_Init(
+  PyModuleDef*)
+@extern("PyModuleDef_Init");
+
+PyTypeObject pymoduledef_type;
+
+alias UnnamedPFN9 @private = fn PyObject*();
+
+struct PyModuleDef_Base {
+  PyObject ob_base;
+  UnnamedPFN9 m_init;
+  Py_ssize_t m_index;
+  PyObject* m_copy;
+}
+
+struct PyModuleDef_Slot {
+  CInt slot;
+  void* value;
+}
+
+struct PyModuleDef {
+  PyModuleDef_Base m_base;
+  CChar* m_name;
+  CChar* m_doc;
+  Py_ssize_t m_size;
+  PyMethodDef* m_methods;
+  PyModuleDef_Slot* m_slots;
+  traverseproc m_traverse;
+  inquiry m_clear;
+  freefunc m_free;
+}
+
+struct PyFrameConstructor {
+  PyObject* fc_globals;
+  PyObject* fc_builtins;
+  PyObject* fc_name;
+  PyObject* fc_qualname;
+  PyObject* fc_code;
+  PyObject* fc_defaults;
+  PyObject* fc_kwdefaults;
+  PyObject* fc_closure;
+}
+
+struct PyFunctionObject {
+  PyObject ob_base;
+  PyObject* func_globals;
+  PyObject* func_builtins;
+  PyObject* func_name;
+  PyObject* func_qualname;
+  PyObject* func_code;
+  PyObject* func_defaults;
+  PyObject* func_kwdefaults;
+  PyObject* func_closure;
+  PyObject* func_doc;
+  PyObject* func_dict;
+  PyObject* func_weakreflist;
+  PyObject* func_module;
+  PyObject* func_annotations;
+  PyObject* func_typeparams;
+  vectorcallfunc vectorcall;
+  uint func_version;
+}
+
+PyTypeObject pyfunction_type;
+
+fn PyObject* PyFunction_New(
+  PyObject*, 
+  PyObject*)
+@extern("PyFunction_New");
+
+fn PyObject* PyFunction_NewWithQualName(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyFunction_NewWithQualName");
+
+fn PyObject* PyFunction_GetCode(
+  PyObject*)
+@extern("PyFunction_GetCode");
+
+fn PyObject* PyFunction_GetGlobals(
+  PyObject*)
+@extern("PyFunction_GetGlobals");
+
+fn PyObject* PyFunction_GetModule(
+  PyObject*)
+@extern("PyFunction_GetModule");
+
+fn PyObject* PyFunction_GetDefaults(
+  PyObject*)
+@extern("PyFunction_GetDefaults");
+
+fn CInt PyFunction_SetDefaults(
+  PyObject*, 
+  PyObject*)
+@extern("PyFunction_SetDefaults");
+
+fn void PyFunction_SetVectorcall(
+  PyFunctionObject*, 
+  vectorcallfunc)
+@extern("PyFunction_SetVectorcall");
+
+fn PyObject* PyFunction_GetKwDefaults(
+  PyObject*)
+@extern("PyFunction_GetKwDefaults");
+
+fn CInt PyFunction_SetKwDefaults(
+  PyObject*, 
+  PyObject*)
+@extern("PyFunction_SetKwDefaults");
+
+fn PyObject* PyFunction_GetClosure(
+  PyObject*)
+@extern("PyFunction_GetClosure");
+
+fn CInt PyFunction_SetClosure(
+  PyObject*, 
+  PyObject*)
+@extern("PyFunction_SetClosure");
+
+fn PyObject* PyFunction_GetAnnotations(
+  PyObject*)
+@extern("PyFunction_GetAnnotations");
+
+fn CInt PyFunction_SetAnnotations(
+  PyObject*, 
+  PyObject*)
+@extern("PyFunction_SetAnnotations");
+
+fn PyObject* _PyFunction_Vectorcall(
+  PyObject* func, 
+  PyObject** stack, 
+  usz nargsf, 
+  PyObject* kwnames)
+@extern("_PyFunction_Vectorcall");
+
+fn PyObject* PyFunction_GET_CODE(
+  PyObject* func)
+@extern("PyFunction_GET_CODE");
+
+fn PyObject* PyFunction_GET_GLOBALS(
+  PyObject* func)
+@extern("PyFunction_GET_GLOBALS");
+
+fn PyObject* PyFunction_GET_MODULE(
+  PyObject* func)
+@extern("PyFunction_GET_MODULE");
+
+fn PyObject* PyFunction_GET_DEFAULTS(
+  PyObject* func)
+@extern("PyFunction_GET_DEFAULTS");
+
+fn PyObject* PyFunction_GET_KW_DEFAULTS(
+  PyObject* func)
+@extern("PyFunction_GET_KW_DEFAULTS");
+
+fn PyObject* PyFunction_GET_CLOSURE(
+  PyObject* func)
+@extern("PyFunction_GET_CLOSURE");
+
+fn PyObject* PyFunction_GET_ANNOTATIONS(
+  PyObject* func)
+@extern("PyFunction_GET_ANNOTATIONS");
+
+PyTypeObject pyclassmethod_type;
+
+PyTypeObject pystaticmethod_type;
+
+fn PyObject* PyClassMethod_New(
+  PyObject*)
+@extern("PyClassMethod_New");
+
+fn PyObject* PyStaticMethod_New(
+  PyObject*)
+@extern("PyStaticMethod_New");
+
+typedef PyFunction_WatchEvent = inline CUInt;
+const PyFunction_WatchEvent PYFUNCTION_EVENT_CREATE = 0;
+const PyFunction_WatchEvent PYFUNCTION_EVENT_DESTROY = 1;
+const PyFunction_WatchEvent PYFUNCTION_EVENT_MODIFY_CODE = 2;
+const PyFunction_WatchEvent PYFUNCTION_EVENT_MODIFY_DEFAULTS = 3;
+const PyFunction_WatchEvent PYFUNCTION_EVENT_MODIFY_KWDEFAULTS = 4;
+
+alias PyFunction_WatchCallback = fn CInt(
+  PyFunction_WatchEvent event, 
+  PyFunctionObject* func, 
+  PyObject* new_value);
+
+fn CInt PyFunction_AddWatcher(
+  PyFunction_WatchCallback callback)
+@extern("PyFunction_AddWatcher");
+
+fn CInt PyFunction_ClearWatcher(
+  CInt watcher_id)
+@extern("PyFunction_ClearWatcher");
+
+struct PyMethodObject {
+  PyObject ob_base;
+  PyObject* im_func;
+  PyObject* im_self;
+  PyObject* im_weakreflist;
+  vectorcallfunc vectorcall;
+}
+
+PyTypeObject pymethod_type;
+
+fn PyObject* PyMethod_New(
+  PyObject*, 
+  PyObject*)
+@extern("PyMethod_New");
+
+fn PyObject* PyMethod_Function(
+  PyObject*)
+@extern("PyMethod_Function");
+
+fn PyObject* PyMethod_Self(
+  PyObject*)
+@extern("PyMethod_Self");
+
+fn PyObject* PyMethod_GET_FUNCTION(
+  PyObject* meth)
+@extern("PyMethod_GET_FUNCTION");
+
+fn PyObject* PyMethod_GET_SELF(
+  PyObject* meth)
+@extern("PyMethod_GET_SELF");
+
+struct PyInstanceMethodObject {
+  PyObject ob_base;
+  PyObject* func;
+}
+
+PyTypeObject pyinstancemethod_type;
+
+fn PyObject* PyInstanceMethod_New(
+  PyObject*)
+@extern("PyInstanceMethod_New");
+
+fn PyObject* PyInstanceMethod_Function(
+  PyObject*)
+@extern("PyInstanceMethod_Function");
+
+fn PyObject* PyInstanceMethod_GET_FUNCTION(
+  PyObject* meth)
+@extern("PyInstanceMethod_GET_FUNCTION");
+
+fn PyObject* PyFile_FromFd(
+  CInt, 
+  CChar*, 
+  CChar*, 
+  CInt, 
+  CChar*, 
+  CChar*, 
+  CChar*, 
+  CInt)
+@extern("PyFile_FromFd");
+
+fn PyObject* PyFile_GetLine(
+  PyObject*, 
+  CInt)
+@extern("PyFile_GetLine");
+
+fn CInt PyFile_WriteObject(
+  PyObject*, 
+  PyObject*, 
+  CInt)
+@extern("PyFile_WriteObject");
+
+fn CInt PyFile_WriteString(
+  CChar*, 
+  PyObject*)
+@extern("PyFile_WriteString");
+
+fn CInt PyObject_AsFileDescriptor(
+  PyObject*)
+@extern("PyObject_AsFileDescriptor");
+
+CChar* py_filesystemdefaultencoding;
+
+CChar* py_filesystemdefaultencodeerrors;
+
+CInt py_hasfilesystemdefaultencoding;
+
+CInt py_utf8mode;
+
+fn CChar* Py_UniversalNewlineFgets(
+  CChar*, 
+  CInt, 
+  FILE*, 
+  PyObject*)
+@extern("Py_UniversalNewlineFgets");
+
+fn CChar* _Py_UniversalNewlineFgetsWithSize(
+  CChar*, 
+  CInt, 
+  FILE*, 
+  PyObject*, 
+  usz*)
+@extern("_Py_UniversalNewlineFgetsWithSize");
+
+fn PyObject* PyFile_NewStdPrinter(
+  CInt)
+@extern("PyFile_NewStdPrinter");
+
+PyTypeObject pystdprinter_type;
+
+alias Py_OpenCodeHookFunction = fn PyObject*(
+  PyObject*, 
+  void*);
+
+fn PyObject* PyFile_OpenCode(
+  CChar* utf8path)
+@extern("PyFile_OpenCode");
+
+fn PyObject* PyFile_OpenCodeObject(
+  PyObject* path)
+@extern("PyFile_OpenCodeObject");
+
+fn CInt PyFile_SetOpenCodeHook(
+  Py_OpenCodeHookFunction hook, 
+  void* userdata)
+@extern("PyFile_SetOpenCodeHook");
+
+fn CInt _PyLong_FileDescriptor_Converter(
+  PyObject*, 
+  void*)
+@extern("_PyLong_FileDescriptor_Converter");
+
+PyTypeObject pycapsule_type;
+
+alias PyCapsule_Destructor = fn void(
+  PyObject*);
+
+fn PyObject* PyCapsule_New(
+  void* pointer, 
+  CChar* name, 
+  PyCapsule_Destructor destructor)
+@extern("PyCapsule_New");
+
+fn void* PyCapsule_GetPointer(
+  PyObject* capsule, 
+  CChar* name)
+@extern("PyCapsule_GetPointer");
+
+fn PyCapsule_Destructor PyCapsule_GetDestructor(
+  PyObject* capsule)
+@extern("PyCapsule_GetDestructor");
+
+fn CChar* PyCapsule_GetName(
+  PyObject* capsule)
+@extern("PyCapsule_GetName");
+
+fn void* PyCapsule_GetContext(
+  PyObject* capsule)
+@extern("PyCapsule_GetContext");
+
+fn CInt PyCapsule_IsValid(
+  PyObject* capsule, 
+  CChar* name)
+@extern("PyCapsule_IsValid");
+
+fn CInt PyCapsule_SetPointer(
+  PyObject* capsule, 
+  void* pointer)
+@extern("PyCapsule_SetPointer");
+
+fn CInt PyCapsule_SetDestructor(
+  PyObject* capsule, 
+  PyCapsule_Destructor destructor)
+@extern("PyCapsule_SetDestructor");
+
+fn CInt PyCapsule_SetName(
+  PyObject* capsule, 
+  CChar* name)
+@extern("PyCapsule_SetName");
+
+fn CInt PyCapsule_SetContext(
+  PyObject* capsule, 
+  void* context)
+@extern("PyCapsule_SetContext");
+
+fn void* PyCapsule_Import(
+  CChar* name, 
+  CInt no_block)
+@extern("PyCapsule_Import");
+
+struct _Py_LocalMonitors {
+  char[15] tools;
+}
+
+struct _Py_GlobalMonitors {
+  char[15] tools;
+}
+
+union _Py_CODEUNIT {
+  ushort cache;
+  struct op {
+    char code;
+    char arg;
+  }
+}
+
+fn _Py_CODEUNIT _py_make_codeunit(
+  char opcode, 
+  char oparg)
+@extern("_py_make_codeunit");
+
+fn void _py_set_opcode(
+  _Py_CODEUNIT* word, 
+  char opcode)
+@extern("_py_set_opcode");
+
+struct _PyCoCached {
+  PyObject* _co_code;
+  PyObject* _co_varnames;
+  PyObject* _co_cellvars;
+  PyObject* _co_freevars;
+}
+
+struct _PyCoLineInstrumentationData {
+  char original_opcode;
+  ichar line_delta;
+}
+
+struct _PyCoMonitoringData {
+  _Py_LocalMonitors local_monitors;
+  _Py_LocalMonitors active_monitors;
+  char* tools;
+  _PyCoLineInstrumentationData* lines;
+  char* line_tools;
+  char* per_instruction_opcodes;
+  char* per_instruction_tools;
+}
+
+struct PyCodeObject {
+  PyVarObject ob_base;
+  PyObject* co_consts;
+  PyObject* co_names;
+  PyObject* co_exceptiontable;
+  CInt co_flags;
+  CInt co_argcount;
+  CInt co_posonlyargcount;
+  CInt co_kwonlyargcount;
+  CInt co_stacksize;
+  CInt co_firstlineno;
+  CInt co_nlocalsplus;
+  CInt co_framesize;
+  CInt co_nlocals;
+  CInt co_ncellvars;
+  CInt co_nfreevars;
+  uint co_version;
+  PyObject* co_localsplusnames;
+  PyObject* co_localspluskinds;
+  PyObject* co_filename;
+  PyObject* co_name;
+  PyObject* co_qualname;
+  PyObject* co_linetable;
+  PyObject* co_weakreflist;
+  _PyCoCached* _co_cached;
+  ulong _co_instrumentation_version;
+  _PyCoMonitoringData* _co_monitoring;
+  CInt _co_firsttraceable;
+  void* co_extra;
+  CChar[1] co_code_adaptive;
+}
+
+PyTypeObject pycode_type;
+
+fn Py_ssize_t PyCode_GetNumFree(
+  PyCodeObject* op)
+@extern("PyCode_GetNumFree");
+
+fn CInt PyCode_GetFirstFree(
+  PyCodeObject* op)
+@extern("PyCode_GetFirstFree");
+
+fn PyCodeObject* PyUnstable_Code_New(
+  CInt, 
+  CInt, 
+  CInt, 
+  CInt, 
+  CInt, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  CInt, 
+  PyObject*, 
+  PyObject*)
+@extern("PyUnstable_Code_New");
+
+fn PyCodeObject* PyUnstable_Code_NewWithPosOnlyArgs(
+  CInt, 
+  CInt, 
+  CInt, 
+  CInt, 
+  CInt, 
+  CInt, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  CInt, 
+  PyObject*, 
+  PyObject*)
+@extern("PyUnstable_Code_NewWithPosOnlyArgs");
+
+fn PyCodeObject* PyCode_New(
+  CInt a, 
+  CInt b, 
+  CInt c, 
+  CInt d, 
+  CInt e, 
+  PyObject* f, 
+  PyObject* g, 
+  PyObject* h, 
+  PyObject* i, 
+  PyObject* j, 
+  PyObject* k, 
+  PyObject* l, 
+  PyObject* m, 
+  PyObject* n, 
+  CInt o, 
+  PyObject* p, 
+  PyObject* q)
+@extern("PyCode_New");
+
+fn PyCodeObject* PyCode_NewWithPosOnlyArgs(
+  CInt a, 
+  CInt poac, 
+  CInt b, 
+  CInt c, 
+  CInt d, 
+  CInt e, 
+  PyObject* f, 
+  PyObject* g, 
+  PyObject* h, 
+  PyObject* i, 
+  PyObject* j, 
+  PyObject* k, 
+  PyObject* l, 
+  PyObject* m, 
+  PyObject* n, 
+  CInt o, 
+  PyObject* p, 
+  PyObject* q)
+@extern("PyCode_NewWithPosOnlyArgs");
+
+fn PyCodeObject* PyCode_NewEmpty(
+  CChar* filename, 
+  CChar* funcname, 
+  CInt firstlineno)
+@extern("PyCode_NewEmpty");
+
+fn CInt PyCode_Addr2Line(
+  PyCodeObject*, 
+  CInt)
+@extern("PyCode_Addr2Line");
+
+fn CInt PyCode_Addr2Location(
+  PyCodeObject*, 
+  CInt, 
+  CInt*, 
+  CInt*, 
+  CInt*, 
+  CInt*)
+@extern("PyCode_Addr2Location");
+
+typedef PyCodeEvent = inline CUInt;
+const PyCodeEvent PY_CODE_EVENT_CREATE = 0;
+const PyCodeEvent PY_CODE_EVENT_DESTROY = 1;
+
+alias PyCode_WatchCallback = fn CInt(
+  PyCodeEvent event, 
+  PyCodeObject* co);
+
+fn CInt PyCode_AddWatcher(
+  PyCode_WatchCallback callback)
+@extern("PyCode_AddWatcher");
+
+fn CInt PyCode_ClearWatcher(
+  CInt watcher_id)
+@extern("PyCode_ClearWatcher");
+
+struct _opaque {
+  CInt computed_line;
+  char* lo_next;
+  char* limit;
+}
+
+struct _line_offsets {
+  CInt ar_start;
+  CInt ar_end;
+  CInt ar_line;
+  _opaque opaque;
+}
+
+alias PyCodeAddressRange = _line_offsets;
+
+fn CInt _PyCode_CheckLineNumber(
+  CInt lasti, 
+  PyCodeAddressRange* bounds)
+@extern("_PyCode_CheckLineNumber");
+
+fn PyObject* _PyCode_ConstantKey(
+  PyObject* obj)
+@extern("_PyCode_ConstantKey");
+
+fn PyObject* PyCode_Optimize(
+  PyObject* code, 
+  PyObject* consts, 
+  PyObject* names, 
+  PyObject* lnotab)
+@extern("PyCode_Optimize");
+
+fn CInt PyUnstable_Code_GetExtra(
+  PyObject* code, 
+  Py_ssize_t index, 
+  void** extra)
+@extern("PyUnstable_Code_GetExtra");
+
+fn CInt PyUnstable_Code_SetExtra(
+  PyObject* code, 
+  Py_ssize_t index, 
+  void* extra)
+@extern("PyUnstable_Code_SetExtra");
+
+fn CInt _PyCode_GetExtra(
+  PyObject* code, 
+  Py_ssize_t index, 
+  void** extra)
+@extern("_PyCode_GetExtra");
+
+fn CInt _PyCode_SetExtra(
+  PyObject* code, 
+  Py_ssize_t index, 
+  void* extra)
+@extern("_PyCode_SetExtra");
+
+fn PyObject* PyCode_GetCode(
+  PyCodeObject* code)
+@extern("PyCode_GetCode");
+
+fn PyObject* PyCode_GetVarnames(
+  PyCodeObject* code)
+@extern("PyCode_GetVarnames");
+
+fn PyObject* PyCode_GetCellvars(
+  PyCodeObject* code)
+@extern("PyCode_GetCellvars");
+
+fn PyObject* PyCode_GetFreevars(
+  PyCodeObject* code)
+@extern("PyCode_GetFreevars");
+
+typedef _PyCodeLocationInfoKind = inline CUInt;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_SHORT0 = 0;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_ONE_LINE0 = 10;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_ONE_LINE1 = 11;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_ONE_LINE2 = 12;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_NO_COLUMNS = 13;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_LONG = 14;
+const _PyCodeLocationInfoKind PY_CODE_LOCATION_INFO_NONE = 15;
+
+fn CInt PyFrame_GetLineNumber(
+  PyFrameObject*)
+@extern("PyFrame_GetLineNumber");
+
+fn PyCodeObject* PyFrame_GetCode(
+  PyFrameObject* frame)
+@extern("PyFrame_GetCode");
+
+PyTypeObject pyframe_type;
+
+fn PyFrameObject* PyFrame_GetBack(
+  PyFrameObject* frame)
+@extern("PyFrame_GetBack");
+
+fn PyObject* PyFrame_GetLocals(
+  PyFrameObject* frame)
+@extern("PyFrame_GetLocals");
+
+fn PyObject* PyFrame_GetGlobals(
+  PyFrameObject* frame)
+@extern("PyFrame_GetGlobals");
+
+fn PyObject* PyFrame_GetBuiltins(
+  PyFrameObject* frame)
+@extern("PyFrame_GetBuiltins");
+
+fn PyObject* PyFrame_GetGenerator(
+  PyFrameObject* frame)
+@extern("PyFrame_GetGenerator");
+
+fn CInt PyFrame_GetLasti(
+  PyFrameObject* frame)
+@extern("PyFrame_GetLasti");
+
+fn PyObject* PyFrame_GetVar(
+  PyFrameObject* frame, 
+  PyObject* name)
+@extern("PyFrame_GetVar");
+
+fn PyObject* PyFrame_GetVarString(
+  PyFrameObject* frame, 
+  CChar* name)
+@extern("PyFrame_GetVarString");
+
+fn PyObject* PyUnstable_InterpreterFrame_GetCode(
+  _PyInterpreterFrame* frame)
+@extern("PyUnstable_InterpreterFrame_GetCode");
+
+fn CInt PyUnstable_InterpreterFrame_GetLasti(
+  _PyInterpreterFrame* frame)
+@extern("PyUnstable_InterpreterFrame_GetLasti");
+
+fn CInt PyUnstable_InterpreterFrame_GetLine(
+  _PyInterpreterFrame* frame)
+@extern("PyUnstable_InterpreterFrame_GetLine");
+
+fn CInt PyTraceBack_Here(
+  PyFrameObject*)
+@extern("PyTraceBack_Here");
+
+fn CInt PyTraceBack_Print(
+  PyObject*, 
+  PyObject*)
+@extern("PyTraceBack_Print");
+
+PyTypeObject pytraceback_type;
+
+typedef _traceback = void;
+
+alias PyTracebackObject = _traceback;
+
+struct _traceback {
+  PyObject ob_base;
+  PyTracebackObject* tb_next;
+  PyFrameObject* tb_frame;
+  CInt tb_lasti;
+  CInt tb_lineno;
+}
+
+fn CInt _Py_DisplaySourceLine(
+  PyObject*, 
+  PyObject*, 
+  CInt, 
+  CInt, 
+  CInt*, 
+  PyObject**)
+@extern("_Py_DisplaySourceLine");
+
+fn void _PyTraceback_Add(
+  CChar*, 
+  CChar*, 
+  CInt)
+@extern("_PyTraceback_Add");
+
+PyObject _py_ellipsisobject;
+
+struct PySliceObject {
+  PyObject ob_base;
+  PyObject* start;
+  PyObject* stop;
+  PyObject* step;
+}
+
+PyTypeObject pyslice_type;
+
+PyTypeObject pyellipsis_type;
+
+fn PyObject* PySlice_New(
+  PyObject* start, 
+  PyObject* stop, 
+  PyObject* step)
+@extern("PySlice_New");
+
+fn PyObject* _PySlice_FromIndices(
+  Py_ssize_t start, 
+  Py_ssize_t stop)
+@extern("_PySlice_FromIndices");
+
+fn CInt _PySlice_GetLongIndices(
+  PySliceObject* self, 
+  PyObject* length, 
+  PyObject** start_ptr, 
+  PyObject** stop_ptr, 
+  PyObject** step_ptr)
+@extern("_PySlice_GetLongIndices");
+
+fn CInt PySlice_GetIndices(
+  PyObject* r, 
+  Py_ssize_t length, 
+  Py_ssize_t* start, 
+  Py_ssize_t* stop, 
+  Py_ssize_t* step)
+@extern("PySlice_GetIndices");
+
+fn CInt PySlice_GetIndicesEx(
+  PyObject* r, 
+  Py_ssize_t length, 
+  Py_ssize_t* start, 
+  Py_ssize_t* stop, 
+  Py_ssize_t* step, 
+  Py_ssize_t* slicelength)
+@extern("PySlice_GetIndicesEx");
+
+fn CInt PySlice_Unpack(
+  PyObject* slice, 
+  Py_ssize_t* start, 
+  Py_ssize_t* stop, 
+  Py_ssize_t* step)
+@extern("PySlice_Unpack");
+
+fn Py_ssize_t PySlice_AdjustIndices(
+  Py_ssize_t length, 
+  Py_ssize_t* start, 
+  Py_ssize_t* stop, 
+  Py_ssize_t step)
+@extern("PySlice_AdjustIndices");
+
+struct PyCellObject {
+  PyObject ob_base;
+  PyObject* ob_ref;
+}
+
+PyTypeObject pycell_type;
+
+fn PyObject* PyCell_New(
+  PyObject*)
+@extern("PyCell_New");
+
+fn PyObject* PyCell_Get(
+  PyObject*)
+@extern("PyCell_Get");
+
+fn CInt PyCell_Set(
+  PyObject*, 
+  PyObject*)
+@extern("PyCell_Set");
+
+fn PyObject* PyCell_GET(
+  PyObject* op)
+@extern("PyCell_GET");
+
+fn void PyCell_SET(
+  PyObject* op, 
+  PyObject* value)
+@extern("PyCell_SET");
+
+PyTypeObject pyseqiter_type;
+
+PyTypeObject pycalliter_type;
+
+fn PyObject* PySeqIter_New(
+  PyObject*)
+@extern("PySeqIter_New");
+
+fn PyObject* PyCallIter_New(
+  PyObject*, 
+  PyObject*)
+@extern("PyCallIter_New");
+
+struct PyGenObject {
+  PyObject ob_base;
+  PyObject* gi_weakreflist;
+  PyObject* gi_name;
+  PyObject* gi_qualname;
+  _PyErr_StackItem gi_exc_state;
+  PyObject* gi_origin_or_finalizer;
+  CChar gi_hooks_inited;
+  CChar gi_closed;
+  CChar gi_running_async;
+  ichar gi_frame_state;
+  PyObject*[1] gi_iframe;
+}
+
+PyTypeObject pygen_type;
+
+fn PyObject* PyGen_New(
+  PyFrameObject*)
+@extern("PyGen_New");
+
+fn PyObject* PyGen_NewWithQualName(
+  PyFrameObject*, 
+  PyObject* name, 
+  PyObject* qualname)
+@extern("PyGen_NewWithQualName");
+
+fn CInt _PyGen_SetStopIterationValue(
+  PyObject*)
+@extern("_PyGen_SetStopIterationValue");
+
+fn CInt _PyGen_FetchStopIterationValue(
+  PyObject**)
+@extern("_PyGen_FetchStopIterationValue");
+
+fn void _PyGen_Finalize(
+  PyObject* self)
+@extern("_PyGen_Finalize");
+
+fn PyCodeObject* PyGen_GetCode(
+  PyGenObject* gen)
+@extern("PyGen_GetCode");
+
+struct PyCoroObject {
+  PyObject ob_base;
+  PyObject* cr_weakreflist;
+  PyObject* cr_name;
+  PyObject* cr_qualname;
+  _PyErr_StackItem cr_exc_state;
+  PyObject* cr_origin_or_finalizer;
+  CChar cr_hooks_inited;
+  CChar cr_closed;
+  CChar cr_running_async;
+  ichar cr_frame_state;
+  PyObject*[1] cr_iframe;
+}
+
+PyTypeObject pycoro_type;
+
+PyTypeObject _pycorowrapper_type;
+
+fn PyObject* PyCoro_New(
+  PyFrameObject*, 
+  PyObject* name, 
+  PyObject* qualname)
+@extern("PyCoro_New");
+
+struct PyAsyncGenObject {
+  PyObject ob_base;
+  PyObject* ag_weakreflist;
+  PyObject* ag_name;
+  PyObject* ag_qualname;
+  _PyErr_StackItem ag_exc_state;
+  PyObject* ag_origin_or_finalizer;
+  CChar ag_hooks_inited;
+  CChar ag_closed;
+  CChar ag_running_async;
+  ichar ag_frame_state;
+  PyObject*[1] ag_iframe;
+}
+
+PyTypeObject pyasyncgen_type;
+
+PyTypeObject _pyasyncgenasend_type;
+
+PyTypeObject _pyasyncgenwrappedvalue_type;
+
+PyTypeObject _pyasyncgenathrow_type;
+
+fn PyObject* PyAsyncGen_New(
+  PyFrameObject*, 
+  PyObject* name, 
+  PyObject* qualname)
+@extern("PyAsyncGen_New");
+
+alias getter = fn PyObject*(
+  PyObject*, 
+  void*);
+
+alias setter = fn CInt(
+  PyObject*, 
+  PyObject*, 
+  void*);
+
+struct PyGetSetDef {
+  CChar* name;
+  getter get;
+  setter set;
+  CChar* doc;
+  void* closure;
+}
+
+PyTypeObject pyclassmethoddescr_type;
+
+PyTypeObject pygetsetdescr_type;
+
+PyTypeObject pymemberdescr_type;
+
+PyTypeObject pymethoddescr_type;
+
+PyTypeObject pywrapperdescr_type;
+
+PyTypeObject pydictproxy_type;
+
+PyTypeObject pyproperty_type;
+
+fn PyObject* PyDescr_NewMethod(
+  PyTypeObject*, 
+  PyMethodDef*)
+@extern("PyDescr_NewMethod");
+
+fn PyObject* PyDescr_NewClassMethod(
+  PyTypeObject*, 
+  PyMethodDef*)
+@extern("PyDescr_NewClassMethod");
+
+fn PyObject* PyDescr_NewMember(
+  PyTypeObject*, 
+  PyMemberDef*)
+@extern("PyDescr_NewMember");
+
+fn PyObject* PyDescr_NewGetSet(
+  PyTypeObject*, 
+  PyGetSetDef*)
+@extern("PyDescr_NewGetSet");
+
+fn PyObject* PyDictProxy_New(
+  PyObject*)
+@extern("PyDictProxy_New");
+
+fn PyObject* PyWrapper_New(
+  PyObject*, 
+  PyObject*)
+@extern("PyWrapper_New");
+
+struct PyMemberDef {
+  CChar* name;
+  CInt type;
+  Py_ssize_t offset;
+  CInt flags;
+  CChar* doc;
+}
+
+fn PyObject* PyMember_GetOne(
+  CChar*, 
+  PyMemberDef*)
+@extern("PyMember_GetOne");
+
+fn CInt PyMember_SetOne(
+  CChar*, 
+  PyMemberDef*, 
+  PyObject*)
+@extern("PyMember_SetOne");
+
+alias wrapperfunc = fn PyObject*(
+  PyObject* self, 
+  PyObject* args, 
+  void* wrapped);
+
+alias wrapperfunc_kwds = fn PyObject*(
+  PyObject* self, 
+  PyObject* args, 
+  void* wrapped, 
+  PyObject* kwds);
+
+struct wrapperbase {
+  CChar* name;
+  CInt offset;
+  void* function;
+  wrapperfunc wrapper;
+  CChar* doc;
+  CInt flags;
+  PyObject* name_strobj;
+}
+
+struct PyDescrObject {
+  PyObject ob_base;
+  PyTypeObject* d_type;
+  PyObject* d_name;
+  PyObject* d_qualname;
+}
+
+struct PyMethodDescrObject {
+  PyDescrObject d_common;
+  PyMethodDef* d_method;
+  vectorcallfunc vectorcall;
+}
+
+struct PyMemberDescrObject {
+  PyDescrObject d_common;
+  PyMemberDef* d_member;
+}
+
+struct PyGetSetDescrObject {
+  PyDescrObject d_common;
+  PyGetSetDef* d_getset;
+}
+
+struct PyWrapperDescrObject {
+  PyDescrObject d_common;
+  wrapperbase* d_base;
+  void* d_wrapped;
+}
+
+PyTypeObject _pymethodwrapper_type;
+
+fn PyObject* PyDescr_NewWrapper(
+  PyTypeObject*, 
+  wrapperbase*, 
+  void*)
+@extern("PyDescr_NewWrapper");
+
+fn CInt PyDescr_IsData(
+  PyObject*)
+@extern("PyDescr_IsData");
+
+fn PyObject* Py_GenericAlias(
+  PyObject*, 
+  PyObject*)
+@extern("Py_GenericAlias");
+
+PyTypeObject py_genericaliastype;
+
+fn CInt PyErr_WarnEx(
+  PyObject* category, 
+  CChar* message, 
+  Py_ssize_t stack_level)
+@extern("PyErr_WarnEx");
+
+fn CInt PyErr_WarnFormat(
+  PyObject* category, 
+  Py_ssize_t stack_level, 
+  CChar* format)
+@extern("PyErr_WarnFormat");
+
+fn CInt PyErr_ResourceWarning(
+  PyObject* source, 
+  Py_ssize_t stack_level, 
+  CChar* format)
+@extern("PyErr_ResourceWarning");
+
+fn CInt PyErr_WarnExplicit(
+  PyObject* category, 
+  CChar* message, 
+  CChar* filename, 
+  CInt lineno, 
+  CChar* module, 
+  PyObject* registry)
+@extern("PyErr_WarnExplicit");
+
+fn CInt PyErr_WarnExplicitObject(
+  PyObject* category, 
+  PyObject* message, 
+  PyObject* filename, 
+  CInt lineno, 
+  PyObject* module, 
+  PyObject* registry)
+@extern("PyErr_WarnExplicitObject");
+
+fn CInt PyErr_WarnExplicitFormat(
+  PyObject* category, 
+  CChar* filename, 
+  CInt lineno, 
+  CChar* module, 
+  PyObject* registry, 
+  CChar* format)
+@extern("PyErr_WarnExplicitFormat");
+
+typedef _PyWeakReference = void;
+
+alias PyWeakReference = _PyWeakReference;
+
+PyTypeObject _pyweakref_reftype;
+
+PyTypeObject _pyweakref_proxytype;
+
+PyTypeObject _pyweakref_callableproxytype;
+
+fn PyObject* PyWeakref_NewRef(
+  PyObject* ob, 
+  PyObject* callback)
+@extern("PyWeakref_NewRef");
+
+fn PyObject* PyWeakref_NewProxy(
+  PyObject* ob, 
+  PyObject* callback)
+@extern("PyWeakref_NewProxy");
+
+fn PyObject* PyWeakref_GetObject(
+  PyObject* ref)
+@extern("PyWeakref_GetObject");
+
+struct _PyWeakReference {
+  PyObject ob_base;
+  PyObject* wr_object;
+  PyObject* wr_callback;
+  Py_hash_t hash;
+  PyWeakReference* wr_prev;
+  PyWeakReference* wr_next;
+  vectorcallfunc vectorcall;
+}
+
+fn Py_ssize_t _PyWeakref_GetWeakrefCount(
+  PyWeakReference* head)
+@extern("_PyWeakref_GetWeakrefCount");
+
+fn void _PyWeakref_ClearRef(
+  PyWeakReference* self)
+@extern("_PyWeakref_ClearRef");
+
+fn PyObject* PyWeakref_GET_OBJECT(
+  PyObject* ref_obj)
+@extern("PyWeakref_GET_OBJECT");
+
+struct PyStructSequence_Field {
+  CChar* name;
+  CChar* doc;
+}
+
+struct PyStructSequence_Desc {
+  CChar* name;
+  CChar* doc;
+  PyStructSequence_Field* fields;
+  CInt n_in_sequence;
+}
+
+const CChar* PYSTRUCTSEQUENCE_UNNAMEDFIELD = @PyAPI_DATA(constchar*const);
+
+fn void PyStructSequence_InitType(
+  PyTypeObject* type, 
+  PyStructSequence_Desc* desc)
+@extern("PyStructSequence_InitType");
+
+fn CInt PyStructSequence_InitType2(
+  PyTypeObject* type, 
+  PyStructSequence_Desc* desc)
+@extern("PyStructSequence_InitType2");
+
+fn PyTypeObject* PyStructSequence_NewType(
+  PyStructSequence_Desc* desc)
+@extern("PyStructSequence_NewType");
+
+fn PyObject* PyStructSequence_New(
+  PyTypeObject* type)
+@extern("PyStructSequence_New");
+
+alias PyStructSequence = PyTupleObject;
+
+fn void PyStructSequence_SetItem(
+  PyObject*, 
+  Py_ssize_t, 
+  PyObject*)
+@extern("PyStructSequence_SetItem");
+
+fn PyObject* PyStructSequence_GetItem(
+  PyObject*, 
+  Py_ssize_t)
+@extern("PyStructSequence_GetItem");
+
+PyTypeObject pypicklebuffer_type;
+
+fn PyObject* PyPickleBuffer_FromObject(
+  PyObject*)
+@extern("PyPickleBuffer_FromObject");
+
+fn Py_buffer* PyPickleBuffer_GetBuffer(
+  PyObject*)
+@extern("PyPickleBuffer_GetBuffer");
+
+fn CInt PyPickleBuffer_Release(
+  PyObject*)
+@extern("PyPickleBuffer_Release");
+
+typedef timeval = void;
+
+alias _PyTime_t = long;
+
+typedef _PyTime_round_t = inline CUInt;
+
+fn PyObject* _PyLong_FromTime_t(
+  time_t sec)
+@extern("_PyLong_FromTime_t");
+
+fn time_t _PyLong_AsTime_t(
+  PyObject* obj)
+@extern("_PyLong_AsTime_t");
+
+fn CInt _PyTime_ObjectToTime_t(
+  PyObject* obj, 
+  time_t* sec, 
+  _PyTime_round_t)
+@extern("_PyTime_ObjectToTime_t");
+
+fn CInt _PyTime_ObjectToTimeval(
+  PyObject* obj, 
+  time_t* sec, 
+  CLong* usec, 
+  _PyTime_round_t)
+@extern("_PyTime_ObjectToTimeval");
+
+fn CInt _PyTime_ObjectToTimespec(
+  PyObject* obj, 
+  time_t* sec, 
+  CLong* nsec, 
+  _PyTime_round_t)
+@extern("_PyTime_ObjectToTimespec");
+
+fn _PyTime_t _PyTime_FromSeconds(
+  CInt seconds)
+@extern("_PyTime_FromSeconds");
+
+fn _PyTime_t _PyTime_FromNanoseconds(
+  _PyTime_t ns)
+@extern("_PyTime_FromNanoseconds");
+
+fn _PyTime_t _PyTime_FromMicrosecondsClamp(
+  _PyTime_t us)
+@extern("_PyTime_FromMicrosecondsClamp");
+
+fn CInt _PyTime_FromNanosecondsObject(
+  _PyTime_t* t, 
+  PyObject* obj)
+@extern("_PyTime_FromNanosecondsObject");
+
+fn CInt _PyTime_FromSecondsObject(
+  _PyTime_t* t, 
+  PyObject* obj, 
+  _PyTime_round_t round)
+@extern("_PyTime_FromSecondsObject");
+
+fn CInt _PyTime_FromMillisecondsObject(
+  _PyTime_t* t, 
+  PyObject* obj, 
+  _PyTime_round_t round)
+@extern("_PyTime_FromMillisecondsObject");
+
+fn double _PyTime_AsSecondsDouble(
+  _PyTime_t t)
+@extern("_PyTime_AsSecondsDouble");
+
+fn _PyTime_t _PyTime_AsMilliseconds(
+  _PyTime_t t, 
+  _PyTime_round_t round)
+@extern("_PyTime_AsMilliseconds");
+
+fn _PyTime_t _PyTime_AsMicroseconds(
+  _PyTime_t t, 
+  _PyTime_round_t round)
+@extern("_PyTime_AsMicroseconds");
+
+fn _PyTime_t _PyTime_AsNanoseconds(
+  _PyTime_t t)
+@extern("_PyTime_AsNanoseconds");
+
+fn PyObject* _PyTime_AsNanosecondsObject(
+  _PyTime_t t)
+@extern("_PyTime_AsNanosecondsObject");
+
+fn CInt _PyTime_FromTimeval(
+  _PyTime_t* tp, 
+  timeval* tv)
+@extern("_PyTime_FromTimeval");
+
+fn CInt _PyTime_AsTimeval(
+  _PyTime_t t, 
+  timeval* tv, 
+  _PyTime_round_t round)
+@extern("_PyTime_AsTimeval");
+
+fn void _PyTime_AsTimeval_clamp(
+  _PyTime_t t, 
+  timeval* tv, 
+  _PyTime_round_t round)
+@extern("_PyTime_AsTimeval_clamp");
+
+fn CInt _PyTime_AsTimevalTime_t(
+  _PyTime_t t, 
+  time_t* secs, 
+  CInt* us, 
+  _PyTime_round_t round)
+@extern("_PyTime_AsTimevalTime_t");
+
+fn CInt _PyTime_FromTimespec(
+  _PyTime_t* tp, 
+  timespec* ts)
+@extern("_PyTime_FromTimespec");
+
+fn CInt _PyTime_AsTimespec(
+  _PyTime_t t, 
+  timespec* ts)
+@extern("_PyTime_AsTimespec");
+
+fn void _PyTime_AsTimespec_clamp(
+  _PyTime_t t, 
+  timespec* ts)
+@extern("_PyTime_AsTimespec_clamp");
+
+fn _PyTime_t _PyTime_Add(
+  _PyTime_t t1, 
+  _PyTime_t t2)
+@extern("_PyTime_Add");
+
+fn _PyTime_t _PyTime_MulDiv(
+  _PyTime_t ticks, 
+  _PyTime_t mul, 
+  _PyTime_t div)
+@extern("_PyTime_MulDiv");
+
+struct _Py_clock_info_t {
+  CChar* implementation;
+  CInt monotonic;
+  CInt adjustable;
+  double resolution;
+}
+
+fn _PyTime_t _PyTime_GetSystemClock()
+@extern("_PyTime_GetSystemClock");
+
+fn CInt _PyTime_GetSystemClockWithInfo(
+  _PyTime_t* t, 
+  _Py_clock_info_t* info)
+@extern("_PyTime_GetSystemClockWithInfo");
+
+fn _PyTime_t _PyTime_GetMonotonicClock()
+@extern("_PyTime_GetMonotonicClock");
+
+fn CInt _PyTime_GetMonotonicClockWithInfo(
+  _PyTime_t* t, 
+  _Py_clock_info_t* info)
+@extern("_PyTime_GetMonotonicClockWithInfo");
+
+fn CInt _PyTime_localtime(
+  time_t t, 
+  tm* tm)
+@extern("_PyTime_localtime");
+
+fn CInt _PyTime_gmtime(
+  time_t t, 
+  tm* tm)
+@extern("_PyTime_gmtime");
+
+fn _PyTime_t _PyTime_GetPerfCounter()
+@extern("_PyTime_GetPerfCounter");
+
+fn CInt _PyTime_GetPerfCounterWithInfo(
+  _PyTime_t* t, 
+  _Py_clock_info_t* info)
+@extern("_PyTime_GetPerfCounterWithInfo");
+
+fn _PyTime_t _PyDeadline_Init(
+  _PyTime_t timeout)
+@extern("_PyDeadline_Init");
+
+fn _PyTime_t _PyDeadline_Get(
+  _PyTime_t deadline)
+@extern("_PyDeadline_Get");
+
+fn CInt PyCodec_Register(
+  PyObject* search_function)
+@extern("PyCodec_Register");
+
+fn CInt PyCodec_Unregister(
+  PyObject* search_function)
+@extern("PyCodec_Unregister");
+
+fn PyObject* _PyCodec_Lookup(
+  CChar* encoding)
+@extern("_PyCodec_Lookup");
+
+fn CInt _PyCodec_Forget(
+  CChar* encoding)
+@extern("_PyCodec_Forget");
+
+fn CInt PyCodec_KnownEncoding(
+  CChar* encoding)
+@extern("PyCodec_KnownEncoding");
+
+fn PyObject* PyCodec_Encode(
+  PyObject* object, 
+  CChar* encoding, 
+  CChar* errors)
+@extern("PyCodec_Encode");
+
+fn PyObject* PyCodec_Decode(
+  PyObject* object, 
+  CChar* encoding, 
+  CChar* errors)
+@extern("PyCodec_Decode");
+
+fn PyObject* _PyCodec_LookupTextEncoding(
+  CChar* encoding, 
+  CChar* alternate_command)
+@extern("_PyCodec_LookupTextEncoding");
+
+fn PyObject* _PyCodec_EncodeText(
+  PyObject* object, 
+  CChar* encoding, 
+  CChar* errors)
+@extern("_PyCodec_EncodeText");
+
+fn PyObject* _PyCodec_DecodeText(
+  PyObject* object, 
+  CChar* encoding, 
+  CChar* errors)
+@extern("_PyCodec_DecodeText");
+
+fn PyObject* _PyCodecInfo_GetIncrementalDecoder(
+  PyObject* codec_info, 
+  CChar* errors)
+@extern("_PyCodecInfo_GetIncrementalDecoder");
+
+fn PyObject* _PyCodecInfo_GetIncrementalEncoder(
+  PyObject* codec_info, 
+  CChar* errors)
+@extern("_PyCodecInfo_GetIncrementalEncoder");
+
+fn PyObject* PyCodec_Encoder(
+  CChar* encoding)
+@extern("PyCodec_Encoder");
+
+fn PyObject* PyCodec_Decoder(
+  CChar* encoding)
+@extern("PyCodec_Decoder");
+
+fn PyObject* PyCodec_IncrementalEncoder(
+  CChar* encoding, 
+  CChar* errors)
+@extern("PyCodec_IncrementalEncoder");
+
+fn PyObject* PyCodec_IncrementalDecoder(
+  CChar* encoding, 
+  CChar* errors)
+@extern("PyCodec_IncrementalDecoder");
+
+fn PyObject* PyCodec_StreamReader(
+  CChar* encoding, 
+  PyObject* stream, 
+  CChar* errors)
+@extern("PyCodec_StreamReader");
+
+fn PyObject* PyCodec_StreamWriter(
+  CChar* encoding, 
+  PyObject* stream, 
+  CChar* errors)
+@extern("PyCodec_StreamWriter");
+
+fn CInt PyCodec_RegisterError(
+  CChar* name, 
+  PyObject* error)
+@extern("PyCodec_RegisterError");
+
+fn PyObject* PyCodec_LookupError(
+  CChar* name)
+@extern("PyCodec_LookupError");
+
+fn PyObject* PyCodec_StrictErrors(
+  PyObject* exc)
+@extern("PyCodec_StrictErrors");
+
+fn PyObject* PyCodec_IgnoreErrors(
+  PyObject* exc)
+@extern("PyCodec_IgnoreErrors");
+
+fn PyObject* PyCodec_ReplaceErrors(
+  PyObject* exc)
+@extern("PyCodec_ReplaceErrors");
+
+fn PyObject* PyCodec_XMLCharRefReplaceErrors(
+  PyObject* exc)
+@extern("PyCodec_XMLCharRefReplaceErrors");
+
+fn PyObject* PyCodec_BackslashReplaceErrors(
+  PyObject* exc)
+@extern("PyCodec_BackslashReplaceErrors");
+
+fn PyObject* PyCodec_NameReplaceErrors(
+  PyObject* exc)
+@extern("PyCodec_NameReplaceErrors");
+
+CChar* py_hexdigits;
+
+alias PyThread_type_lock = void*;
+
+typedef PyLockStatus = inline CUInt;
+const PyLockStatus PY_LOCK_FAILURE = 0;
+const PyLockStatus PY_LOCK_ACQUIRED = 1;
+const PyLockStatus PY_LOCK_INTR = 2;
+
+fn void PyThread_init_thread()
+@extern("PyThread_init_thread");
+
+fn CULong PyThread_start_new_thread(
+  UnnamedPFN7, 
+  void*)
+@extern("PyThread_start_new_thread");
+
+fn void PyThread_exit_thread()
+@extern("PyThread_exit_thread");
+
+fn CULong PyThread_get_thread_ident()
+@extern("PyThread_get_thread_ident");
+
+fn CULong PyThread_get_thread_native_id()
+@extern("PyThread_get_thread_native_id");
+
+fn PyThread_type_lock PyThread_allocate_lock()
+@extern("PyThread_allocate_lock");
+
+fn void PyThread_free_lock(
+  PyThread_type_lock)
+@extern("PyThread_free_lock");
+
+fn CInt PyThread_acquire_lock(
+  PyThread_type_lock, 
+  CInt)
+@extern("PyThread_acquire_lock");
+
+fn PyLockStatus PyThread_acquire_lock_timed(
+  PyThread_type_lock, 
+  CLongLong microseconds, 
+  CInt intr_flag)
+@extern("PyThread_acquire_lock_timed");
+
+fn void PyThread_release_lock(
+  PyThread_type_lock)
+@extern("PyThread_release_lock");
+
+fn usz PyThread_get_stacksize()
+@extern("PyThread_get_stacksize");
+
+fn CInt PyThread_set_stacksize(
+  usz)
+@extern("PyThread_set_stacksize");
+
+fn PyObject* PyThread_GetInfo()
+@extern("PyThread_GetInfo");
+
+fn CInt PyThread_create_key()
+@extern("PyThread_create_key");
+
+fn void PyThread_delete_key(
+  CInt key)
+@extern("PyThread_delete_key");
+
+fn CInt PyThread_set_key_value(
+  CInt key, 
+  void* value)
+@extern("PyThread_set_key_value");
+
+fn void* PyThread_get_key_value(
+  CInt key)
+@extern("PyThread_get_key_value");
+
+fn void PyThread_delete_key_value(
+  CInt key)
+@extern("PyThread_delete_key_value");
+
+fn void PyThread_ReInitTLS()
+@extern("PyThread_ReInitTLS");
+
+typedef _Py_tss_t = void;
+
+alias Py_tss_t = _Py_tss_t;
+
+fn Py_tss_t* PyThread_tss_alloc()
+@extern("PyThread_tss_alloc");
+
+fn void PyThread_tss_free(
+  Py_tss_t* key)
+@extern("PyThread_tss_free");
+
+fn CInt PyThread_tss_is_created(
+  Py_tss_t* key)
+@extern("PyThread_tss_is_created");
+
+fn CInt PyThread_tss_create(
+  Py_tss_t* key)
+@extern("PyThread_tss_create");
+
+fn void PyThread_tss_delete(
+  Py_tss_t* key)
+@extern("PyThread_tss_delete");
+
+fn CInt PyThread_tss_set(
+  Py_tss_t* key, 
+  void* value)
+@extern("PyThread_tss_set");
+
+fn void* PyThread_tss_get(
+  Py_tss_t* key)
+@extern("PyThread_tss_get");
+
+fn CInt _PyThread_at_fork_reinit(
+  PyThread_type_lock* lock)
+@extern("_PyThread_at_fork_reinit");
+
+struct _Py_tss_t {
+  CInt _is_initialized;
+  pthread_key_t _key;
+}
+
+PyTypeObject pycontext_type;
+
+alias PyContext = void;
+
+PyTypeObject pycontextvar_type;
+
+alias PyContextVar = void;
+
+PyTypeObject pycontexttoken_type;
+
+alias PyContextToken = void;
+
+fn PyObject* PyContext_New()
+@extern("PyContext_New");
+
+fn PyObject* PyContext_Copy(
+  PyObject*)
+@extern("PyContext_Copy");
+
+fn PyObject* PyContext_CopyCurrent()
+@extern("PyContext_CopyCurrent");
+
+fn CInt PyContext_Enter(
+  PyObject*)
+@extern("PyContext_Enter");
+
+fn CInt PyContext_Exit(
+  PyObject*)
+@extern("PyContext_Exit");
+
+fn PyObject* PyContextVar_New(
+  CChar* name, 
+  PyObject* default_value)
+@extern("PyContextVar_New");
+
+fn CInt PyContextVar_Get(
+  PyObject* var, 
+  PyObject* default_value, 
+  PyObject** value)
+@extern("PyContextVar_Get");
+
+fn PyObject* PyContextVar_Set(
+  PyObject* var, 
+  PyObject* value)
+@extern("PyContextVar_Set");
+
+fn CInt PyContextVar_Reset(
+  PyObject* var, 
+  PyObject* token)
+@extern("PyContextVar_Reset");
+
+fn PyObject* _PyContext_NewHamtForTests()
+@extern("_PyContext_NewHamtForTests");
+
+fn CInt PyArg_Parse(
+  PyObject*, 
+  CChar*)
+@extern("PyArg_Parse");
+
+fn CInt PyArg_ParseTuple(
+  PyObject*, 
+  CChar*)
+@extern("PyArg_ParseTuple");
+
+fn CInt PyArg_ParseTupleAndKeywords(
+  PyObject*, 
+  PyObject*, 
+  CChar*, 
+  CChar**)
+@extern("PyArg_ParseTupleAndKeywords");
+
+fn CInt PyArg_VaParse(
+  PyObject*, 
+  CChar*, 
+  void*)
+@extern("PyArg_VaParse");
+
+fn CInt PyArg_VaParseTupleAndKeywords(
+  PyObject*, 
+  PyObject*, 
+  CChar*, 
+  CChar**, 
+  void*)
+@extern("PyArg_VaParseTupleAndKeywords");
+
+fn CInt PyArg_ValidateKeywordArguments(
+  PyObject*)
+@extern("PyArg_ValidateKeywordArguments");
+
+fn CInt PyArg_UnpackTuple(
+  PyObject*, 
+  CChar*, 
+  Py_ssize_t, 
+  Py_ssize_t)
+@extern("PyArg_UnpackTuple");
+
+fn PyObject* Py_BuildValue(
+  CChar*)
+@extern("Py_BuildValue");
+
+fn PyObject* _Py_BuildValue_SizeT(
+  CChar*)
+@extern("_Py_BuildValue_SizeT");
+
+fn PyObject* Py_VaBuildValue(
+  CChar*, 
+  void*)
+@extern("Py_VaBuildValue");
+
+fn CInt PyModule_AddObjectRef(
+  PyObject* mod, 
+  CChar* name, 
+  PyObject* value)
+@extern("PyModule_AddObjectRef");
+
+fn CInt PyModule_AddObject(
+  PyObject* mod, 
+  CChar*, 
+  PyObject* value)
+@extern("PyModule_AddObject");
+
+fn CInt PyModule_AddIntConstant(
+  PyObject*, 
+  CChar*, 
+  CLong)
+@extern("PyModule_AddIntConstant");
+
+fn CInt PyModule_AddStringConstant(
+  PyObject*, 
+  CChar*, 
+  CChar*)
+@extern("PyModule_AddStringConstant");
+
+fn CInt PyModule_AddType(
+  PyObject* module, 
+  PyTypeObject* type)
+@extern("PyModule_AddType");
+
+fn CInt PyModule_SetDocString(
+  PyObject*, 
+  CChar*)
+@extern("PyModule_SetDocString");
+
+fn CInt PyModule_AddFunctions(
+  PyObject*, 
+  PyMethodDef*)
+@extern("PyModule_AddFunctions");
+
+fn CInt PyModule_ExecDef(
+  PyObject* module, 
+  PyModuleDef* def)
+@extern("PyModule_ExecDef");
+
+fn PyObject* PyModule_Create2(
+  PyModuleDef*, 
+  CInt apiver)
+@extern("PyModule_Create2");
+
+fn PyObject* PyModule_FromDefAndSpec2(
+  PyModuleDef* def, 
+  PyObject* spec, 
+  CInt module_api_version)
+@extern("PyModule_FromDefAndSpec2");
+
+fn PyObject* _Py_VaBuildValue_SizeT(
+  CChar*, 
+  void*)
+@extern("_Py_VaBuildValue_SizeT");
+
+fn PyObject** _Py_VaBuildStack_SizeT(
+  PyObject** small_stack, 
+  Py_ssize_t small_stack_len, 
+  CChar* format, 
+  void* va, 
+  Py_ssize_t* p_nargs)
+@extern("_Py_VaBuildStack_SizeT");
+
+fn CInt _PyArg_UnpackStack(
+  PyObject** args, 
+  Py_ssize_t nargs, 
+  CChar* name, 
+  Py_ssize_t min, 
+  Py_ssize_t max)
+@extern("_PyArg_UnpackStack");
+
+fn CInt _PyArg_NoKeywords(
+  CChar* funcname, 
+  PyObject* kwargs)
+@extern("_PyArg_NoKeywords");
+
+fn CInt _PyArg_NoKwnames(
+  CChar* funcname, 
+  PyObject* kwnames)
+@extern("_PyArg_NoKwnames");
+
+fn CInt _PyArg_NoPositional(
+  CChar* funcname, 
+  PyObject* args)
+@extern("_PyArg_NoPositional");
+
+fn void _PyArg_BadArgument(
+  CChar*, 
+  CChar*, 
+  CChar*, 
+  PyObject*)
+@extern("_PyArg_BadArgument");
+
+fn CInt _PyArg_CheckPositional(
+  CChar*, 
+  Py_ssize_t, 
+  Py_ssize_t, 
+  Py_ssize_t)
+@extern("_PyArg_CheckPositional");
+
+fn PyObject** _Py_VaBuildStack(
+  PyObject** small_stack, 
+  Py_ssize_t small_stack_len, 
+  CChar* format, 
+  void* va, 
+  Py_ssize_t* p_nargs)
+@extern("_Py_VaBuildStack");
+
+struct _PyArg_Parser {
+  CInt initialized;
+  CChar* format;
+  CChar** keywords;
+  CChar* fname;
+  CChar* custom_msg;
+  CInt pos;
+  CInt min;
+  CInt max;
+  PyObject* kwtuple;
+  _PyArg_Parser* next;
+}
+
+fn CInt _PyArg_ParseTupleAndKeywordsFast(
+  PyObject*, 
+  PyObject*, 
+  _PyArg_Parser*)
+@extern("_PyArg_ParseTupleAndKeywordsFast");
+
+fn CInt _PyArg_ParseStack(
+  PyObject** args, 
+  Py_ssize_t nargs, 
+  CChar* format)
+@extern("_PyArg_ParseStack");
+
+fn CInt _PyArg_ParseStackAndKeywords(
+  PyObject** args, 
+  Py_ssize_t nargs, 
+  PyObject* kwnames, 
+  _PyArg_Parser*)
+@extern("_PyArg_ParseStackAndKeywords");
+
+fn CInt _PyArg_VaParseTupleAndKeywordsFast(
+  PyObject*, 
+  PyObject*, 
+  _PyArg_Parser*, 
+  void*)
+@extern("_PyArg_VaParseTupleAndKeywordsFast");
+
+fn PyObject** _PyArg_UnpackKeywords(
+  PyObject** args, 
+  Py_ssize_t nargs, 
+  PyObject* kwargs, 
+  PyObject* kwnames, 
+  _PyArg_Parser* parser, 
+  CInt minpos, 
+  CInt maxpos, 
+  CInt minkw, 
+  PyObject** buf)
+@extern("_PyArg_UnpackKeywords");
+
+fn PyObject** _PyArg_UnpackKeywordsWithVararg(
+  PyObject** args, 
+  Py_ssize_t nargs, 
+  PyObject* kwargs, 
+  PyObject* kwnames, 
+  _PyArg_Parser* parser, 
+  CInt minpos, 
+  CInt maxpos, 
+  CInt minkw, 
+  CInt vararg, 
+  PyObject** buf)
+@extern("_PyArg_UnpackKeywordsWithVararg");
+
+fn PyObject* _PyModule_CreateInitialized(
+  PyModuleDef*, 
+  CInt apiver)
+@extern("_PyModule_CreateInitialized");
+
+fn CInt _PyModule_Add(
+  PyObject*, 
+  CChar*, 
+  PyObject*)
+@extern("_PyModule_Add");
+
+struct PyCompilerFlags {
+  CInt cf_flags;
+  CInt cf_feature_version;
+}
+
+struct _PyCompilerSrcLocation {
+  CInt lineno;
+  CInt end_lineno;
+  CInt col_offset;
+  CInt end_col_offset;
+}
+
+struct PyFutureFeatures {
+  CInt ff_features;
+  _PyCompilerSrcLocation ff_location;
+}
+
+fn CInt PyCompile_OpcodeStackEffect(
+  CInt opcode, 
+  CInt oparg)
+@extern("PyCompile_OpcodeStackEffect");
+
+fn CInt PyCompile_OpcodeStackEffectWithJump(
+  CInt opcode, 
+  CInt oparg, 
+  CInt jump)
+@extern("PyCompile_OpcodeStackEffectWithJump");
+
+fn PyObject* Py_CompileString(
+  CChar*, 
+  CChar*, 
+  CInt)
+@extern("Py_CompileString");
+
+fn void PyErr_Print()
+@extern("PyErr_Print");
+
+fn void PyErr_PrintEx(
+  CInt)
+@extern("PyErr_PrintEx");
+
+fn void PyErr_Display(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyErr_Display");
+
+fn void PyErr_DisplayException(
+  PyObject*)
+@extern("PyErr_DisplayException");
+
+alias UnnamedPFN10 @private = fn CInt();
+
+UnnamedPFN10 pyos_inputhook;
+
+fn CInt PyRun_SimpleStringFlags(
+  CChar*, 
+  PyCompilerFlags*)
+@extern("PyRun_SimpleStringFlags");
+
+fn CInt _PyRun_SimpleFileObject(
+  FILE* fp, 
+  PyObject* filename, 
+  CInt closeit, 
+  PyCompilerFlags* flags)
+@extern("_PyRun_SimpleFileObject");
+
+fn CInt PyRun_AnyFileExFlags(
+  FILE* fp, 
+  CChar* filename, 
+  CInt closeit, 
+  PyCompilerFlags* flags)
+@extern("PyRun_AnyFileExFlags");
+
+fn CInt _PyRun_AnyFileObject(
+  FILE* fp, 
+  PyObject* filename, 
+  CInt closeit, 
+  PyCompilerFlags* flags)
+@extern("_PyRun_AnyFileObject");
+
+fn CInt PyRun_SimpleFileExFlags(
+  FILE* fp, 
+  CChar* filename, 
+  CInt closeit, 
+  PyCompilerFlags* flags)
+@extern("PyRun_SimpleFileExFlags");
+
+fn CInt PyRun_InteractiveOneFlags(
+  FILE* fp, 
+  CChar* filename, 
+  PyCompilerFlags* flags)
+@extern("PyRun_InteractiveOneFlags");
+
+fn CInt PyRun_InteractiveOneObject(
+  FILE* fp, 
+  PyObject* filename, 
+  PyCompilerFlags* flags)
+@extern("PyRun_InteractiveOneObject");
+
+fn CInt PyRun_InteractiveLoopFlags(
+  FILE* fp, 
+  CChar* filename, 
+  PyCompilerFlags* flags)
+@extern("PyRun_InteractiveLoopFlags");
+
+fn CInt _PyRun_InteractiveLoopObject(
+  FILE* fp, 
+  PyObject* filename, 
+  PyCompilerFlags* flags)
+@extern("_PyRun_InteractiveLoopObject");
+
+fn PyObject* PyRun_StringFlags(
+  CChar*, 
+  CInt, 
+  PyObject*, 
+  PyObject*, 
+  PyCompilerFlags*)
+@extern("PyRun_StringFlags");
+
+fn PyObject* PyRun_FileExFlags(
+  FILE* fp, 
+  CChar* filename, 
+  CInt start, 
+  PyObject* globals, 
+  PyObject* locals, 
+  CInt closeit, 
+  PyCompilerFlags* flags)
+@extern("PyRun_FileExFlags");
+
+fn PyObject* Py_CompileStringExFlags(
+  CChar* str, 
+  CChar* filename, 
+  CInt start, 
+  PyCompilerFlags* flags, 
+  CInt optimize)
+@extern("Py_CompileStringExFlags");
+
+fn PyObject* Py_CompileStringObject(
+  CChar* str, 
+  PyObject* filename, 
+  CInt start, 
+  PyCompilerFlags* flags, 
+  CInt optimize)
+@extern("Py_CompileStringObject");
+
+fn CChar* _Py_SourceAsString(
+  PyObject* cmd, 
+  CChar* funcname, 
+  CChar* what, 
+  PyCompilerFlags* cf, 
+  PyObject** cmd_copy)
+@extern("_Py_SourceAsString");
+
+fn PyObject* PyRun_String(
+  CChar* str, 
+  CInt s, 
+  PyObject* g, 
+  PyObject* l)
+@extern("PyRun_String");
+
+fn CInt PyRun_AnyFile(
+  FILE* fp, 
+  CChar* name)
+@extern("PyRun_AnyFile");
+
+fn CInt PyRun_AnyFileEx(
+  FILE* fp, 
+  CChar* name, 
+  CInt closeit)
+@extern("PyRun_AnyFileEx");
+
+fn CInt PyRun_AnyFileFlags(
+  FILE*, 
+  CChar*, 
+  PyCompilerFlags*)
+@extern("PyRun_AnyFileFlags");
+
+fn CInt PyRun_SimpleString(
+  CChar* s)
+@extern("PyRun_SimpleString");
+
+fn CInt PyRun_SimpleFile(
+  FILE* f, 
+  CChar* p)
+@extern("PyRun_SimpleFile");
+
+fn CInt PyRun_SimpleFileEx(
+  FILE* f, 
+  CChar* p, 
+  CInt c)
+@extern("PyRun_SimpleFileEx");
+
+fn CInt PyRun_InteractiveOne(
+  FILE* f, 
+  CChar* p)
+@extern("PyRun_InteractiveOne");
+
+fn CInt PyRun_InteractiveLoop(
+  FILE* f, 
+  CChar* p)
+@extern("PyRun_InteractiveLoop");
+
+fn PyObject* PyRun_File(
+  FILE* fp, 
+  CChar* p, 
+  CInt s, 
+  PyObject* g, 
+  PyObject* l)
+@extern("PyRun_File");
+
+fn PyObject* PyRun_FileEx(
+  FILE* fp, 
+  CChar* p, 
+  CInt s, 
+  PyObject* g, 
+  PyObject* l, 
+  CInt c)
+@extern("PyRun_FileEx");
+
+fn PyObject* PyRun_FileFlags(
+  FILE* fp, 
+  CChar* p, 
+  CInt s, 
+  PyObject* g, 
+  PyObject* l, 
+  PyCompilerFlags* flags)
+@extern("PyRun_FileFlags");
+
+fn CChar* PyOS_Readline(
+  FILE*, 
+  FILE*, 
+  CChar*)
+@extern("PyOS_Readline");
+
+PyThreadState* _pyos_readlinetstate;
+
+alias UnnamedPFN11 @private = fn CChar*(
+  FILE*, 
+  FILE*, 
+  CChar*);
+
+UnnamedPFN11 pyos_readlinefunctionpointer;
+
+fn void Py_Initialize()
+@extern("Py_Initialize");
+
+fn void Py_InitializeEx(
+  CInt)
+@extern("Py_InitializeEx");
+
+fn void Py_Finalize()
+@extern("Py_Finalize");
+
+fn CInt Py_FinalizeEx()
+@extern("Py_FinalizeEx");
+
+fn CInt Py_IsInitialized()
+@extern("Py_IsInitialized");
+
+fn PyThreadState* Py_NewInterpreter()
+@extern("Py_NewInterpreter");
+
+fn void Py_EndInterpreter(
+  PyThreadState*)
+@extern("Py_EndInterpreter");
+
+alias UnnamedPFN12 @private = fn void();
+
+fn CInt Py_AtExit(
+  UnnamedPFN12 func)
+@extern("Py_AtExit");
+
+fn void Py_Exit(
+  CInt)
+@extern("Py_Exit");
+
+fn CInt Py_Main(
+  CInt argc, 
+  wchar_t** argv)
+@extern("Py_Main");
+
+fn CInt Py_BytesMain(
+  CInt argc, 
+  CChar** argv)
+@extern("Py_BytesMain");
+
+fn void Py_SetProgramName(
+  wchar_t*)
+@extern("Py_SetProgramName");
+
+fn wchar_t* Py_GetProgramName()
+@extern("Py_GetProgramName");
+
+fn void Py_SetPythonHome(
+  wchar_t*)
+@extern("Py_SetPythonHome");
+
+fn wchar_t* Py_GetPythonHome()
+@extern("Py_GetPythonHome");
+
+fn wchar_t* Py_GetProgramFullPath()
+@extern("Py_GetProgramFullPath");
+
+fn wchar_t* Py_GetPrefix()
+@extern("Py_GetPrefix");
+
+fn wchar_t* Py_GetExecPrefix()
+@extern("Py_GetExecPrefix");
+
+fn wchar_t* Py_GetPath()
+@extern("Py_GetPath");
+
+fn void Py_SetPath(
+  wchar_t*)
+@extern("Py_SetPath");
+
+fn CChar* Py_GetVersion()
+@extern("Py_GetVersion");
+
+fn CChar* Py_GetPlatform()
+@extern("Py_GetPlatform");
+
+fn CChar* Py_GetCopyright()
+@extern("Py_GetCopyright");
+
+fn CChar* Py_GetCompiler()
+@extern("Py_GetCompiler");
+
+fn CChar* Py_GetBuildInfo()
+@extern("Py_GetBuildInfo");
+
+alias PyOS_sighandler_t = fn void(
+  CInt);
+
+fn PyOS_sighandler_t PyOS_getsig(
+  CInt)
+@extern("PyOS_getsig");
+
+fn PyOS_sighandler_t PyOS_setsig(
+  CInt, 
+  PyOS_sighandler_t)
+@extern("PyOS_setsig");
+
+const CULong PY_VERSION = @PyAPI_DATA(constunsignedlong);
+
+fn CInt Py_FrozenMain(
+  CInt argc, 
+  CChar** argv)
+@extern("Py_FrozenMain");
+
+fn CInt Py_SetStandardStreamEncoding(
+  CChar* encoding, 
+  CChar* errors)
+@extern("Py_SetStandardStreamEncoding");
+
+fn PyStatus Py_PreInitialize(
+  PyPreConfig* src_config)
+@extern("Py_PreInitialize");
+
+fn PyStatus Py_PreInitializeFromBytesArgs(
+  PyPreConfig* src_config, 
+  Py_ssize_t argc, 
+  CChar** argv)
+@extern("Py_PreInitializeFromBytesArgs");
+
+fn PyStatus Py_PreInitializeFromArgs(
+  PyPreConfig* src_config, 
+  Py_ssize_t argc, 
+  wchar_t** argv)
+@extern("Py_PreInitializeFromArgs");
+
+fn CInt _Py_IsCoreInitialized()
+@extern("_Py_IsCoreInitialized");
+
+fn PyStatus Py_InitializeFromConfig(
+  PyConfig* config)
+@extern("Py_InitializeFromConfig");
+
+fn PyStatus _Py_InitializeMain()
+@extern("_Py_InitializeMain");
+
+fn CInt Py_RunMain()
+@extern("Py_RunMain");
+
+fn void Py_ExitStatusException(
+  PyStatus err)
+@extern("Py_ExitStatusException");
+
+fn void _Py_RestoreSignals()
+@extern("_Py_RestoreSignals");
+
+fn CInt Py_FdIsInteractive(
+  FILE*, 
+  CChar*)
+@extern("Py_FdIsInteractive");
+
+fn CInt _Py_FdIsInteractive(
+  FILE* fp, 
+  PyObject* filename)
+@extern("_Py_FdIsInteractive");
+
+fn void _Py_SetProgramFullPath(
+  wchar_t*)
+@extern("_Py_SetProgramFullPath");
+
+fn CChar* _Py_gitidentifier()
+@extern("_Py_gitidentifier");
+
+fn CChar* _Py_gitversion()
+@extern("_Py_gitversion");
+
+fn CInt _Py_IsFinalizing()
+@extern("_Py_IsFinalizing");
+
+fn CInt _Py_IsInterpreterFinalizing(
+  PyInterpreterState* interp)
+@extern("_Py_IsInterpreterFinalizing");
+
+fn CInt _PyOS_URandom(
+  void* buffer, 
+  Py_ssize_t size)
+@extern("_PyOS_URandom");
+
+fn CInt _PyOS_URandomNonblock(
+  void* buffer, 
+  Py_ssize_t size)
+@extern("_PyOS_URandomNonblock");
+
+fn CInt _Py_CoerceLegacyLocale(
+  CInt warn)
+@extern("_Py_CoerceLegacyLocale");
+
+fn CInt _Py_LegacyLocaleDetected(
+  CInt warn)
+@extern("_Py_LegacyLocaleDetected");
+
+fn CChar* _Py_SetLocaleFromEnv(
+  CInt category)
+@extern("_Py_SetLocaleFromEnv");
+
+struct PyInterpreterConfig {
+  CInt use_main_obmalloc;
+  CInt allow_fork;
+  CInt allow_exec;
+  CInt allow_threads;
+  CInt allow_daemon_threads;
+  CInt check_multi_interp_extensions;
+  CInt gil;
+}
+
+fn PyStatus Py_NewInterpreterFromConfig(
+  PyThreadState** tstate_p, 
+  PyInterpreterConfig* config)
+@extern("Py_NewInterpreterFromConfig");
+
+alias atexit_datacallbackfunc = fn void(
+  void*);
+
+fn CInt _Py_AtExit(
+  PyInterpreterState*, 
+  atexit_datacallbackfunc, 
+  void*)
+@extern("_Py_AtExit");
+
+fn PyObject* PyEval_EvalCode(
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("PyEval_EvalCode");
+
+fn PyObject* PyEval_EvalCodeEx(
+  PyObject* co, 
+  PyObject* globals, 
+  PyObject* locals, 
+  PyObject** args, 
+  CInt argc, 
+  PyObject** kwds, 
+  CInt kwdc, 
+  PyObject** defs, 
+  CInt defc, 
+  PyObject* kwdefs, 
+  PyObject* closure)
+@extern("PyEval_EvalCodeEx");
+
+fn PyObject* PyEval_CallObjectWithKeywords(
+  PyObject* callable, 
+  PyObject* args, 
+  PyObject* kwargs)
+@extern("PyEval_CallObjectWithKeywords");
+
+fn PyObject* PyEval_CallFunction(
+  PyObject* callable, 
+  CChar* format)
+@extern("PyEval_CallFunction");
+
+fn PyObject* PyEval_CallMethod(
+  PyObject* obj, 
+  CChar* name, 
+  CChar* format)
+@extern("PyEval_CallMethod");
+
+fn PyObject* PyEval_GetBuiltins()
+@extern("PyEval_GetBuiltins");
+
+fn PyObject* PyEval_GetGlobals()
+@extern("PyEval_GetGlobals");
+
+fn PyObject* PyEval_GetLocals()
+@extern("PyEval_GetLocals");
+
+fn PyFrameObject* PyEval_GetFrame()
+@extern("PyEval_GetFrame");
+
+alias UnnamedPFN13 @private = fn CInt(
+  void*);
+
+fn CInt Py_AddPendingCall(
+  UnnamedPFN13 func, 
+  void* arg)
+@extern("Py_AddPendingCall");
+
+fn CInt Py_MakePendingCalls()
+@extern("Py_MakePendingCalls");
+
+fn void Py_SetRecursionLimit(
+  CInt)
+@extern("Py_SetRecursionLimit");
+
+fn CInt Py_GetRecursionLimit()
+@extern("Py_GetRecursionLimit");
+
+fn CInt Py_EnterRecursiveCall(
+  CChar* where)
+@extern("Py_EnterRecursiveCall");
+
+fn void Py_LeaveRecursiveCall()
+@extern("Py_LeaveRecursiveCall");
+
+fn CChar* PyEval_GetFuncName(
+  PyObject*)
+@extern("PyEval_GetFuncName");
+
+fn CChar* PyEval_GetFuncDesc(
+  PyObject*)
+@extern("PyEval_GetFuncDesc");
+
+fn PyObject* PyEval_EvalFrame(
+  PyFrameObject*)
+@extern("PyEval_EvalFrame");
+
+fn PyObject* PyEval_EvalFrameEx(
+  PyFrameObject* f, 
+  CInt exc)
+@extern("PyEval_EvalFrameEx");
+
+fn PyThreadState* PyEval_SaveThread()
+@extern("PyEval_SaveThread");
+
+fn void PyEval_RestoreThread(
+  PyThreadState*)
+@extern("PyEval_RestoreThread");
+
+fn CInt PyEval_ThreadsInitialized()
+@extern("PyEval_ThreadsInitialized");
+
+fn void PyEval_InitThreads()
+@extern("PyEval_InitThreads");
+
+fn void PyEval_AcquireLock()
+@extern("PyEval_AcquireLock");
+
+fn void PyEval_ReleaseLock()
+@extern("PyEval_ReleaseLock");
+
+fn void PyEval_AcquireThread(
+  PyThreadState* tstate)
+@extern("PyEval_AcquireThread");
+
+fn void PyEval_ReleaseThread(
+  PyThreadState* tstate)
+@extern("PyEval_ReleaseThread");
+
+fn void PyEval_SetProfile(
+  Py_tracefunc, 
+  PyObject*)
+@extern("PyEval_SetProfile");
+
+fn void PyEval_SetProfileAllThreads(
+  Py_tracefunc, 
+  PyObject*)
+@extern("PyEval_SetProfileAllThreads");
+
+fn CInt _PyEval_SetProfile(
+  PyThreadState* tstate, 
+  Py_tracefunc func, 
+  PyObject* arg)
+@extern("_PyEval_SetProfile");
+
+fn void PyEval_SetTrace(
+  Py_tracefunc, 
+  PyObject*)
+@extern("PyEval_SetTrace");
+
+fn void PyEval_SetTraceAllThreads(
+  Py_tracefunc, 
+  PyObject*)
+@extern("PyEval_SetTraceAllThreads");
+
+fn CInt _PyEval_SetTrace(
+  PyThreadState* tstate, 
+  Py_tracefunc func, 
+  PyObject* arg)
+@extern("_PyEval_SetTrace");
+
+fn PyObject* _PyEval_GetBuiltin(
+  PyObject*)
+@extern("_PyEval_GetBuiltin");
+
+fn PyObject* _PyEval_GetBuiltinId(
+  _Py_Identifier*)
+@extern("_PyEval_GetBuiltinId");
+
+fn CInt PyEval_MergeCompilerFlags(
+  PyCompilerFlags* cf)
+@extern("PyEval_MergeCompilerFlags");
+
+fn PyObject* _PyEval_EvalFrameDefault(
+  PyThreadState* tstate, 
+  _PyInterpreterFrame* f, 
+  CInt exc)
+@extern("_PyEval_EvalFrameDefault");
+
+fn void _PyEval_SetSwitchInterval(
+  CULong microseconds)
+@extern("_PyEval_SetSwitchInterval");
+
+fn CULong _PyEval_GetSwitchInterval()
+@extern("_PyEval_GetSwitchInterval");
+
+fn CInt _PyEval_MakePendingCalls(
+  PyThreadState*)
+@extern("_PyEval_MakePendingCalls");
+
+fn Py_ssize_t PyUnstable_Eval_RequestCodeExtraIndex(
+  freefunc)
+@extern("PyUnstable_Eval_RequestCodeExtraIndex");
+
+fn Py_ssize_t _PyEval_RequestCodeExtraIndex(
+  freefunc f)
+@extern("_PyEval_RequestCodeExtraIndex");
+
+fn CInt _PyEval_SliceIndex(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("_PyEval_SliceIndex");
+
+fn CInt _PyEval_SliceIndexNotNone(
+  PyObject*, 
+  Py_ssize_t*)
+@extern("_PyEval_SliceIndexNotNone");
+
+fn PyObject* PySys_GetObject(
+  CChar*)
+@extern("PySys_GetObject");
+
+fn CInt PySys_SetObject(
+  CChar*, 
+  PyObject*)
+@extern("PySys_SetObject");
+
+fn void PySys_SetArgv(
+  CInt, 
+  wchar_t**)
+@extern("PySys_SetArgv");
+
+fn void PySys_SetArgvEx(
+  CInt, 
+  wchar_t**, 
+  CInt)
+@extern("PySys_SetArgvEx");
+
+fn void PySys_SetPath(
+  wchar_t*)
+@extern("PySys_SetPath");
+
+fn void PySys_WriteStdout(
+  CChar* format)
+@extern("PySys_WriteStdout");
+
+fn void PySys_WriteStderr(
+  CChar* format)
+@extern("PySys_WriteStderr");
+
+fn void PySys_FormatStdout(
+  CChar* format)
+@extern("PySys_FormatStdout");
+
+fn void PySys_FormatStderr(
+  CChar* format)
+@extern("PySys_FormatStderr");
+
+fn void PySys_ResetWarnOptions()
+@extern("PySys_ResetWarnOptions");
+
+fn void PySys_AddWarnOption(
+  wchar_t*)
+@extern("PySys_AddWarnOption");
+
+fn void PySys_AddWarnOptionUnicode(
+  PyObject*)
+@extern("PySys_AddWarnOptionUnicode");
+
+fn CInt PySys_HasWarnOptions()
+@extern("PySys_HasWarnOptions");
+
+fn void PySys_AddXOption(
+  wchar_t*)
+@extern("PySys_AddXOption");
+
+fn PyObject* PySys_GetXOptions()
+@extern("PySys_GetXOptions");
+
+struct PerfMapState {
+  FILE* perf_map;
+  PyThread_type_lock map_lock;
+}
+
+fn CInt PyUnstable_PerfMapState_Init()
+@extern("PyUnstable_PerfMapState_Init");
+
+fn CInt PyUnstable_WritePerfMapEntry(
+  void* code_addr, 
+  CUInt code_size, 
+  CChar* entry_name)
+@extern("PyUnstable_WritePerfMapEntry");
+
+fn void PyUnstable_PerfMapState_Fini()
+@extern("PyUnstable_PerfMapState_Fini");
+
+fn PyObject* _PySys_GetAttr(
+  PyThreadState* tstate, 
+  PyObject* name)
+@extern("_PySys_GetAttr");
+
+fn usz _PySys_GetSizeOf(
+  PyObject*)
+@extern("_PySys_GetSizeOf");
+
+alias Py_AuditHookFunction = fn CInt(
+  CChar*, 
+  PyObject*, 
+  void*);
+
+fn CInt PySys_Audit(
+  CChar* event, 
+  CChar* argformat)
+@extern("PySys_Audit");
+
+fn CInt PySys_AddAuditHook(
+  Py_AuditHookFunction, 
+  void*)
+@extern("PySys_AddAuditHook");
+
+fn PyObject* PyOS_FSPath(
+  PyObject* path)
+@extern("PyOS_FSPath");
+
+fn CInt PyOS_InterruptOccurred()
+@extern("PyOS_InterruptOccurred");
+
+fn void PyOS_BeforeFork()
+@extern("PyOS_BeforeFork");
+
+fn void PyOS_AfterFork_Parent()
+@extern("PyOS_AfterFork_Parent");
+
+fn void PyOS_AfterFork_Child()
+@extern("PyOS_AfterFork_Child");
+
+fn void PyOS_AfterFork()
+@extern("PyOS_AfterFork");
+
+fn CInt _PyOS_IsMainThread()
+@extern("_PyOS_IsMainThread");
+
+fn CLong PyImport_GetMagicNumber()
+@extern("PyImport_GetMagicNumber");
+
+fn CChar* PyImport_GetMagicTag()
+@extern("PyImport_GetMagicTag");
+
+fn PyObject* PyImport_ExecCodeModule(
+  CChar* name, 
+  PyObject* co)
+@extern("PyImport_ExecCodeModule");
+
+fn PyObject* PyImport_ExecCodeModuleEx(
+  CChar* name, 
+  PyObject* co, 
+  CChar* pathname)
+@extern("PyImport_ExecCodeModuleEx");
+
+fn PyObject* PyImport_ExecCodeModuleWithPathnames(
+  CChar* name, 
+  PyObject* co, 
+  CChar* pathname, 
+  CChar* cpathname)
+@extern("PyImport_ExecCodeModuleWithPathnames");
+
+fn PyObject* PyImport_ExecCodeModuleObject(
+  PyObject* name, 
+  PyObject* co, 
+  PyObject* pathname, 
+  PyObject* cpathname)
+@extern("PyImport_ExecCodeModuleObject");
+
+fn PyObject* PyImport_GetModuleDict()
+@extern("PyImport_GetModuleDict");
+
+fn PyObject* PyImport_GetModule(
+  PyObject* name)
+@extern("PyImport_GetModule");
+
+fn PyObject* PyImport_AddModuleObject(
+  PyObject* name)
+@extern("PyImport_AddModuleObject");
+
+fn PyObject* PyImport_AddModule(
+  CChar* name)
+@extern("PyImport_AddModule");
+
+fn PyObject* PyImport_ImportModule(
+  CChar* name)
+@extern("PyImport_ImportModule");
+
+fn PyObject* PyImport_ImportModuleNoBlock(
+  CChar* name)
+@extern("PyImport_ImportModuleNoBlock");
+
+fn PyObject* PyImport_ImportModuleLevel(
+  CChar* name, 
+  PyObject* globals, 
+  PyObject* locals, 
+  PyObject* fromlist, 
+  CInt level)
+@extern("PyImport_ImportModuleLevel");
+
+fn PyObject* PyImport_ImportModuleLevelObject(
+  PyObject* name, 
+  PyObject* globals, 
+  PyObject* locals, 
+  PyObject* fromlist, 
+  CInt level)
+@extern("PyImport_ImportModuleLevelObject");
+
+fn PyObject* PyImport_GetImporter(
+  PyObject* path)
+@extern("PyImport_GetImporter");
+
+fn PyObject* PyImport_Import(
+  PyObject* name)
+@extern("PyImport_Import");
+
+fn PyObject* PyImport_ReloadModule(
+  PyObject* m)
+@extern("PyImport_ReloadModule");
+
+fn CInt PyImport_ImportFrozenModuleObject(
+  PyObject* name)
+@extern("PyImport_ImportFrozenModuleObject");
+
+fn CInt PyImport_ImportFrozenModule(
+  CChar* name)
+@extern("PyImport_ImportFrozenModule");
+
+fn CInt PyImport_AppendInittab(
+  CChar* name, 
+  UnnamedPFN9 initfunc)
+@extern("PyImport_AppendInittab");
+
+fn PyObject* PyInit__imp()
+@extern("PyInit__imp");
+
+fn CInt _PyImport_IsInitialized(
+  PyInterpreterState*)
+@extern("_PyImport_IsInitialized");
+
+fn PyObject* _PyImport_GetModuleId(
+  _Py_Identifier* name)
+@extern("_PyImport_GetModuleId");
+
+fn CInt _PyImport_SetModule(
+  PyObject* name, 
+  PyObject* module)
+@extern("_PyImport_SetModule");
+
+fn CInt _PyImport_SetModuleString(
+  CChar* name, 
+  PyObject* module)
+@extern("_PyImport_SetModuleString");
+
+fn void _PyImport_AcquireLock(
+  PyInterpreterState* interp)
+@extern("_PyImport_AcquireLock");
+
+fn CInt _PyImport_ReleaseLock(
+  PyInterpreterState* interp)
+@extern("_PyImport_ReleaseLock");
+
+fn CInt _PyImport_FixupBuiltin(
+  PyObject* mod, 
+  CChar* name, 
+  PyObject* modules)
+@extern("_PyImport_FixupBuiltin");
+
+fn CInt _PyImport_FixupExtensionObject(
+  PyObject*, 
+  PyObject*, 
+  PyObject*, 
+  PyObject*)
+@extern("_PyImport_FixupExtensionObject");
+
+struct _inittab {
+  CChar* name;
+  UnnamedPFN9 initfunc;
+}
+
+_inittab* pyimport_inittab;
+
+fn CInt PyImport_ExtendInittab(
+  _inittab* newtab)
+@extern("PyImport_ExtendInittab");
+
+struct _frozen {
+  CChar* name;
+  char* code;
+  CInt size;
+  CInt is_package;
+  UnnamedPFN9 get_code;
+}
+
+_frozen* pyimport_frozenmodules;
+
+fn PyObject* _PyImport_GetModuleAttr(
+  PyObject*, 
+  PyObject*)
+@extern("_PyImport_GetModuleAttr");
+
+fn PyObject* _PyImport_GetModuleAttrString(
+  CChar*, 
+  CChar*)
+@extern("_PyImport_GetModuleAttrString");
+
+fn PyObject* PyObject_CallNoArgs(
+  PyObject* func)
+@extern("PyObject_CallNoArgs");
+
+fn PyObject* PyObject_Call(
+  PyObject* callable, 
+  PyObject* args, 
+  PyObject* kwargs)
+@extern("PyObject_Call");
+
+fn PyObject* PyObject_CallObject(
+  PyObject* callable, 
+  PyObject* args)
+@extern("PyObject_CallObject");
+
+fn PyObject* PyObject_CallFunction(
+  PyObject* callable, 
+  CChar* format)
+@extern("PyObject_CallFunction");
+
+fn PyObject* PyObject_CallMethod(
+  PyObject* obj, 
+  CChar* name, 
+  CChar* format)
+@extern("PyObject_CallMethod");
+
+fn PyObject* _PyObject_CallFunction_SizeT(
+  PyObject* callable, 
+  CChar* format)
+@extern("_PyObject_CallFunction_SizeT");
+
+fn PyObject* _PyObject_CallMethod_SizeT(
+  PyObject* obj, 
+  CChar* name, 
+  CChar* format)
+@extern("_PyObject_CallMethod_SizeT");
+
+fn PyObject* PyObject_CallFunctionObjArgs(
+  PyObject* callable)
+@extern("PyObject_CallFunctionObjArgs");
+
+fn PyObject* PyObject_CallMethodObjArgs(
+  PyObject* obj, 
+  PyObject* name)
+@extern("PyObject_CallMethodObjArgs");
+
+fn Py_ssize_t PyVectorcall_NARGS(
+  usz nargsf)
+@extern("PyVectorcall_NARGS");
+
+fn PyObject* PyVectorcall_Call(
+  PyObject* callable, 
+  PyObject* tuple, 
+  PyObject* dict)
+@extern("PyVectorcall_Call");
+
+fn PyObject* PyObject_Vectorcall(
+  PyObject* callable, 
+  PyObject** args, 
+  usz nargsf, 
+  PyObject* kwnames)
+@extern("PyObject_Vectorcall");
+
+fn PyObject* PyObject_VectorcallMethod(
+  PyObject* name, 
+  PyObject** args, 
+  usz nargsf, 
+  PyObject* kwnames)
+@extern("PyObject_VectorcallMethod");
+
+fn PyObject* PyObject_Type(
+  PyObject* o)
+@extern("PyObject_Type");
+
+fn Py_ssize_t PyObject_Size(
+  PyObject* o)
+@extern("PyObject_Size");
+
+fn Py_ssize_t PyObject_Length(
+  PyObject* o)
+@extern("PyObject_Length");
+
+fn PyObject* PyObject_GetItem(
+  PyObject* o, 
+  PyObject* key)
+@extern("PyObject_GetItem");
+
+fn CInt PyObject_SetItem(
+  PyObject* o, 
+  PyObject* key, 
+  PyObject* v)
+@extern("PyObject_SetItem");
+
+fn CInt PyObject_DelItemString(
+  PyObject* o, 
+  CChar* key)
+@extern("PyObject_DelItemString");
+
+fn CInt PyObject_DelItem(
+  PyObject* o, 
+  PyObject* key)
+@extern("PyObject_DelItem");
+
+fn CInt PyObject_AsCharBuffer(
+  PyObject* obj, 
+  CChar** buffer, 
+  Py_ssize_t* buffer_len)
+@extern("PyObject_AsCharBuffer");
+
+fn CInt PyObject_CheckReadBuffer(
+  PyObject* obj)
+@extern("PyObject_CheckReadBuffer");
+
+fn CInt PyObject_AsReadBuffer(
+  PyObject* obj, 
+  void** buffer, 
+  Py_ssize_t* buffer_len)
+@extern("PyObject_AsReadBuffer");
+
+fn CInt PyObject_AsWriteBuffer(
+  PyObject* obj, 
+  void** buffer, 
+  Py_ssize_t* buffer_len)
+@extern("PyObject_AsWriteBuffer");
+
+fn PyObject* PyObject_Format(
+  PyObject* obj, 
+  PyObject* format_spec)
+@extern("PyObject_Format");
+
+fn PyObject* PyObject_GetIter(
+  PyObject*)
+@extern("PyObject_GetIter");
+
+fn PyObject* PyObject_GetAIter(
+  PyObject*)
+@extern("PyObject_GetAIter");
+
+fn CInt PyIter_Check(
+  PyObject*)
+@extern("PyIter_Check");
+
+fn CInt PyAIter_Check(
+  PyObject*)
+@extern("PyAIter_Check");
+
+fn PyObject* PyIter_Next(
+  PyObject*)
+@extern("PyIter_Next");
+
+fn PySendResult PyIter_Send(
+  PyObject*, 
+  PyObject*, 
+  PyObject**)
+@extern("PyIter_Send");
+
+fn CInt PyNumber_Check(
+  PyObject* o)
+@extern("PyNumber_Check");
+
+fn PyObject* PyNumber_Add(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Add");
+
+fn PyObject* PyNumber_Subtract(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Subtract");
+
+fn PyObject* PyNumber_Multiply(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Multiply");
+
+fn PyObject* PyNumber_MatrixMultiply(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_MatrixMultiply");
+
+fn PyObject* PyNumber_FloorDivide(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_FloorDivide");
+
+fn PyObject* PyNumber_TrueDivide(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_TrueDivide");
+
+fn PyObject* PyNumber_Remainder(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Remainder");
+
+fn PyObject* PyNumber_Divmod(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Divmod");
+
+fn PyObject* PyNumber_Power(
+  PyObject* o1, 
+  PyObject* o2, 
+  PyObject* o3)
+@extern("PyNumber_Power");
+
+fn PyObject* PyNumber_Negative(
+  PyObject* o)
+@extern("PyNumber_Negative");
+
+fn PyObject* PyNumber_Positive(
+  PyObject* o)
+@extern("PyNumber_Positive");
+
+fn PyObject* PyNumber_Absolute(
+  PyObject* o)
+@extern("PyNumber_Absolute");
+
+fn PyObject* PyNumber_Invert(
+  PyObject* o)
+@extern("PyNumber_Invert");
+
+fn PyObject* PyNumber_Lshift(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Lshift");
+
+fn PyObject* PyNumber_Rshift(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Rshift");
+
+fn PyObject* PyNumber_And(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_And");
+
+fn PyObject* PyNumber_Xor(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Xor");
+
+fn PyObject* PyNumber_Or(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_Or");
+
+fn CInt PyIndex_Check(
+  PyObject*)
+@extern("PyIndex_Check");
+
+fn PyObject* PyNumber_Index(
+  PyObject* o)
+@extern("PyNumber_Index");
+
+fn Py_ssize_t PyNumber_AsSsize_t(
+  PyObject* o, 
+  PyObject* exc)
+@extern("PyNumber_AsSsize_t");
+
+fn PyObject* PyNumber_Long(
+  PyObject* o)
+@extern("PyNumber_Long");
+
+fn PyObject* PyNumber_Float(
+  PyObject* o)
+@extern("PyNumber_Float");
+
+fn PyObject* PyNumber_InPlaceAdd(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceAdd");
+
+fn PyObject* PyNumber_InPlaceSubtract(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceSubtract");
+
+fn PyObject* PyNumber_InPlaceMultiply(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceMultiply");
+
+fn PyObject* PyNumber_InPlaceMatrixMultiply(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceMatrixMultiply");
+
+fn PyObject* PyNumber_InPlaceFloorDivide(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceFloorDivide");
+
+fn PyObject* PyNumber_InPlaceTrueDivide(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceTrueDivide");
+
+fn PyObject* PyNumber_InPlaceRemainder(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceRemainder");
+
+fn PyObject* PyNumber_InPlacePower(
+  PyObject* o1, 
+  PyObject* o2, 
+  PyObject* o3)
+@extern("PyNumber_InPlacePower");
+
+fn PyObject* PyNumber_InPlaceLshift(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceLshift");
+
+fn PyObject* PyNumber_InPlaceRshift(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceRshift");
+
+fn PyObject* PyNumber_InPlaceAnd(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceAnd");
+
+fn PyObject* PyNumber_InPlaceXor(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceXor");
+
+fn PyObject* PyNumber_InPlaceOr(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PyNumber_InPlaceOr");
+
+fn PyObject* PyNumber_ToBase(
+  PyObject* n, 
+  CInt base)
+@extern("PyNumber_ToBase");
+
+fn CInt PySequence_Check(
+  PyObject* o)
+@extern("PySequence_Check");
+
+fn Py_ssize_t PySequence_Size(
+  PyObject* o)
+@extern("PySequence_Size");
+
+fn Py_ssize_t PySequence_Length(
+  PyObject* o)
+@extern("PySequence_Length");
+
+fn PyObject* PySequence_Concat(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PySequence_Concat");
+
+fn PyObject* PySequence_Repeat(
+  PyObject* o, 
+  Py_ssize_t count)
+@extern("PySequence_Repeat");
+
+fn PyObject* PySequence_GetItem(
+  PyObject* o, 
+  Py_ssize_t i)
+@extern("PySequence_GetItem");
+
+fn PyObject* PySequence_GetSlice(
+  PyObject* o, 
+  Py_ssize_t i1, 
+  Py_ssize_t i2)
+@extern("PySequence_GetSlice");
+
+fn CInt PySequence_SetItem(
+  PyObject* o, 
+  Py_ssize_t i, 
+  PyObject* v)
+@extern("PySequence_SetItem");
+
+fn CInt PySequence_DelItem(
+  PyObject* o, 
+  Py_ssize_t i)
+@extern("PySequence_DelItem");
+
+fn CInt PySequence_SetSlice(
+  PyObject* o, 
+  Py_ssize_t i1, 
+  Py_ssize_t i2, 
+  PyObject* v)
+@extern("PySequence_SetSlice");
+
+fn CInt PySequence_DelSlice(
+  PyObject* o, 
+  Py_ssize_t i1, 
+  Py_ssize_t i2)
+@extern("PySequence_DelSlice");
+
+fn PyObject* PySequence_Tuple(
+  PyObject* o)
+@extern("PySequence_Tuple");
+
+fn PyObject* PySequence_List(
+  PyObject* o)
+@extern("PySequence_List");
+
+fn PyObject* PySequence_Fast(
+  PyObject* o, 
+  CChar* m)
+@extern("PySequence_Fast");
+
+fn Py_ssize_t PySequence_Count(
+  PyObject* o, 
+  PyObject* value)
+@extern("PySequence_Count");
+
+fn CInt PySequence_Contains(
+  PyObject* seq, 
+  PyObject* ob)
+@extern("PySequence_Contains");
+
+fn CInt PySequence_In(
+  PyObject* o, 
+  PyObject* value)
+@extern("PySequence_In");
+
+fn Py_ssize_t PySequence_Index(
+  PyObject* o, 
+  PyObject* value)
+@extern("PySequence_Index");
+
+fn PyObject* PySequence_InPlaceConcat(
+  PyObject* o1, 
+  PyObject* o2)
+@extern("PySequence_InPlaceConcat");
+
+fn PyObject* PySequence_InPlaceRepeat(
+  PyObject* o, 
+  Py_ssize_t count)
+@extern("PySequence_InPlaceRepeat");
+
+fn CInt PyMapping_Check(
+  PyObject* o)
+@extern("PyMapping_Check");
+
+fn Py_ssize_t PyMapping_Size(
+  PyObject* o)
+@extern("PyMapping_Size");
+
+fn Py_ssize_t PyMapping_Length(
+  PyObject* o)
+@extern("PyMapping_Length");
+
+fn CInt PyMapping_HasKeyString(
+  PyObject* o, 
+  CChar* key)
+@extern("PyMapping_HasKeyString");
+
+fn CInt PyMapping_HasKey(
+  PyObject* o, 
+  PyObject* key)
+@extern("PyMapping_HasKey");
+
+fn PyObject* PyMapping_Keys(
+  PyObject* o)
+@extern("PyMapping_Keys");
+
+fn PyObject* PyMapping_Values(
+  PyObject* o)
+@extern("PyMapping_Values");
+
+fn PyObject* PyMapping_Items(
+  PyObject* o)
+@extern("PyMapping_Items");
+
+fn PyObject* PyMapping_GetItemString(
+  PyObject* o, 
+  CChar* key)
+@extern("PyMapping_GetItemString");
+
+fn CInt PyMapping_SetItemString(
+  PyObject* o, 
+  CChar* key, 
+  PyObject* value)
+@extern("PyMapping_SetItemString");
+
+fn CInt PyObject_IsInstance(
+  PyObject* object, 
+  PyObject* typeorclass)
+@extern("PyObject_IsInstance");
+
+fn CInt PyObject_IsSubclass(
+  PyObject* object, 
+  PyObject* typeorclass)
+@extern("PyObject_IsSubclass");
+
+fn PyObject* _PyStack_AsDict(
+  PyObject** values, 
+  PyObject* kwnames)
+@extern("_PyStack_AsDict");
+
+fn PyObject* _Py_CheckFunctionResult(
+  PyThreadState* tstate, 
+  PyObject* callable, 
+  PyObject* result, 
+  CChar* where)
+@extern("_Py_CheckFunctionResult");
+
+fn PyObject* _PyObject_MakeTpCall(
+  PyThreadState* tstate, 
+  PyObject* callable, 
+  PyObject** args, 
+  Py_ssize_t nargs, 
+  PyObject* keywords)
+@extern("_PyObject_MakeTpCall");
+
+fn Py_ssize_t _PyVectorcall_NARGS(
+  usz n)
+@extern("_PyVectorcall_NARGS");
+
+fn vectorcallfunc PyVectorcall_Function(
+  PyObject* callable)
+@extern("PyVectorcall_Function");
+
+fn PyObject* PyObject_VectorcallDict(
+  PyObject* callable, 
+  PyObject** args, 
+  usz nargsf, 
+  PyObject* kwargs)
+@extern("PyObject_VectorcallDict");
+
+fn PyObject* _PyObject_FastCall(
+  PyObject* func, 
+  PyObject** args, 
+  Py_ssize_t nargs)
+@extern("_PyObject_FastCall");
+
+fn PyObject* PyObject_CallOneArg(
+  PyObject* func, 
+  PyObject* arg)
+@extern("PyObject_CallOneArg");
+
+fn PyObject* PyObject_CallMethodNoArgs(
+  PyObject* self, 
+  PyObject* name)
+@extern("PyObject_CallMethodNoArgs");
+
+fn PyObject* PyObject_CallMethodOneArg(
+  PyObject* self, 
+  PyObject* name, 
+  PyObject* arg)
+@extern("PyObject_CallMethodOneArg");
+
+fn PyObject* _PyObject_CallMethod(
+  PyObject* obj, 
+  PyObject* name, 
+  CChar* format)
+@extern("_PyObject_CallMethod");
+
+fn PyObject* _PyObject_CallMethodId(
+  PyObject* obj, 
+  _Py_Identifier* name, 
+  CChar* format)
+@extern("_PyObject_CallMethodId");
+
+fn PyObject* _PyObject_CallMethodId_SizeT(
+  PyObject* obj, 
+  _Py_Identifier* name, 
+  CChar* format)
+@extern("_PyObject_CallMethodId_SizeT");
+
+fn PyObject* _PyObject_CallMethodIdObjArgs(
+  PyObject* obj, 
+  _Py_Identifier* name)
+@extern("_PyObject_CallMethodIdObjArgs");
+
+fn PyObject* _PyObject_VectorcallMethodId(
+  _Py_Identifier* name, 
+  PyObject** args, 
+  usz nargsf, 
+  PyObject* kwnames)
+@extern("_PyObject_VectorcallMethodId");
+
+fn PyObject* _PyObject_CallMethodIdNoArgs(
+  PyObject* self, 
+  _Py_Identifier* name)
+@extern("_PyObject_CallMethodIdNoArgs");
+
+fn PyObject* _PyObject_CallMethodIdOneArg(
+  PyObject* self, 
+  _Py_Identifier* name, 
+  PyObject* arg)
+@extern("_PyObject_CallMethodIdOneArg");
+
+fn CInt _PyObject_HasLen(
+  PyObject* o)
+@extern("_PyObject_HasLen");
+
+fn Py_ssize_t PyObject_LengthHint(
+  PyObject* o, 
+  Py_ssize_t)
+@extern("PyObject_LengthHint");
+
+fn Py_ssize_t _PySequence_IterSearch(
+  PyObject* seq, 
+  PyObject* obj, 
+  CInt operation)
+@extern("_PySequence_IterSearch");
+
+fn CInt _PyObject_RealIsInstance(
+  PyObject* inst, 
+  PyObject* cls)
+@extern("_PyObject_RealIsInstance");
+
+fn CInt _PyObject_RealIsSubclass(
+  PyObject* derived, 
+  PyObject* cls)
+@extern("_PyObject_RealIsSubclass");
+
+fn CChar** _PySequence_BytesToCharpArray(
+  PyObject* self)
+@extern("_PySequence_BytesToCharpArray");
+
+fn void _Py_FreeCharPArray(
+  CChar* array)
+@extern("_Py_FreeCharPArray");
+
+fn void _Py_add_one_to_index_F(
+  CInt nd, 
+  Py_ssize_t* index, 
+  Py_ssize_t* shape)
+@extern("_Py_add_one_to_index_F");
+
+fn void _Py_add_one_to_index_C(
+  CInt nd, 
+  Py_ssize_t* index, 
+  Py_ssize_t* shape)
+@extern("_Py_add_one_to_index_C");
+
+fn CInt _Py_convert_optional_to_ssize_t(
+  PyObject*, 
+  void*)
+@extern("_Py_convert_optional_to_ssize_t");
+
+fn PyObject* _PyNumber_Index(
+  PyObject* o)
+@extern("_PyNumber_Index");
+
+PyTypeObject pyfilter_type;
+
+PyTypeObject pymap_type;
+
+PyTypeObject pyzip_type;
+
+CUInt[256] _py_ctype_table;
+
+char[256] _py_ctype_tolower;
+
+char[256] _py_ctype_toupper;
+
+fn double PyOS_string_to_double(
+  CChar* str, 
+  CChar** endptr, 
+  PyObject* overflow_exception)
+@extern("PyOS_string_to_double");
+
+fn CChar* PyOS_double_to_string(
+  double val, 
+  CChar format_code, 
+  CInt precision, 
+  CInt flags, 
+  CInt* type)
+@extern("PyOS_double_to_string");
+
+alias UnnamedPFN14 @private = fn PyObject*(
+  CChar*, 
+  Py_ssize_t, 
+  void*);
+
+fn PyObject* _Py_string_to_number_with_underscores(
+  CChar* str, 
+  Py_ssize_t len, 
+  CChar* what, 
+  PyObject* obj, 
+  void* arg, 
+  UnnamedPFN14 innerfunc)
+@extern("_Py_string_to_number_with_underscores");
+
+fn double _Py_parse_inf_or_nan(
+  CChar* p, 
+  CChar** endptr)
+@extern("_Py_parse_inf_or_nan");
+
+fn CInt PyOS_mystrnicmp(
+  CChar*, 
+  CChar*, 
+  Py_ssize_t)
+@extern("PyOS_mystrnicmp");
+
+fn CInt PyOS_mystricmp(
+  CChar*, 
+  CChar*)
+@extern("PyOS_mystricmp");
+
+fn wchar_t* Py_DecodeLocale(
+  CChar* arg, 
+  usz* size)
+@extern("Py_DecodeLocale");
+
+fn CChar* Py_EncodeLocale(
+  wchar_t* text, 
+  usz* error_pos)
+@extern("Py_EncodeLocale");
+
+fn FILE* _Py_fopen_obj(
+  PyObject* path, 
+  CChar* mode)
+@extern("_Py_fopen_obj");
+
+fn CInt PyTraceMalloc_Track(
+  CUInt domain, 
+  uptr ptr, 
+  usz size)
+@extern("PyTraceMalloc_Track");
+
+fn CInt PyTraceMalloc_Untrack(
+  CUInt domain, 
+  uptr ptr)
+@extern("PyTraceMalloc_Untrack");
+
+fn PyObject* _PyTraceMalloc_GetTraceback(
+  CUInt domain, 
+  uptr ptr)
+@extern("_PyTraceMalloc_GetTraceback");
+
+fn CInt _PyTraceMalloc_IsTracing()
+@extern("_PyTraceMalloc_IsTracing");
+
+fn void _PyTraceMalloc_ClearTraces()
+@extern("_PyTraceMalloc_ClearTraces");
+
+fn PyObject* _PyTraceMalloc_GetTraces()
+@extern("_PyTraceMalloc_GetTraces");
+
+fn PyObject* _PyTraceMalloc_GetObjectTraceback(
+  PyObject* obj)
+@extern("_PyTraceMalloc_GetObjectTraceback");
+
+fn PyStatus _PyTraceMalloc_Init()
+@extern("_PyTraceMalloc_Init");
+
+fn CInt _PyTraceMalloc_Start(
+  CInt max_nframe)
+@extern("_PyTraceMalloc_Start");
+
+fn void _PyTraceMalloc_Stop()
+@extern("_PyTraceMalloc_Stop");
+
+fn CInt _PyTraceMalloc_GetTracebackLimit()
+@extern("_PyTraceMalloc_GetTracebackLimit");
+
+fn usz _PyTraceMalloc_GetMemory()
+@extern("_PyTraceMalloc_GetMemory");
+
+fn PyObject* _PyTraceMalloc_GetTracedMemory()
+@extern("_PyTraceMalloc_GetTracedMemory");
+
+fn void _PyTraceMalloc_ResetPeak()
+@extern("_PyTraceMalloc_ResetPeak");

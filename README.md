@@ -12,7 +12,8 @@ To install bindings for library **foo**, simply copy **foo.c3l** located in **li
 First of all, install **libclang** required by [bindgen.c3l](https://github.com/vssukharev/bindgen.c3l), then simply run `c3c run glfw` as an examples. The following bindings are currently supported:
 - GLFW
 - Vulkan
-- Python
+- LLVM (Nearly complete)
+- Python (Mostly incomplete)
 
 ## Creating your own bindings
 
