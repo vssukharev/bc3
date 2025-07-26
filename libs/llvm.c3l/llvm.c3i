@@ -45,93 +45,49 @@ const LTO_API_VERSION = 29;
 
 alias LLVMBool = CInt;
 
-typedef LLVMOpaqueMemoryBuffer = void;
+alias LLVMMemoryBufferRef = void*;
 
-alias LLVMMemoryBufferRef = LLVMOpaqueMemoryBuffer*;
+alias LLVMContextRef = void*;
 
-typedef LLVMOpaqueContext = void;
+alias LLVMModuleRef = void*;
 
-alias LLVMContextRef = LLVMOpaqueContext*;
+alias LLVMTypeRef = void*;
 
-typedef LLVMOpaqueModule = void;
+alias LLVMValueRef = void*;
 
-alias LLVMModuleRef = LLVMOpaqueModule*;
+alias LLVMBasicBlockRef = void*;
 
-typedef LLVMOpaqueType = void;
+alias LLVMMetadataRef = void*;
 
-alias LLVMTypeRef = LLVMOpaqueType*;
+alias LLVMNamedMDNodeRef = void*;
 
-typedef LLVMOpaqueValue = void;
+alias LLVMValueMetadataEntry = void;
 
-alias LLVMValueRef = LLVMOpaqueValue*;
+alias LLVMBuilderRef = void*;
 
-typedef LLVMOpaqueBasicBlock = void;
+alias LLVMDIBuilderRef = void*;
 
-alias LLVMBasicBlockRef = LLVMOpaqueBasicBlock*;
+alias LLVMModuleProviderRef = void*;
 
-typedef LLVMOpaqueMetadata = void;
+alias LLVMPassManagerRef = void*;
 
-alias LLVMMetadataRef = LLVMOpaqueMetadata*;
+alias LLVMUseRef = void*;
 
-typedef LLVMOpaqueNamedMDNode = void;
+alias LLVMOperandBundleRef = void*;
 
-alias LLVMNamedMDNodeRef = LLVMOpaqueNamedMDNode*;
+alias LLVMAttributeRef = void*;
 
-typedef LLVMOpaqueValueMetadataEntry = void;
+alias LLVMDiagnosticInfoRef = void*;
 
-alias LLVMValueMetadataEntry = LLVMOpaqueValueMetadataEntry;
+alias LLVMComdatRef = void*;
 
-typedef LLVMOpaqueBuilder = void;
+alias LLVMModuleFlagEntry = void;
 
-alias LLVMBuilderRef = LLVMOpaqueBuilder*;
+alias LLVMJITEventListenerRef = void*;
 
-typedef LLVMOpaqueDIBuilder = void;
+alias LLVMBinaryRef = void*;
 
-alias LLVMDIBuilderRef = LLVMOpaqueDIBuilder*;
-
-typedef LLVMOpaqueModuleProvider = void;
-
-alias LLVMModuleProviderRef = LLVMOpaqueModuleProvider*;
-
-typedef LLVMOpaquePassManager = void;
-
-alias LLVMPassManagerRef = LLVMOpaquePassManager*;
-
-typedef LLVMOpaqueUse = void;
-
-alias LLVMUseRef = LLVMOpaqueUse*;
-
-typedef LLVMOpaqueOperandBundle = void;
-
-alias LLVMOperandBundleRef = LLVMOpaqueOperandBundle*;
-
-typedef LLVMOpaqueAttributeRef = void;
-
-alias LLVMAttributeRef = LLVMOpaqueAttributeRef*;
-
-typedef LLVMOpaqueDiagnosticInfo = void;
-
-alias LLVMDiagnosticInfoRef = LLVMOpaqueDiagnosticInfo*;
-
-typedef LLVMComdat = void;
-
-alias LLVMComdatRef = LLVMComdat*;
-
-typedef LLVMOpaqueModuleFlagEntry = void;
-
-alias LLVMModuleFlagEntry = LLVMOpaqueModuleFlagEntry;
-
-typedef LLVMOpaqueJITEventListener = void;
-
-alias LLVMJITEventListenerRef = LLVMOpaqueJITEventListener*;
-
-typedef LLVMOpaqueBinary = void;
-
-alias LLVMBinaryRef = LLVMOpaqueBinary*;
-
-typedef LLVMOpaqueDbgRecord = void;
-
-alias LLVMDbgRecordRef = LLVMOpaqueDbgRecord*;
+alias LLVMDbgRecordRef = void*;
 
 typedef LLVMVerifierFailureAction = inline CUInt;
 const LLVMVerifierFailureAction ABORT_PROCESS_ACTION = 0;
@@ -343,9 +299,9 @@ const LLVMTypeKind VOID_TYPE_KIND = 0;
 const LLVMTypeKind HALF_TYPE_KIND = 1;
 const LLVMTypeKind FLOAT_TYPE_KIND = 2;
 const LLVMTypeKind DOUBLE_TYPE_KIND = 3;
-const LLVMTypeKind X_86__F_P_80_TYPE_KIND = 4;
-const LLVMTypeKind F_P_128_TYPE_KIND = 5;
-const LLVMTypeKind PP_C__F_P_128_TYPE_KIND = 6;
+const LLVMTypeKind X_86__FP_8_0_TYPE_KIND = 4;
+const LLVMTypeKind FP_1_28_TYPE_KIND = 5;
+const LLVMTypeKind PP_C__FP_1_28_TYPE_KIND = 6;
 const LLVMTypeKind LABEL_TYPE_KIND = 7;
 const LLVMTypeKind INTEGER_TYPE_KIND = 8;
 const LLVMTypeKind FUNCTION_TYPE_KIND = 9;
@@ -410,7 +366,7 @@ const LLVMCallConv X_86_FASTCALL_CALL_CONV = 65;
 const LLVMCallConv ARMAPCS_CALL_CONV = 66;
 const LLVMCallConv ARMAAPCS_CALL_CONV = 67;
 const LLVMCallConv ARMAAPCSVFP_CALL_CONV = 68;
-const LLVMCallConv MS_P_430_INTR_CALL_CONV = 69;
+const LLVMCallConv MSP_4_30_INTR_CALL_CONV = 69;
 const LLVMCallConv X_86_THIS_CALL_CALL_CONV = 70;
 const LLVMCallConv PTX_KERNEL_CALL_CONV = 71;
 const LLVMCallConv PTX_DEVICE_CALL_CONV = 72;
@@ -433,7 +389,7 @@ const LLVMCallConv AMDGPUCS_CALL_CONV = 90;
 const LLVMCallConv AMDGPUKERNEL_CALL_CONV = 91;
 const LLVMCallConv X_86_REG_CALL_CALL_CONV = 92;
 const LLVMCallConv AMDGPUHS_CALL_CONV = 93;
-const LLVMCallConv MS_P_430_BUILTIN_CALL_CONV = 94;
+const LLVMCallConv MSP_4_30_BUILTIN_CALL_CONV = 94;
 const LLVMCallConv AMDGPULS_CALL_CONV = 95;
 const LLVMCallConv AMDGPUES_CALL_CONV = 96;
 
@@ -5327,9 +5283,7 @@ fn usz disasmInstruction(
   usz out_string_size)
 @extern("LLVMDisasmInstruction");
 
-typedef LLVMOpaqueError = void;
-
-alias LLVMErrorRef = LLVMOpaqueError*;
+alias LLVMErrorRef = void*;
 
 alias LLVMErrorTypeId = void*;
 
@@ -5364,13 +5318,9 @@ typedef LLVMByteOrdering = inline CUInt;
 const LLVMByteOrdering BIG_ENDIAN = 0;
 const LLVMByteOrdering LITTLE_ENDIAN = 1;
 
-typedef LLVMOpaqueTargetData = void;
+alias LLVMTargetDataRef = void*;
 
-alias LLVMTargetDataRef = LLVMOpaqueTargetData*;
-
-typedef LLVMOpaqueTargetLibraryInfotData = void;
-
-alias LLVMTargetLibraryInfoRef = LLVMOpaqueTargetLibraryInfotData*;
+alias LLVMTargetLibraryInfoRef = void*;
 
 fn void initializeAllTargetInfos()
 @extern("LLVMInitializeAllTargetInfos");
@@ -5508,17 +5458,11 @@ fn CULongLong offsetOfElement(
   CUInt element)
 @extern("LLVMOffsetOfElement");
 
-typedef LLVMOpaqueTargetMachineOptions = void;
+alias LLVMTargetMachineOptionsRef = void*;
 
-alias LLVMTargetMachineOptionsRef = LLVMOpaqueTargetMachineOptions*;
+alias LLVMTargetMachineRef = void*;
 
-typedef LLVMOpaqueTargetMachine = void;
-
-alias LLVMTargetMachineRef = LLVMOpaqueTargetMachine*;
-
-typedef LLVMTarget = void;
-
-alias LLVMTargetRef = LLVMTarget*;
+alias LLVMTargetRef = void*;
 
 typedef LLVMCodeGenOptLevel = inline CUInt;
 const LLVMCodeGenOptLevel CODE_GEN_LEVEL_NONE = 0;
@@ -5732,17 +5676,11 @@ fn void linkInMCJIT()
 fn void linkInInterpreter()
 @extern("LLVMLinkInInterpreter");
 
-typedef LLVMOpaqueGenericValue = void;
+alias LLVMGenericValueRef = void*;
 
-alias LLVMGenericValueRef = LLVMOpaqueGenericValue*;
+alias LLVMExecutionEngineRef = void*;
 
-typedef LLVMOpaqueExecutionEngine = void;
-
-alias LLVMExecutionEngineRef = LLVMOpaqueExecutionEngine*;
-
-typedef LLVMOpaqueMCJITMemoryManager = void;
-
-alias LLVMMCJITMemoryManagerRef = LLVMOpaqueMCJITMemoryManager*;
+alias LLVMMCJITMemoryManagerRef = void*;
 
 struct LLVMMCJITCompilerOptions {
   CUInt opt_level;
@@ -5986,21 +5924,15 @@ struct LLVMJITEvaluatedSymbol {
   LLVMJITSymbolFlags flags;
 }
 
-typedef LLVMOrcOpaqueExecutionSession = void;
-
-alias LLVMOrcExecutionSessionRef = LLVMOrcOpaqueExecutionSession*;
+alias LLVMOrcExecutionSessionRef = void*;
 
 alias LLVMOrcErrorReporterFunction = fn void(
   void* ctx, 
   LLVMErrorRef err);
 
-typedef LLVMOrcOpaqueSymbolStringPool = void;
+alias LLVMOrcSymbolStringPoolRef = void*;
 
-alias LLVMOrcSymbolStringPoolRef = LLVMOrcOpaqueSymbolStringPool*;
-
-typedef LLVMOrcOpaqueSymbolStringPoolEntry = void;
-
-alias LLVMOrcSymbolStringPoolEntryRef = LLVMOrcOpaqueSymbolStringPoolEntry*;
+alias LLVMOrcSymbolStringPoolEntryRef = void*;
 
 struct LLVMOrcCSymbolFlagsMapPair {
   LLVMOrcSymbolStringPoolEntryRef name;
@@ -6028,9 +5960,7 @@ struct LLVMOrcCSymbolAliasMapPair {
 
 alias LLVMOrcCSymbolAliasMapPairs = LLVMOrcCSymbolAliasMapPair*;
 
-typedef LLVMOrcOpaqueJITDylib = void;
-
-alias LLVMOrcJITDylibRef = LLVMOrcOpaqueJITDylib*;
+alias LLVMOrcJITDylibRef = void*;
 
 struct LLVMOrcCSymbolsList {
   LLVMOrcSymbolStringPoolEntryRef* symbols;
@@ -6076,13 +6006,9 @@ struct LLVMOrcCLookupSetElement {
 
 alias LLVMOrcCLookupSet = LLVMOrcCLookupSetElement*;
 
-typedef LLVMOrcOpaqueMaterializationUnit = void;
+alias LLVMOrcMaterializationUnitRef = void*;
 
-alias LLVMOrcMaterializationUnitRef = LLVMOrcOpaqueMaterializationUnit*;
-
-typedef LLVMOrcOpaqueMaterializationResponsibility = void;
-
-alias LLVMOrcMaterializationResponsibilityRef = LLVMOrcOpaqueMaterializationResponsibility*;
+alias LLVMOrcMaterializationResponsibilityRef = void*;
 
 alias LLVMOrcMaterializationUnitMaterializeFunction = fn void(
   void* ctx, 
@@ -6096,17 +6022,11 @@ alias LLVMOrcMaterializationUnitDiscardFunction = fn void(
 alias LLVMOrcMaterializationUnitDestroyFunction = fn void(
   void* ctx);
 
-typedef LLVMOrcOpaqueResourceTracker = void;
+alias LLVMOrcResourceTrackerRef = void*;
 
-alias LLVMOrcResourceTrackerRef = LLVMOrcOpaqueResourceTracker*;
+alias LLVMOrcDefinitionGeneratorRef = void*;
 
-typedef LLVMOrcOpaqueDefinitionGenerator = void;
-
-alias LLVMOrcDefinitionGeneratorRef = LLVMOrcOpaqueDefinitionGenerator*;
-
-typedef LLVMOrcOpaqueLookupState = void;
-
-alias LLVMOrcLookupStateRef = LLVMOrcOpaqueLookupState*;
+alias LLVMOrcLookupStateRef = void*;
 
 alias LLVMOrcCAPIDefinitionGeneratorTryToGenerateFunction = fn LLVMErrorRef(
   LLVMOrcDefinitionGeneratorRef generator_obj, 
@@ -6125,58 +6045,38 @@ alias LLVMOrcSymbolPredicate = fn CInt(
   void* ctx, 
   LLVMOrcSymbolStringPoolEntryRef sym);
 
-typedef LLVMOrcOpaqueThreadSafeContext = void;
+alias LLVMOrcThreadSafeContextRef = void*;
 
-alias LLVMOrcThreadSafeContextRef = LLVMOrcOpaqueThreadSafeContext*;
-
-typedef LLVMOrcOpaqueThreadSafeModule = void;
-
-alias LLVMOrcThreadSafeModuleRef = LLVMOrcOpaqueThreadSafeModule*;
+alias LLVMOrcThreadSafeModuleRef = void*;
 
 alias LLVMOrcGenericIRModuleOperationFunction = fn LLVMErrorRef(
   void* ctx, 
   LLVMModuleRef m);
 
-typedef LLVMOrcOpaqueJITTargetMachineBuilder = void;
+alias LLVMOrcJITTargetMachineBuilderRef = void*;
 
-alias LLVMOrcJITTargetMachineBuilderRef = LLVMOrcOpaqueJITTargetMachineBuilder*;
+alias LLVMOrcObjectLayerRef = void*;
 
-typedef LLVMOrcOpaqueObjectLayer = void;
+alias LLVMOrcObjectLinkingLayerRef = void*;
 
-alias LLVMOrcObjectLayerRef = LLVMOrcOpaqueObjectLayer*;
-
-typedef LLVMOrcOpaqueObjectLinkingLayer = void;
-
-alias LLVMOrcObjectLinkingLayerRef = LLVMOrcOpaqueObjectLinkingLayer*;
-
-typedef LLVMOrcOpaqueIRTransformLayer = void;
-
-alias LLVMOrcIRTransformLayerRef = LLVMOrcOpaqueIRTransformLayer*;
+alias LLVMOrcIRTransformLayerRef = void*;
 
 alias LLVMOrcIRTransformLayerTransformFunction = fn LLVMErrorRef(
   void* ctx, 
   LLVMOrcThreadSafeModuleRef* mod_in_out, 
   LLVMOrcMaterializationResponsibilityRef mr);
 
-typedef LLVMOrcOpaqueObjectTransformLayer = void;
-
-alias LLVMOrcObjectTransformLayerRef = LLVMOrcOpaqueObjectTransformLayer*;
+alias LLVMOrcObjectTransformLayerRef = void*;
 
 alias LLVMOrcObjectTransformLayerTransformFunction = fn LLVMErrorRef(
   void* ctx, 
   LLVMMemoryBufferRef* obj_in_out);
 
-typedef LLVMOrcOpaqueIndirectStubsManager = void;
+alias LLVMOrcIndirectStubsManagerRef = void*;
 
-alias LLVMOrcIndirectStubsManagerRef = LLVMOrcOpaqueIndirectStubsManager*;
+alias LLVMOrcLazyCallThroughManagerRef = void*;
 
-typedef LLVMOrcOpaqueLazyCallThroughManager = void;
-
-alias LLVMOrcLazyCallThroughManagerRef = LLVMOrcOpaqueLazyCallThroughManager*;
-
-typedef LLVMOrcOpaqueDumpObjects = void;
-
-alias LLVMOrcDumpObjectsRef = LLVMOrcOpaqueDumpObjects*;
+alias LLVMOrcDumpObjectsRef = void*;
 
 fn void orcExecutionSessionSetErrorReporter(
   LLVMOrcExecutionSessionRef es, 
@@ -6535,13 +6435,9 @@ alias LLVMOrcLLJITBuilderObjectLinkingLayerCreatorFunction = fn LLVMOrcObjectLay
   LLVMOrcExecutionSessionRef es, 
   CChar* triple);
 
-typedef LLVMOrcOpaqueLLJITBuilder = void;
+alias LLVMOrcLLJITBuilderRef = void*;
 
-alias LLVMOrcLLJITBuilderRef = LLVMOrcOpaqueLLJITBuilder*;
-
-typedef LLVMOrcOpaqueLLJIT = void;
-
-alias LLVMOrcLLJITRef = LLVMOrcOpaqueLLJIT*;
+alias LLVMOrcLLJITRef = void*;
 
 fn LLVMOrcLLJITBuilderRef orcCreateLLJITBuilder()
 @extern("LLVMOrcCreateLLJITBuilder");
@@ -6650,17 +6546,11 @@ fn LLVMBool linkModules2(
   LLVMModuleRef src)
 @extern("LLVMLinkModules2");
 
-typedef LLVMOpaqueSectionIterator = void;
+alias LLVMSectionIteratorRef = void*;
 
-alias LLVMSectionIteratorRef = LLVMOpaqueSectionIterator*;
+alias LLVMSymbolIteratorRef = void*;
 
-typedef LLVMOpaqueSymbolIterator = void;
-
-alias LLVMSymbolIteratorRef = LLVMOpaqueSymbolIterator*;
-
-typedef LLVMOpaqueRelocationIterator = void;
-
-alias LLVMRelocationIteratorRef = LLVMOpaqueRelocationIterator*;
+alias LLVMRelocationIteratorRef = void*;
 
 typedef LLVMBinaryType = inline CUInt;
 const LLVMBinaryType BINARY_TYPE_ARCHIVE = 0;
@@ -6669,10 +6559,10 @@ const LLVMBinaryType BINARY_TYPE_COFF_IMPORT_FILE = 2;
 const LLVMBinaryType BINARY_TYPE_IR = 3;
 const LLVMBinaryType BINARY_TYPE_WIN_RES = 4;
 const LLVMBinaryType BINARY_TYPE_COFF = 5;
-const LLVMBinaryType BINARY_TYPE_EL_F_32_L = 6;
-const LLVMBinaryType BINARY_TYPE_EL_F_32_B = 7;
-const LLVMBinaryType BINARY_TYPE_EL_F_64_L = 8;
-const LLVMBinaryType BINARY_TYPE_EL_F_64_B = 9;
+const LLVMBinaryType BINARY_TYPE_ELF_3_2_L = 6;
+const LLVMBinaryType BINARY_TYPE_ELF_3_2_B = 7;
+const LLVMBinaryType BINARY_TYPE_ELF_6_4_L = 8;
+const LLVMBinaryType BINARY_TYPE_ELF_6_4_B = 9;
 const LLVMBinaryType BINARY_TYPE_MACH_O_32_L = 10;
 const LLVMBinaryType BINARY_TYPE_MACH_O_32_B = 11;
 const LLVMBinaryType BINARY_TYPE_MACH_O_64_L = 12;
@@ -6814,9 +6704,7 @@ fn CChar* getRelocationValueString(
   LLVMRelocationIteratorRef ri)
 @extern("LLVMGetRelocationValueString");
 
-typedef LLVMOpaqueObjectFile = void;
-
-alias LLVMObjectFileRef = LLVMOpaqueObjectFile*;
+alias LLVMObjectFileRef = void*;
 
 fn LLVMObjectFileRef createObjectFile(
   LLVMMemoryBufferRef mem_buf)
@@ -6879,9 +6767,7 @@ const LLVMRemarkType REMARK_TYPE_ANALYSIS_FP_COMMUTE = 4;
 const LLVMRemarkType REMARK_TYPE_ANALYSIS_ALIASING = 5;
 const LLVMRemarkType REMARK_TYPE_FAILURE = 6;
 
-typedef LLVMRemarkOpaqueString = void;
-
-alias LLVMRemarkStringRef = LLVMRemarkOpaqueString*;
+alias LLVMRemarkStringRef = void*;
 
 fn CChar* remarkStringGetData(
   LLVMRemarkStringRef string)
@@ -6891,9 +6777,7 @@ fn uint remarkStringGetLen(
   LLVMRemarkStringRef string)
 @extern("LLVMRemarkStringGetLen");
 
-typedef LLVMRemarkOpaqueDebugLoc = void;
-
-alias LLVMRemarkDebugLocRef = LLVMRemarkOpaqueDebugLoc*;
+alias LLVMRemarkDebugLocRef = void*;
 
 fn LLVMRemarkStringRef remarkDebugLocGetSourceFilePath(
   LLVMRemarkDebugLocRef dl)
@@ -6907,9 +6791,7 @@ fn uint remarkDebugLocGetSourceColumn(
   LLVMRemarkDebugLocRef dl)
 @extern("LLVMRemarkDebugLocGetSourceColumn");
 
-typedef LLVMRemarkOpaqueArg = void;
-
-alias LLVMRemarkArgRef = LLVMRemarkOpaqueArg*;
+alias LLVMRemarkArgRef = void*;
 
 fn LLVMRemarkStringRef remarkArgGetKey(
   LLVMRemarkArgRef arg)
@@ -6923,9 +6805,7 @@ fn LLVMRemarkDebugLocRef remarkArgGetDebugLoc(
   LLVMRemarkArgRef arg)
 @extern("LLVMRemarkArgGetDebugLoc");
 
-typedef LLVMRemarkOpaqueEntry = void;
-
-alias LLVMRemarkEntryRef = LLVMRemarkOpaqueEntry*;
+alias LLVMRemarkEntryRef = void*;
 
 fn void remarkEntryDispose(
   LLVMRemarkEntryRef remark)
@@ -6968,9 +6848,7 @@ fn LLVMRemarkArgRef remarkEntryGetNextArg(
   LLVMRemarkEntryRef remark)
 @extern("LLVMRemarkEntryGetNextArg");
 
-typedef LLVMRemarkOpaqueParser = void;
-
-alias LLVMRemarkParserRef = LLVMRemarkOpaqueParser*;
+alias LLVMRemarkParserRef = void*;
 
 fn LLVMRemarkParserRef remarkParserCreateYAML(
   void* buf, 
@@ -7115,17 +6993,11 @@ const LtoCodegenModel LTO_CODEGEN_PIC_MODEL_DYNAMIC = 1;
 const LtoCodegenModel LTO_CODEGEN_PIC_MODEL_DYNAMIC_NO_PIC = 2;
 const LtoCodegenModel LTO_CODEGEN_PIC_MODEL_DEFAULT = 3;
 
-typedef LLVMOpaqueLTOModule = void;
+alias LtoModuleT = void*;
 
-alias LtoModuleT = LLVMOpaqueLTOModule*;
+alias LtoCodeGenT = void*;
 
-typedef LLVMOpaqueLTOCodeGenerator = void;
-
-alias LtoCodeGenT = LLVMOpaqueLTOCodeGenerator*;
-
-typedef LLVMOpaqueThinLTOCodeGenerator = void;
-
-alias ThinltoCodeGenT = LLVMOpaqueThinLTOCodeGenerator*;
+alias ThinltoCodeGenT = void*;
 
 fn CChar* ltoGetVersion()
 @extern("lto_get_version");
@@ -7365,9 +7237,7 @@ fn void ltoCodegenSetShouldEmbedUselists(
   LtoBoolT should_embed_uselists)
 @extern("lto_codegen_set_should_embed_uselists");
 
-typedef LLVMOpaqueLTOInput = void;
-
-alias LtoInputT = LLVMOpaqueLTOInput*;
+alias LtoInputT = void*;
 
 fn LtoInputT ltoInputCreate(
   void* buffer, 

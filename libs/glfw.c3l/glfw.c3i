@@ -301,11 +301,11 @@ alias GLFWglproc = fn void();
 
 alias GLFWvkproc = fn void();
 
-typedef GLFWmonitor = void;
+alias GLFWmonitor = void;
 
-typedef GLFWwindow = void;
+alias GLFWwindow = void;
 
-typedef GLFWcursor = void;
+alias GLFWcursor = void;
 
 alias GLFWerrorfun = fn void(
   CInt error_code, 

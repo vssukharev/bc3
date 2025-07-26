@@ -40,9 +40,23 @@ fn void llvm(String src, String out)
 
       if (name.is_screaming()) {
         return name.copy(alloc);
-      } else if (name.starts_with("Disassembler")) {
-        // TODO: something with that
-        return name.snake_to_screaming(alloc);
+      } else if (name.starts_with("Disassembler_")) {
+        last
+        // switch (name) {
+        //   case "Disassembler_Option_UseMarkup": 
+        //     return "DISASSEMBLER_OPTION_USE_MARKUP";
+        //   case "Disassembler_Option_PrintImmHex":
+        //     return "DISASSEMBLER_OPTION_PRINT_IMM_HEX";
+        //   case "Disassembler_Option_AsmPrinterVariant":
+        //     return "DISASSEMBLER_OPTION_ASM_PRINTER_VARIANT";
+        //   case "Disassembler_Option_SetInstrComments":
+        //     return "DISASSEMBLER_OPTION_SET_INSTR_COMMENTS";
+        //   case "Disassembler_Option_PrintLatency":
+        //     return "DISASSEMBLER_OPTION_PRINT_LATENCY";
+        //   case "Disassembler_Option_Color":
+        //     return "DISASSEMBLER_OPTION_COLOR";
+        // }
+
       } else {
         // return name.copy(alloc);
         return name.pascal_to_screaming(alloc);

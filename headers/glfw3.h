@@ -553,7 +553,7 @@ extern "C" {
 typedef void (*GLFWglproc)(void);
  
 typedef void (*GLFWvkproc)(void);
- 
+
 typedef struct GLFWmonitor GLFWmonitor;
  
 typedef struct GLFWwindow GLFWwindow;
